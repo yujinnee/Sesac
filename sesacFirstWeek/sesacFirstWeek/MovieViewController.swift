@@ -12,6 +12,7 @@ class MovieViewController: UIViewController {
    
     @IBOutlet var previewFirstImageView: UIImageView!
     @IBOutlet var previewSecondImageView: UIImageView!
+    @IBOutlet var previewThirdImageView: UIImageView!
     @IBOutlet var posterImageView: UIImageView!
     
     @IBOutlet var randomPlayButton: UIButton!
@@ -22,8 +23,7 @@ class MovieViewController: UIViewController {
         super.viewDidLoad()
         
         showRandomMovie()
-        designPreviewImageView(posterImageView, borderColor: UIColor.yellow.cgColor )
-        designPreviewImageView(previewFirstImageView, borderColor: UIColor.green.cgColor)
+        designPreviewImageView()
         designRandomPlayButton()
        
     }
@@ -35,7 +35,6 @@ class MovieViewController: UIViewController {
     @IBAction func likeButtonClicked(_ sender: UIButton) {
         
         let alert = UIAlertController(title: "이곳이 타이틀입니다", message: "이러쿵 저러쿵 내용을 작성해주세요!", preferredStyle: .alert)
-//        let alert = UIAlertController(title: "이곳이 타이틀입니다", message: "이러쿵 저러쿵 내용을 작성해주세요!", preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default)
         alert.addAction(cancel)
@@ -46,15 +45,29 @@ class MovieViewController: UIViewController {
     func showRandomMovie() {
         var random = [1,2,3,4,5]
         var randomResult = random.randomElement()!
+        previewFirstImageView.image = UIImage(named: "\(randomResult)")
+        randomResult = random.randomElement()!
         previewSecondImageView.image = UIImage(named: "\(randomResult)")
+        randomResult = random.randomElement()!
+        previewThirdImageView.image = UIImage(named: "\(randomResult)")
+        randomResult = random.randomElement()!
+        posterImageView.image = UIImage(named: "\(randomResult)")
+        
     }
     
-    func designPreviewImageView(_ name: UIImageView, borderColor: CGColor){
-        name.layer.cornerRadius = 30
-        name.layer.borderColor = borderColor
-        name.layer.borderWidth = 5
+    func designPreviewImageView(){
+        designImageView(previewFirstImageView, cornerRadius: 20, borderColor: UIColor.yellow, borderWidth: 5, backgroundColor: UIColor.red, contentMode: .scaleAspectFill)
+        designImageView(previewSecondImageView, cornerRadius: 10, borderColor: UIColor.systemPink, borderWidth: 20, backgroundColor: UIColor.green, contentMode: .scaleAspectFill)
+        designImageView(previewThirdImageView, cornerRadius: 40, borderColor: UIColor.blue, borderWidth: 10, backgroundColor: UIColor.brown, contentMode: .scaleAspectFill)
+    }
+    
+    func designImageView(_ name: UIImageView,cornerRadius: CGFloat, borderColor: UIColor, borderWidth: CGFloat,backgroundColor: UIColor,contentMode: UIView.ContentMode){
+        name.layer.cornerRadius = cornerRadius
+        name.layer.borderColor = borderColor.cgColor
+        name.layer.borderWidth = borderWidth
         name.backgroundColor = UIColor.blue
-        name.contentMode = UIView.ContentMode.scaleAspectFill
+        name.contentMode = contentMode
+//        name.contentMode = UIView.ContentMode.scaleAspectFill
     }
     
     func designRandomPlayButton(){
