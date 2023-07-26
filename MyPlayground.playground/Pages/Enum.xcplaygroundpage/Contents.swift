@@ -61,3 +61,5 @@ print(Words.hanni.rawValue)
 
 var tag = 100
 Words(rawValue:  tag)
+
+print(type(of: Words.newjeans))
