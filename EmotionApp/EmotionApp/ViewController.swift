@@ -8,20 +8,24 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var emoticonDictionary = [
-        "happy":0,
-        "notBad":0,
-        "soso":0,
-        "notGood":0,
-        "sad":0
-    ]
+//    var emoticonDictionary = [
+//        "happy" : UserDefaults.standard.integer(forKey: "happy"),
+//        "notBad": UserDefaults.standard.integer(forKey: "notBad"),
+//        "soso": UserDefaults.standard.integer(forKey: "soso"),
+//        "notGood": UserDefaults.standard.integer(forKey: "notGood"),
+//        "sad":UserDefaults.standard.integer(forKey: "sad")
+//    ]
+    var emotionDictionary = [String:Int]()
     
     
     @IBAction func emotionButtonTapped(_ sender: UIButton) {
+        
         guard let emotionCase = Emotion(rawValue: sender.tag) else{return}
         let emotionKey = emotionCase.name
-        guard var value = emoticonDictionary[emotionKey] else {return}
-        emoticonDictionary[emotionKey] = value + 1
+        guard let value = emotionDictionary[emotionKey] else {return}
+        emotionDictionary[emotionKey] = value + 1
+        UserDefaults.standard.setValue(emotionDictionary, forKey: "emoticonDictionary")
+        
 //
 //        switch emotionCase{
 //        case .happy:
@@ -35,14 +39,24 @@ class ViewController: UIViewController {
 //        case .sad:
 //            emoticonDictionary[Emotion.sad.name]! += 1
 //        }
-        print("\(emotionKey):\(emoticonDictionary[emotionKey]!)")
         
+        print("\(emotionKey):\(emotionDictionary[emotionKey] ?? -1)")
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initEmotionDictionary()
     }
-
+    
+    func initEmotionDictionary() {
+        if let userDefaultsData = UserDefaults.standard.dictionary(forKey: "emoticonDictionary") as? [String:Int]{
+            emotionDictionary = userDefaultsData
+        } else{
+            Emotion.allCases.forEach{emotionDictionary.updateValue(0,forKey: $0.name)}
+            UserDefaults.standard.setValue(emotionDictionary, forKey: "emoticonDictionary")
+        }
+    }
 
 }
 
