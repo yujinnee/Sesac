@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var emotionScore = [
+    var emoticonDictionary = [
         "happy":0,
         "notBad":0,
         "soso":0,
@@ -16,33 +16,31 @@ class ViewController: UIViewController {
         "sad":0
     ]
     
-
-    
     
     @IBAction func emotionButtonTapped(_ sender: UIButton) {
-        switch sender.tag{
-        case emotion.happy.rawValue:
-            emotionScore["happy"]! += 1
-            print("happy:\(emotionScore["happy"]!)")
-        case emotion.notBad.rawValue:
-            emotionScore["notBad"]! += 1
-            print("notBad:\(emotionScore["notBad"]!)")
-        case emotion.soso.rawValue:
-            emotionScore["soso"]! += 1
-            print("soso:\(emotionScore["soso"]!)")
-        case emotion.notGood.rawValue:
-            emotionScore["notGood"]! += 1
-            print("notGood:\(emotionScore["notGood"]!)")
-        case emotion.sad.rawValue:
-            emotionScore["sad"]! += 1
-            print("sad:\(emotionScore["sad"]!)")
-        default:
-            return
-        }
+        guard let emotionCase = Emotion(rawValue: sender.tag) else{return}
+        let emotionKey = emotionCase.name
+        guard var value = emoticonDictionary[emotionKey] else {return}
+        emoticonDictionary[emotionKey] = value + 1
+//
+//        switch emotionCase{
+//        case .happy:
+//            emoticonDictionary[Emotion.happy.name]! += 1
+//        case .notBad:
+//            emoticonDictionary[Emotion.notBad.name]! += 1
+//        case .soso:
+//            emoticonDictionary[Emotion.soso.name]! += 1
+//        case .notGood:
+//            emoticonDictionary[Emotion.notGood.name]! += 1
+//        case .sad:
+//            emoticonDictionary[Emotion.sad.name]! += 1
+//        }
+        print("\(emotionKey):\(emoticonDictionary[emotionKey]!)")
+        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
 
