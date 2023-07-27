@@ -63,6 +63,8 @@ class LoginViewController: UIViewController {
         
         let previousCount = UserDefaults.standard.integer(forKey: "count")
         UserDefaults.standard.set(previousCount+1, forKey: "count")
+        print("클릭했습니다.")
+        print(previousCount + 1)
         
         
     }
