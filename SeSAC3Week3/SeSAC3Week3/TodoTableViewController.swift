@@ -19,7 +19,6 @@ class TodoTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableHeaderView
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
