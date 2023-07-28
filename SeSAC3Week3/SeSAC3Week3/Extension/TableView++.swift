@@ -1,8 +1,8 @@
 //
-//  Extension.swift
+//  TableView++.swift
 //  SeSAC3Week3
 //
-//  Created by 이유진 on 2023/07/27.
+//  Created by 이유진 on 2023/07/28.
 //
 
 import UIKit
@@ -13,13 +13,4 @@ extension UITableViewController {
         let ok = UIAlertAction(title: "확인", style: .default)
         alert.addAction(ok)
         present(alert, animated: true)    }
-}
-
-extension UILabel {
-    func configureTitleText() {
-        self.textColor = .red
-        self.font = .boldSystemFont(ofSize: 20)
-        self.textAlignment = .center
-    }
-}
-
+}l

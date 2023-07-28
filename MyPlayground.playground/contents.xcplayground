@@ -3,5 +3,7 @@
     <pages>
         <page name='Class'/>
         <page name='Enum'/>
+        <page name='TypeCasting'/>
+        <page name='Property'/>
     </pages>
 </playground>

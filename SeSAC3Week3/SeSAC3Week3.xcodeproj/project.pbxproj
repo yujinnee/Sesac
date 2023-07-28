@@ -15,10 +15,15 @@
 		6A83293C2A72000D006A2272 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A83293A2A72000D006A2272 /* LaunchScreen.storyboard */; };
 		6A8329442A720FEF006A2272 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8329432A720FEF006A2272 /* TodoTableViewController.swift */; };
 		6A9E8ECE2A7232DB00A8102C /* StudyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E8ECD2A7232DB00A8102C /* StudyTableViewController.swift */; };
-		6A9E8ED02A72497800A8102C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E8ECF2A72497800A8102C /* Extension.swift */; };
 		6A9E8ED22A72B71900A8102C /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A9E8ED12A72B71900A8102C /* Setting.storyboard */; };
 		6A9E8ED42A72BF3500A8102C /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E8ED32A72BF3500A8102C /* SettingTableViewController.swift */; };
 		6A9E8ED62A72C30900A8102C /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E8ED52A72C30900A8102C /* ShoppingTableViewController.swift */; };
+		6A9E8ED82A73505A00A8102C /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E8ED72A73505A00A8102C /* CustomTableViewController.swift */; };
+		6A9E8EDA2A73529200A8102C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E8ED92A73529200A8102C /* CustomTableViewCell.swift */; };
+		6A9E8EE12A73552700A8102C /* TableView++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E8EE02A73552700A8102C /* TableView++.swift */; };
+		6A9E8EE32A73553C00A8102C /* Label++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E8EE22A73553C00A8102C /* Label++.swift */; };
+		6AD079DE2A738A2200B5ED18 /* ToDoInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD079DD2A738A2200B5ED18 /* ToDoInformation.swift */; };
+		6AD079E02A738A2F00B5ED18 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD079DF2A738A2F00B5ED18 /* ToDo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,10 +37,15 @@
 		6A83293D2A72000D006A2272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A8329432A720FEF006A2272 /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 		6A9E8ECD2A7232DB00A8102C /* StudyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTableViewController.swift; sourceTree = "<group>"; };
-		6A9E8ECF2A72497800A8102C /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		6A9E8ED12A72B71900A8102C /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		6A9E8ED32A72BF3500A8102C /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		6A9E8ED52A72C30900A8102C /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
+		6A9E8ED72A73505A00A8102C /* CustomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewController.swift; sourceTree = "<group>"; };
+		6A9E8ED92A73529200A8102C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		6A9E8EE02A73552700A8102C /* TableView++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView++.swift"; sourceTree = "<group>"; };
+		6A9E8EE22A73553C00A8102C /* Label++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label++.swift"; sourceTree = "<group>"; };
+		6AD079DD2A738A2200B5ED18 /* ToDoInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoInformation.swift; sourceTree = "<group>"; };
+		6AD079DF2A738A2F00B5ED18 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,21 +78,74 @@
 		6A83292E2A720008006A2272 /* SeSAC3Week3 */ = {
 			isa = PBXGroup;
 			children = (
-				6A9E8ECD2A7232DB00A8102C /* StudyTableViewController.swift */,
-				6A83292F2A720008006A2272 /* AppDelegate.swift */,
-				6A8329312A720008006A2272 /* SceneDelegate.swift */,
-				6A8329332A720008006A2272 /* ViewController.swift */,
-				6A8329352A720008006A2272 /* Main.storyboard */,
-				6A8329382A72000D006A2272 /* Assets.xcassets */,
-				6A83293A2A72000D006A2272 /* LaunchScreen.storyboard */,
+				6AD079DC2A738A0000B5ED18 /* Model */,
 				6A83293D2A72000D006A2272 /* Info.plist */,
-				6A8329432A720FEF006A2272 /* TodoTableViewController.swift */,
-				6A9E8ECF2A72497800A8102C /* Extension.swift */,
-				6A9E8ED12A72B71900A8102C /* Setting.storyboard */,
-				6A9E8ED52A72C30900A8102C /* ShoppingTableViewController.swift */,
-				6A9E8ED32A72BF3500A8102C /* SettingTableViewController.swift */,
+				6A9E8EDF2A7354DC00A8102C /* Storyboard */,
+				6A9E8EDE2A7354C700A8102C /* Resource */,
+				6A9E8EDD2A7354AF00A8102C /* Extension */,
+				6A9E8EDC2A73548F00A8102C /* TableViewCell */,
+				6A9E8EDB2A73546700A8102C /* ViewControllers */,
 			);
 			path = SeSAC3Week3;
+			sourceTree = "<group>";
+		};
+		6A9E8EDB2A73546700A8102C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6A8329332A720008006A2272 /* ViewController.swift */,
+				6A9E8ECD2A7232DB00A8102C /* StudyTableViewController.swift */,
+				6A8329432A720FEF006A2272 /* TodoTableViewController.swift */,
+				6A9E8ED52A72C30900A8102C /* ShoppingTableViewController.swift */,
+				6A9E8ED32A72BF3500A8102C /* SettingTableViewController.swift */,
+				6A9E8ED72A73505A00A8102C /* CustomTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6A9E8EDC2A73548F00A8102C /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				6A9E8ED92A73529200A8102C /* CustomTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		6A9E8EDD2A7354AF00A8102C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6A9E8EE02A73552700A8102C /* TableView++.swift */,
+				6A9E8EE22A73553C00A8102C /* Label++.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		6A9E8EDE2A7354C700A8102C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				6A83292F2A720008006A2272 /* AppDelegate.swift */,
+				6A8329312A720008006A2272 /* SceneDelegate.swift */,
+				6A8329382A72000D006A2272 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		6A9E8EDF2A7354DC00A8102C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				6A83293A2A72000D006A2272 /* LaunchScreen.storyboard */,
+				6A9E8ED12A72B71900A8102C /* Setting.storyboard */,
+				6A8329352A720008006A2272 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		6AD079DC2A738A0000B5ED18 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6AD079DD2A738A2200B5ED18 /* ToDoInformation.swift */,
+				6AD079DF2A738A2F00B5ED18 /* ToDo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,10 +224,15 @@
 				6A9E8ED62A72C30900A8102C /* ShoppingTableViewController.swift in Sources */,
 				6A8329342A720008006A2272 /* ViewController.swift in Sources */,
 				6A9E8ECE2A7232DB00A8102C /* StudyTableViewController.swift in Sources */,
+				6AD079DE2A738A2200B5ED18 /* ToDoInformation.swift in Sources */,
 				6A8329302A720008006A2272 /* AppDelegate.swift in Sources */,
-				6A9E8ED02A72497800A8102C /* Extension.swift in Sources */,
+				6A9E8EE32A73553C00A8102C /* Label++.swift in Sources */,
+				6A9E8EDA2A73529200A8102C /* CustomTableViewCell.swift in Sources */,
 				6A8329442A720FEF006A2272 /* TodoTableViewController.swift in Sources */,
+				6A9E8ED82A73505A00A8102C /* CustomTableViewController.swift in Sources */,
 				6A8329322A720008006A2272 /* SceneDelegate.swift in Sources */,
+				6AD079E02A738A2F00B5ED18 /* ToDo.swift in Sources */,
+				6A9E8EE12A73552700A8102C /* TableView++.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
