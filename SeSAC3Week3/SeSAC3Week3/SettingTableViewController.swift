@@ -8,6 +8,7 @@
 import UIKit
 
 class SettingTableViewController: UITableViewController {
+    let sectionHeaderList = [(name:"전체 설정",count:3),(name:"개인 설정",count:3),(name:"기타",count:3)]
     let allSettingList = ["공지사항","실험실","버전 정보"]
     let personalSettingList = ["개인/보안","알림","채팅","멀티 프로필"]
     let etcSettingList = ["고객센터/도움말"]
@@ -21,16 +22,12 @@ class SettingTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 
-        return 3
+        return sectionHeaderList.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section{
-        case 0: return 3
-        case 1: return 4
-        case 2: return 1
-        default: return 0
-        }
+        return sectionHeaderList[section].count
+            
     }
 
 
@@ -48,12 +45,7 @@ class SettingTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section{
-        case 0: return "전체 설정"
-        case 1: return "개인 설정"
-        case 2: return "기타"
-        default: return "헤더"
-        }
+        return sectionHeaderList[section].name
     }
 
 }

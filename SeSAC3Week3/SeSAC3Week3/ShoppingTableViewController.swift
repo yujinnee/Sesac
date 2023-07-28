@@ -9,13 +9,11 @@ import UIKit
 
 class ShoppingTableViewController: UITableViewController {
     var shoppingList = ["그립톡 구매하기","사이다 구매","아이패드 케이스 최저가 알아보기","양말"]
-
     @IBOutlet var textFieldView: UIView!
     @IBOutlet var shoppingTextField: UITextField!
     @IBAction func addButtonTapped(_ sender: UIButton) {
         let text = shoppingTextField.text ?? ""
         shoppingList.append(text)
-        print("tapped")
         tableView.reloadData()
     }
     override func viewDidLoad() {
