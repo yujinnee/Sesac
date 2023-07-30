@@ -13,4 +13,4 @@ extension UITableViewController {
         let ok = UIAlertAction(title: "확인", style: .default)
         alert.addAction(ok)
         present(alert, animated: true)    }
-}l
+}

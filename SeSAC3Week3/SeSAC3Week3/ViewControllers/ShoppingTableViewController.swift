@@ -8,12 +8,15 @@
 import UIKit
 
 class ShoppingTableViewController: UITableViewController {
-    var shoppingList = ["그립톡 구매하기","사이다 구매","아이패드 케이스 최저가 알아보기","양말"]
+
+    var shoppingData = ShoppingData()
+    
     @IBOutlet var textFieldView: UIView!
     @IBOutlet var shoppingTextField: UITextField!
     @IBAction func addButtonTapped(_ sender: UIButton) {
         let text = shoppingTextField.text ?? ""
-        shoppingList.append(text)
+        let item = ShoppingItem(name: text, isChecked: false, isLiked: false)
+        shoppingData.shoppingList.append(item)
         tableView.reloadData()
     }
     override func viewDidLoad() {
@@ -24,21 +27,28 @@ class ShoppingTableViewController: UITableViewController {
         textFieldView.layer.cornerRadius = 10
     }
     // MARK: - Table view data source
-
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shoppingList.count
+        return shoppingData.shoppingList.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingCell")!
-        cell.textLabel?.text = shoppingList[indexPath.row]
-        let image = UIImage(systemName: "star")
-        cell.accessoryView = UIImageView(image: image)
-        cell.separatorInset = UIEdgeInsets(top: 100, left: 0, bottom: 100, right: 0)
-        cell.layer.cornerRadius = 10
+        var idx = indexPath.row
+        var item = shoppingData.shoppingList[idx]
+        let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingTableViewCell.identifier) as! ShoppingTableViewCell
+        cell.configure(item: item,idx:idx)
+        cell.delegate = self
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        shoppingData.shoppingList[indexPath.row].isChecked.toggle()
+        tableView.reloadData()
+    }
+}
+extension ShoppingTableViewController: likeButtonTappedDelegate{
+    func likeButtonTapped(idx:Int) {
+        shoppingData.shoppingList[idx].isLiked.toggle()
+        tableView.reloadData()
     }
 }

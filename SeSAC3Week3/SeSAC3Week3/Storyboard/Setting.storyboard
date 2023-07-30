@@ -257,28 +257,65 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingCell" textLabel="pzh-UY-ngC" imageView="If5-gF-caW" style="IBUITableViewCellStyleDefault" id="n2L-IV-CxZ">
-                                <rect key="frame" x="0.0" y="130" width="393" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingTableViewCell" rowHeight="66" id="n2L-IV-CxZ" customClass="ShoppingTableViewCell" customModule="SeSAC3Week3" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="130" width="393" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n2L-IV-CxZ" id="Dza-S0-I7a">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="66"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pzh-UY-ngC">
-                                            <rect key="frame" x="59" y="0.0" width="314" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="checkmark.square" catalog="system" id="If5-gF-caW">
-                                            <rect key="frame" x="22.333333333333336" y="13.333333333333334" width="19.333333333333332" height="17.333333333333332"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtp-oc-2dr">
+                                            <rect key="frame" x="0.0" y="2" width="393" height="62"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="weq-Xm-mTA">
+                                                    <rect key="frame" x="30" y="22.666666666666664" width="19.333333333333329" height="17.333333333333336"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAA-wx-80P">
+                                                    <rect key="frame" x="323" y="9" width="60" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="cYS-6m-Q7b"/>
+                                                        <constraint firstAttribute="height" constant="44" id="gdp-zQ-r1H"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="likeButtonTapped:" destination="n2L-IV-CxZ" eventType="touchUpInside" id="uYX-8E-AjG"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThV-kI-znn">
+                                                    <rect key="frame" x="69.333333333333329" y="20.666666666666668" width="42" height="21.000000000000004"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <constraints>
+                                                <constraint firstItem="ThV-kI-znn" firstAttribute="leading" secondItem="weq-Xm-mTA" secondAttribute="trailing" constant="20" id="5Tg-jZ-ZZ4"/>
+                                                <constraint firstItem="ThV-kI-znn" firstAttribute="centerY" secondItem="wtp-oc-2dr" secondAttribute="centerY" id="7JR-ib-MWq"/>
+                                                <constraint firstItem="eAA-wx-80P" firstAttribute="centerY" secondItem="wtp-oc-2dr" secondAttribute="centerY" id="Agf-H9-MaA"/>
+                                                <constraint firstAttribute="trailing" secondItem="eAA-wx-80P" secondAttribute="trailing" constant="10" id="kJ1-tw-J2o"/>
+                                                <constraint firstItem="weq-Xm-mTA" firstAttribute="leading" secondItem="wtp-oc-2dr" secondAttribute="leading" constant="30" id="vVo-GJ-H8n"/>
+                                                <constraint firstItem="weq-Xm-mTA" firstAttribute="centerY" secondItem="wtp-oc-2dr" secondAttribute="centerY" id="wMF-SW-DNh"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="wtp-oc-2dr" secondAttribute="trailing" id="6ec-fR-aRl"/>
+                                        <constraint firstItem="wtp-oc-2dr" firstAttribute="leading" secondItem="Dza-S0-I7a" secondAttribute="leading" id="wtt-Yt-H7X"/>
+                                    </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="wtp-oc-2dr" firstAttribute="top" secondItem="n2L-IV-CxZ" secondAttribute="top" constant="2" id="1xD-Zu-cg4"/>
+                                    <constraint firstAttribute="bottom" secondItem="wtp-oc-2dr" secondAttribute="bottom" constant="2" id="3Mi-G6-ZPz"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="checkBoxImageView" destination="weq-Xm-mTA" id="WUn-RS-yDI"/>
+                                    <outlet property="likeButton" destination="eAA-wx-80P" id="45c-Kl-X82"/>
+                                    <outlet property="shoppingLabel" destination="ThV-kI-znn" id="YHb-3d-2E6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -357,6 +394,7 @@
         <image name="iphone.gen1" catalog="system" width="112" height="128"/>
         <image name="moon.fill" catalog="system" width="128" height="123"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
