@@ -5,7 +5,7 @@
 //  Created by 이유진 on 2023/07/31.
 //
 
-import Foundation
+import UIKit
 
 struct Movie {
     var title: String
@@ -13,6 +13,8 @@ struct Movie {
     var runtime: Int
     var overview: String
     var rate: Double
+    var favorite = false
+    let color = UIColor(cgColor: CGColor(red: CGFloat.random(in: 0...1), green: CGFloat.random(in: 0...1), blue: CGFloat.random(in: 0...1), alpha: 1))
 }
 struct MovieInfo {
     

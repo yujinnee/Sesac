@@ -9,7 +9,11 @@ import UIKit
 
 class HomeCollectionViewController: UICollectionViewController {
 
-    var movieList = MovieInfo().movie
+    var movieList = MovieInfo().movie {
+        didSet{
+            collectionView.reloadData()
+        }
+    }
    
     @IBAction func searchButtonTapped(_ sender: Any) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -45,8 +49,14 @@ class HomeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else { return UICollectionViewCell()}
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as! MovieCollectionViewCell
+        
+        cell.heartButton.tag = indexPath.row
+        cell.heartButton.addTarget(self, action: #selector(heartButtonDidTap), for: .touchUpInside)
         cell.configure(movie: movieList[indexPath.row])
         return cell
+    }
+    @objc func heartButtonDidTap(_ sender: UIButton){
+        movieList[sender.tag].favorite.toggle()
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         

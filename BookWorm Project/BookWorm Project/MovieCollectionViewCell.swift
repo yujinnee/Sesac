@@ -12,16 +12,23 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var rateLabel: UILabel!
     @IBOutlet var posterImageView: UIImageView!
+    @IBOutlet var heartButton: UIButton!
     
     func configure(movie: Movie){
+        heartButton.setTitle("", for: .normal)
+        heartButton.tintColor = .systemPink
+        backgroundColor = movie.color
+        layer.cornerRadius = 10
+
+        
         titleLabel.text = movie.title
         rateLabel.text = String(movie.rate)
         posterImageView.image = UIImage(named:movie.title)
-        let randomR = CGFloat.random(in: 0...1)
-        let randomG = CGFloat.random(in: 0...1)
-        let randomB = CGFloat.random(in: 0...1)
-        backgroundColor = UIColor(cgColor: CGColor(red: randomR, green: randomG, blue: randomB, alpha: 1))
-        layer.cornerRadius = 10
+        var buttonImage = movie.favorite ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        heartButton.setImage(buttonImage, for: .normal)
+        
     }
+    
+    
     
 }
