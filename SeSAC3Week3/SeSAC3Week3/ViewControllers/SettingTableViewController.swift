@@ -26,7 +26,13 @@ class SettingTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sectionHeaderList[section].count
+        switch(section){
+        case 0: return allSettingList.count
+        case 1: return personalSettingList.count
+        case 2: return etcSettingList.count
+        default: return sectionHeaderList[section].count
+        }
+        
             
     }
 

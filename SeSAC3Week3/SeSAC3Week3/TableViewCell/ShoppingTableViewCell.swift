@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol likeButtonTappedDelegate{
+protocol likeButtonTappedDelegate: AnyObject{
     func likeButtonTapped(idx:Int)
         
 }
@@ -15,7 +15,7 @@ class ShoppingTableViewCell: UITableViewCell {
     static let identifier = "ShoppingTableViewCell"
     
     var idx = 0
-    var delegate: likeButtonTappedDelegate?
+    weak var delegate: likeButtonTappedDelegate?
     @IBOutlet var checkBoxImageView: UIImageView!
     @IBOutlet var shoppingLabel: UILabel!
     @IBOutlet var likeButton: UIButton!

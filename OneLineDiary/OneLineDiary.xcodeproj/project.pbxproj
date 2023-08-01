@@ -21,6 +21,8 @@
 		6A6DA5DE2A777963002DC2B8 /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6DA5DD2A777963002DC2B8 /* SearchCollectionViewController.swift */; };
 		6A6DA5E32A777AEB002DC2B8 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6DA5E12A777AEB002DC2B8 /* SearchCollectionViewCell.swift */; };
 		6A6DA5E42A777AEB002DC2B8 /* SearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A6DA5E22A777AEB002DC2B8 /* SearchCollectionViewCell.xib */; };
+		6AD599EC2A789B8F00C6AFF6 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD599EB2A789B8F00C6AFF6 /* SettingTableViewController.swift */; };
+		6AD599EE2A789BC300C6AFF6 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD599ED2A789BC300C6AFF6 /* SettingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		6A6DA5DD2A777963002DC2B8 /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchCollectionViewController.swift; path = OneLineDiary/ViewControllers/SearchCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		6A6DA5E12A777AEB002DC2B8 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		6A6DA5E22A777AEB002DC2B8 /* SearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCollectionViewCell.xib; sourceTree = "<group>"; };
+		6AD599EB2A789B8F00C6AFF6 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		6AD599ED2A789BC300C6AFF6 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 		6A6DA5DF2A77796C002DC2B8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6AD599ED2A789BC300C6AFF6 /* SettingTableViewCell.swift */,
 				6A6DA5D62A773BCC002DC2B8 /* DiaryTableViewCell.xib */,
 				6A6DA5D52A773BCC002DC2B8 /* DiaryTableViewCell.swift */,
 				6A6DA5E22A777AEB002DC2B8 /* SearchCollectionViewCell.xib */,
@@ -100,6 +105,7 @@
 				6A6DA5D92A7754F5002DC2B8 /* DetailViewController.swift */,
 				6A6DA5D32A773ADB002DC2B8 /* DiaryTableViewController.swift */,
 				6A6DA5DD2A777963002DC2B8 /* SearchCollectionViewController.swift */,
+				6AD599EB2A789B8F00C6AFF6 /* SettingTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -188,10 +194,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD599EE2A789BC300C6AFF6 /* SettingTableViewCell.swift in Sources */,
 				6A6DA5DE2A777963002DC2B8 /* SearchCollectionViewController.swift in Sources */,
 				6A6DA5C42A773A59002DC2B8 /* AddViewController.swift in Sources */,
 				6A6DA5DC2A77625D002DC2B8 /* Extension+UIViewController.swift in Sources */,
 				6A6DA5D72A773BCC002DC2B8 /* DiaryTableViewCell.swift in Sources */,
+				6AD599EC2A789B8F00C6AFF6 /* SettingTableViewController.swift in Sources */,
 				6A6DA5D42A773ADB002DC2B8 /* DiaryTableViewController.swift in Sources */,
 				6A6DA5DA2A7754F5002DC2B8 /* DetailViewController.swift in Sources */,
 				6A6DA5C02A773A59002DC2B8 /* AppDelegate.swift in Sources */,

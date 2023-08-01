@@ -19,8 +19,8 @@ class DiaryTableViewController: UITableViewController {
 
     }
     @IBAction func searchBarButtonItemClicked(_ sender : Any){
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "SearchCollectionViewController") as! SearchCollectionViewController
+//        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchCollectionViewController") as! SearchCollectionViewController
         navigationController?.pushViewController(vc, animated: true)
     }
     
