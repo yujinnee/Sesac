@@ -63,6 +63,7 @@ class HomeCollectionViewController: UICollectionViewController {
         var sb = UIStoryboard(name: "Main", bundle: nil)
         var vc = sb.instantiateViewController(identifier: DetailViewController.identifier) as! DetailViewController
         vc.navigationTitle = movieList[indexPath.row].title
+        vc.movie = movieList[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
         
     }

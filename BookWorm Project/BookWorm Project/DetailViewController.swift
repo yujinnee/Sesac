@@ -9,11 +9,16 @@ import UIKit
 
 class DetailViewController: UIViewController {
     static let identifier = "DetailViewController"
-    @IBOutlet var screenLabel: UILabel!
     var navigationTitle: String = "타이틀"
+    var movie = Movie(title: "", releaseDate: "", runtime: 0, overview: "", rate: 0)
 
-
+    @IBOutlet var posterImageView: UIImageView!
     
+    @IBOutlet var movieTitleLabel: UILabel!
+    
+    @IBOutlet var movieRateLabel: UILabel!
+    
+    @IBOutlet var movieOverviewTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +42,12 @@ class DetailViewController: UIViewController {
 //        navigationItem.leftBarButtonItem?
         navigationItem.leftBarButtonItem?.tintColor = .red
     
-        screenLabel.text = "상세화면"
+
+        posterImageView.image = UIImage(named: movie.title)
+        movieTitleLabel.text = movie.title
+        movieRateLabel.text = "평점: \(movie.rate)"
+        movieOverviewTextView.text = movie.overview
+     
 
     }
     @objc
