@@ -26,7 +26,7 @@ class CustomTableViewController: UITableViewController {
         searchBar.searchTextField.addTarget(self, action: #selector(searchBarReturnTapped), for: .editingDidEndOnExit)
     }
     @objc func searchBarReturnTapped() {
-        let data = ToDo(main: searchBar.text!, sub: "23.08.01", like: false, done: false)
+        let data = ToDo(main: searchBar.text!, sub: "23.08.01", like: false, done: false,color:ToDoInformation.randomBackgroundColor())
         todo.list.insert(data,at:0)
         searchBar.text = ""
 //        tableView.reloadData()
@@ -58,11 +58,16 @@ class CustomTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        vc.data = todo.list[indexPath.row]
+        present(vc,animated: true)
+        tableView.reloadRows(at: [indexPath], with: .none)
+        
     }
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         todo.list.remove(at: indexPath.row)
 //        tableView.reloadData()

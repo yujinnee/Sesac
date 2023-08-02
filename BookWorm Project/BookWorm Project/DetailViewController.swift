@@ -13,11 +13,8 @@ class DetailViewController: UIViewController {
     var movie = Movie(title: "", releaseDate: "", runtime: 0, overview: "", rate: 0)
 
     @IBOutlet var posterImageView: UIImageView!
-    
     @IBOutlet var movieTitleLabel: UILabel!
-    
     @IBOutlet var movieRateLabel: UILabel!
-    
     @IBOutlet var movieOverviewTextView: UITextView!
     
     override func viewDidLoad() {

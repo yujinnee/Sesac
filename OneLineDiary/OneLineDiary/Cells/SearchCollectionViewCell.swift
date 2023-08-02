@@ -8,5 +8,6 @@
 import UIKit
 
 class SearchCollectionViewCell: UICollectionViewCell {
+    static var identifier = "SearchCollectionViewCell"
     @IBOutlet var contentsLabel: UILabel!
 }
