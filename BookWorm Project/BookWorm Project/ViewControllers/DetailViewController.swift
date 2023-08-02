@@ -11,12 +11,17 @@ class DetailViewController: UIViewController {
     static let identifier = "DetailViewController"
     var navigationTitle: String = "타이틀"
     var movie = Movie(title: "", releaseDate: "", runtime: 0, overview: "", rate: 0)
+    var isModal = false
 
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var movieTitleLabel: UILabel!
     @IBOutlet var movieRateLabel: UILabel!
     @IBOutlet var movieOverviewTextView: UITextView!
     
+    @IBOutlet var previousButton: UIButton!
+    @IBAction func previousButtonClicked(_ sender: Any) {
+        dismiss(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = navigationTitle
@@ -44,7 +49,16 @@ class DetailViewController: UIViewController {
         movieTitleLabel.text = movie.title
         movieRateLabel.text = "평점: \(movie.rate)"
         movieOverviewTextView.text = movie.overview
-     
+        previousButton.isHidden = isModal ? false : true
+        
+//        previousButton.isHidden = presentingViewController?
+//        print(self.presentingViewController)
+//        print(self.presentedViewController)
+//        print(presentationController)
+//        pre
+//        previousButton.isHidden = prese
+        
+       
 
     }
     @objc

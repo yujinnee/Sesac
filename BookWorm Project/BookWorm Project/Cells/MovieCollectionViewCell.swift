@@ -13,14 +13,14 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet var rateLabel: UILabel!
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var heartButton: UIButton!
-    
-    func configure(movie: Movie){
-        heartButton.setTitle("", for: .normal)
-        heartButton.tintColor = .systemPink
-        backgroundColor = movie.color
-        layer.cornerRadius = 10
 
-        
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        layer.cornerRadius = 10
+    }
+    func configure(movie: Movie){
+        let randomColor = UIColor(cgColor: CGColor(red: movie.red, green: movie.green, blue: movie.blue, alpha: 1))
+        backgroundColor = randomColor
         titleLabel.text = movie.title
         rateLabel.text = String(movie.rate)
         posterImageView.image = UIImage(named:movie.title)
@@ -28,7 +28,5 @@ class MovieCollectionViewCell: UICollectionViewCell {
         heartButton.setImage(buttonImage, for: .normal)
         
     }
-    
-    
-    
+   
 }

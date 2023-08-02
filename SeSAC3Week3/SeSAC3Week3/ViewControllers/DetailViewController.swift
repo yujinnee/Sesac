@@ -13,6 +13,5 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let data = data else {return}
-        print(data)
     }
 }

@@ -17,6 +17,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet var likeButton: UIButton!
     
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -25,12 +26,9 @@ class CustomTableViewCell: UITableViewCell {
     }
 
     func configureCell(row: ToDo){
-        
         backView.backgroundColor = row.color
-        
         mainTitleLabel.text = row.main
         subTitleLabel.text = row.sub
-        
         checkboxImageView.image = row.done ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square")
         likeButton.setImage(row.like ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
     }

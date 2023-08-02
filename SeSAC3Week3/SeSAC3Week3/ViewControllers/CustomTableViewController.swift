@@ -29,7 +29,6 @@ class CustomTableViewController: UITableViewController {
         let data = ToDo(main: searchBar.text!, sub: "23.08.01", like: false, done: false,color:ToDoInformation.randomBackgroundColor())
         todo.list.insert(data,at:0)
         searchBar.text = ""
-//        tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,7 +69,6 @@ class CustomTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         todo.list.remove(at: indexPath.row)
-//        tableView.reloadData()
     }
 
 }

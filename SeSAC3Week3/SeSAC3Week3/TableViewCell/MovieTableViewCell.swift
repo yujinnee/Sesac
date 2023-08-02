@@ -11,11 +11,8 @@ class MovieTableViewCell: UITableViewCell {
     static let identifier = "MovieTableViewCell"
     
     @IBOutlet var posterImageView: UIImageView!
-    
     @IBOutlet var titleLabel: UILabel!
-    
     @IBOutlet var infoLabel: UILabel!
-    
     @IBOutlet var overviewLabel: UILabel!
     
     func configure(movie:Movie){

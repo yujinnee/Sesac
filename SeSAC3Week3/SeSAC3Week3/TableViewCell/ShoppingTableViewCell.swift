@@ -8,7 +8,6 @@
 import UIKit
 protocol likeButtonTappedDelegate: AnyObject{
     func likeButtonTapped(idx:Int)
-        
 }
 
 class ShoppingTableViewCell: UITableViewCell {
