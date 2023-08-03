@@ -62,9 +62,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionViewCellContentView>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="JNH-nq-J8n" appends="YES" id="7lO-N2-glS"/>
-                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -83,11 +80,6 @@
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRD-ad-xd4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="JNH-nq-J8n">
-                    <connections>
-                        <action selector="collectionViewDidTap:" destination="4yv-Yc-nkO" id="GQ2-vi-gHf"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3109.1603053435115" y="19.718309859154932"/>
         </scene>

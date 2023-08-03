@@ -27,15 +27,29 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
+        registerMovieCollectionViewCell()
         setCollectionViewLayout()
-        navigationItem.title = "고래밥님의 책장"
-        searchedList = movieList
-        searchBar.delegate = self
-        navigationItem.titleView = searchBar
+        design()
+        initData()
+        setDelegate()
         
     }
+    func registerMovieCollectionViewCell(){
+        let nib = UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
+    }
+    func design() {
+        navigationItem.title = "고래밥님의 책장"
+        navigationItem.titleView = searchBar
+    }
+    func initData(){
+        searchedList = movieList
+    }
+    func setDelegate(){
+        searchBar.delegate = self
+        
+    }
+    
     func setCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
