@@ -16,14 +16,7 @@ class HomeCollectionViewController: UICollectionViewController {
         }
     }
     let searchBar = UISearchBar()
-    
-    @IBAction func collectionViewDidTap(_ sender: Any) {
-        searchBar.endEditing(true)
 
-    }
-    
-    
-    
     @IBAction func searchButtonTapped(_ sender: Any) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: SearchViewController.identifier)
