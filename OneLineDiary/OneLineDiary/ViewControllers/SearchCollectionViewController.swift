@@ -82,7 +82,3 @@ extension SearchCollectionViewController: UISearchBarDelegate{
         }
     }
 }
-
-extension SearchCollectionViewController: UICollectionViewController{
-    
-}
