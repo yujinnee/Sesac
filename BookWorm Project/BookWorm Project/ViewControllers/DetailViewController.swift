@@ -29,6 +29,10 @@ class DetailViewController: UIViewController {
         designUI()
         setDelegate()
         setNavigationItem()
+        setKeyboardObserver()
+    }
+    @IBAction func rootViewDidTap(_ sender: Any) {
+        view.endEditing(true)
     }
     func designUI() {
         posterImageView.image = UIImage(named: movie.title)
@@ -97,6 +101,46 @@ extension DetailViewController: UITextViewDelegate{
         if textView.text.isEmpty {
             textView.text = placeholder
             textView.textColor = .lightGray
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"{
+            view.endEditing(true)
+        }
+        return true
+    }
+
+    
+}
+
+extension DetailViewController {
+    
+    func setKeyboardObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(DetailViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(DetailViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object:nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+          if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                  let keyboardRectangle = keyboardFrame.cgRectValue
+                  let keyboardHeight = keyboardRectangle.height
+              UIView.animate(withDuration: 1) {
+                  self.view.window?.frame.origin.y -= keyboardHeight
+              }
+          }
+      }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.window?.frame.origin.y != 0 {
+            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                    let keyboardRectangle = keyboardFrame.cgRectValue
+                    let keyboardHeight = keyboardRectangle.height
+                UIView.animate(withDuration: 1) {
+                    self.view.window?.frame.origin.y += keyboardHeight
+                }
+            }
         }
     }
 }

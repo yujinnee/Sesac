@@ -15,8 +15,14 @@ class HomeCollectionViewController: UICollectionViewController {
             collectionView.reloadData()
         }
     }
-
     let searchBar = UISearchBar()
+    
+    @IBAction func collectionViewDidTap(_ sender: Any) {
+        searchBar.endEditing(true)
+
+    }
+    
+    
     
     @IBAction func searchButtonTapped(_ sender: Any) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -63,17 +69,13 @@ class HomeCollectionViewController: UICollectionViewController {
         vc.navigationTitle = searchedList[indexPath.row].title
         vc.movie = searchedList[indexPath.row]
         vc.viewTransitionType = .push
-        
+        searchBar.endEditing(true)
         navigationController?.pushViewController(vc, animated: true)
         
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return searchedList.count
     }
-    
-
-
-
 }
 
 extension HomeCollectionViewController:UISearchBarDelegate{
@@ -101,5 +103,9 @@ extension HomeCollectionViewController:UISearchBarDelegate{
             searchedList = movieList
         }
         
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
 }

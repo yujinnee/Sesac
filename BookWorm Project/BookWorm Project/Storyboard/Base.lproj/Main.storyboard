@@ -61,6 +61,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionViewCellContentView>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="JNH-nq-J8n" appends="YES" id="7lO-N2-glS"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -79,6 +83,11 @@
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRD-ad-xd4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="JNH-nq-J8n">
+                    <connections>
+                        <action selector="collectionViewDidTap:" destination="4yv-Yc-nkO" id="GQ2-vi-gHf"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3109.1603053435115" y="19.718309859154932"/>
         </scene>
@@ -143,6 +152,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GHg-Pu-5jL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="BWT-Ki-RVR" firstAttribute="leading" secondItem="1KS-Za-epP" secondAttribute="leading" id="0zP-vJ-sZ5"/>
                             <constraint firstItem="Bwb-Ty-OwN" firstAttribute="leading" secondItem="jWv-6E-f9j" secondAttribute="leading" id="18m-Oz-ZcO"/>
@@ -166,6 +176,9 @@
                             <constraint firstItem="1KS-Za-epP" firstAttribute="top" secondItem="Bwb-Ty-OwN" secondAttribute="bottom" constant="15" id="yCx-Kt-tWE"/>
                             <constraint firstItem="GHg-Pu-5jL" firstAttribute="trailing" secondItem="Qgm-yd-RsQ" secondAttribute="trailing" constant="20" id="zhl-zl-8ep"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="VUf-e6-QwF" appends="YES" id="aBd-la-Sde"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="movieRateLabel" destination="Bwb-Ty-OwN" id="YYR-L9-UMN"/>
@@ -177,6 +190,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Az0-Ds-hHi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="VUf-e6-QwF">
+                    <connections>
+                        <action selector="rootViewDidTap:" destination="4lB-g1-2lb" id="Sxm-Ba-dRL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2942.7480916030531" y="788.73239436619724"/>
         </scene>
