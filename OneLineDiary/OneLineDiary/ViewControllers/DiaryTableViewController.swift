@@ -28,9 +28,11 @@ class DiaryTableViewController: UITableViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "AddViewController") as! AddViewController
         
+        vc.type = .add
+        
         let nav = UINavigationController(rootViewController: vc)
         
-        nav.modalTransitionStyle = .partialCurl //모달 애니메이션
+        nav.modalTransitionStyle = .coverVertical //모달 애니메이션
         nav.modalPresentationStyle = .fullScreen //모달 방식
         present(nav, animated: true)
     }
@@ -59,9 +61,10 @@ class DiaryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         
-        let vc = sb.instantiateViewController(identifier: "DetailViewController") as! DetailViewController
-        vc.contents = "Diary 뷰컨트롤러에서 데이터 전달하면서 화면전환하기! "
+        let vc = sb.instantiateViewController(identifier: "AddViewController") as! AddViewController
+        vc.type = .edit
         vc.contents = list[indexPath.row]
+        
         
         navigationController?.pushViewController(vc, animated: true)
     }

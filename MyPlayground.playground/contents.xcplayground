@@ -6,5 +6,6 @@
         <page name='TypeCasting'/>
         <page name='Property2'/>
         <page name='Property'/>
+        <page name='Protocol'/>
     </pages>
 </playground>
