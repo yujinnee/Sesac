@@ -37,6 +37,7 @@ class AddViewController: UIViewController, UITextViewDelegate{
         case .edit:
 //            title = "수정 화면"
             print("수정화면")
+            print("테스트커밋")
         }
         
         
