@@ -16,15 +16,24 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet var subTitleLabel: UILabel!
     @IBOutlet var likeButton: UIButton!
     
-    
+    var index = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         mainTitleLabel.font = .boldSystemFont(ofSize: 17)
         mainTitleLabel.textColor = .brown
+        
+        likeButton.tag = index
+        likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
+        
     }
-
+    
+    @objc func likeButtonClicked() {
+        
+    }
+    
+    
     func configureCell(row: ToDo){
         backView.backgroundColor = row.color
         mainTitleLabel.text = row.main
@@ -33,5 +42,5 @@ class CustomTableViewCell: UITableViewCell {
         likeButton.setImage(row.like ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
     }
     
-
+    
 }

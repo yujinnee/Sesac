@@ -7,17 +7,44 @@
 
 import UIKit
 
-class AddViewController: UIViewController {
+enum TransitionType: String {
+    case add = "추가 화면"
+    case edit = "편집 화면"
+}
 
+class AddViewController: UIViewController, UITextViewDelegate{
+    
+    var type: TransitionType = .add
+    var contents = ""
+
+    @IBOutlet var contentsTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(navigationController)
-        title = "추가 화면"
-        let xmark = UIImage(systemName: "xmark")
-        print(navigationItem.leftBarButtonItem)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: xmark, style: .plain , target: self , action: #selector(closeButtonClicked))
-        print(navigationItem.leftBarButtonItem)
-        navigationItem.leftBarButtonItem?.tintColor = .red
+        
+        contentsTextView.delegate = self
+        
+        
+        contentsTextView.text = contents
+        title = type.rawValue
+         
+        switch type {
+        case .add:
+//            title = "추가 화면"
+            let xmark = UIImage(systemName: "xmark")
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: xmark, style: .plain , target: self , action: #selector(closeButtonClicked))
+            navigationItem.leftBarButtonItem?.tintColor = .red
+            
+        case .edit:
+//            title = "수정 화면"
+            print("수정화면")
+        }
+        
+        
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        print(textView.text.count)
+        title = "\(textView.text.count)글자"
     }
     
     @objc func closeButtonClicked() {
@@ -25,6 +52,9 @@ class AddViewController: UIViewController {
       
     }
 
+    
+    
+    
 
 }
 
