@@ -21,6 +21,7 @@
 		6A6DA5DE2A777963002DC2B8 /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6DA5DD2A777963002DC2B8 /* SearchCollectionViewController.swift */; };
 		6A6DA5E32A777AEB002DC2B8 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6DA5E12A777AEB002DC2B8 /* SearchCollectionViewCell.swift */; };
 		6A6DA5E42A777AEB002DC2B8 /* SearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A6DA5E22A777AEB002DC2B8 /* SearchCollectionViewCell.xib */; };
+		6A8833BD2A7B72FA00E3D420 /* LottoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8833BC2A7B72FA00E3D420 /* LottoViewController.swift */; };
 		6AD599EC2A789B8F00C6AFF6 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD599EB2A789B8F00C6AFF6 /* SettingTableViewController.swift */; };
 		6AD599EE2A789BC300C6AFF6 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD599ED2A789BC300C6AFF6 /* SettingTableViewCell.swift */; };
 		6AD956DE2A79F22900C2CBAC /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD956DD2A79F22900C2CBAC /* TimelineViewController.swift */; };
@@ -43,6 +44,7 @@
 		6A6DA5DD2A777963002DC2B8 /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchCollectionViewController.swift; path = OneLineDiary/ViewControllers/SearchCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		6A6DA5E12A777AEB002DC2B8 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		6A6DA5E22A777AEB002DC2B8 /* SearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCollectionViewCell.xib; sourceTree = "<group>"; };
+		6A8833BC2A7B72FA00E3D420 /* LottoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoViewController.swift; sourceTree = "<group>"; };
 		6AD599EB2A789B8F00C6AFF6 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		6AD599ED2A789BC300C6AFF6 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		6AD956DD2A79F22900C2CBAC /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				6A6DA5DD2A777963002DC2B8 /* SearchCollectionViewController.swift */,
 				6AD599EB2A789B8F00C6AFF6 /* SettingTableViewController.swift */,
 				6AD956DD2A79F22900C2CBAC /* TimelineViewController.swift */,
+				6A8833BC2A7B72FA00E3D420 /* LottoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				6A6DA5DA2A7754F5002DC2B8 /* DetailViewController.swift in Sources */,
 				6A6DA5C02A773A59002DC2B8 /* AppDelegate.swift in Sources */,
 				6A6DA5C22A773A59002DC2B8 /* SceneDelegate.swift in Sources */,
+				6A8833BD2A7B72FA00E3D420 /* LottoViewController.swift in Sources */,
 				6A6DA5E32A777AEB002DC2B8 /* SearchCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
