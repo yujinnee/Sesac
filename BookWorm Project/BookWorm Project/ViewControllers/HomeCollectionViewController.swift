@@ -62,7 +62,7 @@ class HomeCollectionViewController: UICollectionViewController {
         var vc = sb.instantiateViewController(identifier: DetailViewController.identifier) as! DetailViewController
         vc.navigationTitle = searchedList[indexPath.row].title
         vc.movie = searchedList[indexPath.row]
-        vc.isModal = false
+        vc.viewTransitionType = .push
         
         navigationController?.pushViewController(vc, animated: true)
         

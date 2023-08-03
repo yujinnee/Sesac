@@ -48,7 +48,7 @@ class LookAroundViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .coverVertical
         vc.movie = data
-        vc.isModal = true
+        vc.viewTransitionType = .present
         present(vc, animated: true)
     }
 

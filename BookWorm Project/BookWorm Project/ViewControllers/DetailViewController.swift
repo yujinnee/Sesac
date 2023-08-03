@@ -7,26 +7,50 @@
 
 import UIKit
 
+
 class DetailViewController: UIViewController {
     static let identifier = "DetailViewController"
     var navigationTitle: String = "타이틀"
     var movie = Movie(title: "", releaseDate: "", runtime: 0, overview: "", rate: 0)
-    var isModal = false
+    var viewTransitionType: TransitionType = .push
     let placeholder = "느낀 점을 입력해주세요."
 
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var movieTitleLabel: UILabel!
     @IBOutlet var movieRateLabel: UILabel!
-//    @IBOutlet var movieOverviewTextView: UITextView!
     @IBOutlet var overviewLabel: UILabel!
     @IBOutlet var recordTextView: UITextView!
-    
     @IBOutlet var previousButton: UIButton!
     @IBAction func previousButtonClicked(_ sender: Any) {
         dismiss(animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        designUI()
+        setDelegate()
+        setNavigationItem()
+    }
+    func designUI() {
+        posterImageView.image = UIImage(named: movie.title)
+        movieTitleLabel.text = movie.title
+        movieRateLabel.text = "평점: \(movie.rate)"
+        overviewLabel.text = movie.overview
+        overviewLabel.numberOfLines = 0
+        switch viewTransitionType {
+        case .present:
+            previousButton.isHidden = false
+        case .push:
+            previousButton.isHidden = true
+        }
+        recordTextView.text = placeholder
+        recordTextView.textColor = .lightGray
+       
+        
+    }
+    func setDelegate() {
+        recordTextView.delegate = self
+    }
+    func setNavigationItem() {
         navigationItem.title = navigationTitle
         let chevron = UIImage(named: "chevron.left")
         
@@ -47,35 +71,22 @@ class DetailViewController: UIViewController {
 //        navigationItem.leftBarButtonItem?
         navigationItem.leftBarButtonItem?.tintColor = .red
     
-
-        posterImageView.image = UIImage(named: movie.title)
-        movieTitleLabel.text = movie.title
-        movieRateLabel.text = "평점: \(movie.rate)"
-        overviewLabel.text = movie.overview
-        overviewLabel.numberOfLines = 0
 //        movieOverviewTextView.text = movie.overview
-        previousButton.isHidden = isModal ? false : true
-        recordTextView.text = placeholder
-        recordTextView.textColor = .lightGray
-        recordTextView.delegate = self
+       
 //        previousButton.isHidden = presentingViewController?
 //        print(self.presentingViewController)
 //        print(self.presentedViewController)
 //        print(presentationController)
 //        pre
 //        previousButton.isHidden = prese
-        
     }
     @objc
     func previousButtonTapped(){
         navigationController?.popViewController(animated: true)
     }
-
 }
 
 extension DetailViewController: UITextViewDelegate{
-    
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if(recordTextView.text == placeholder){
             textView.text = ""
@@ -88,5 +99,4 @@ extension DetailViewController: UITextViewDelegate{
             textView.textColor = .lightGray
         }
     }
-    
 }
