@@ -81,7 +81,6 @@ extension DetailViewController: UITextViewDelegate{
             textView.text = ""
             textView.textColor = .black
         }
-        view.keyboardLayoutGuide.topAnchor.constraint(equalTo: recordTextView.bottomAnchor).isActive = true
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
