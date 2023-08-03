@@ -16,6 +16,8 @@ class AddViewController: UIViewController, UITextViewDelegate{
     
     var type: TransitionType = .add
     var contents = ""
+    
+    let placeholderText = "내용을 입력해주세요"
 
     @IBOutlet var contentsTextView: UITextView!
     override func viewDidLoad() {
@@ -24,7 +26,9 @@ class AddViewController: UIViewController, UITextViewDelegate{
         contentsTextView.delegate = self
         
         
-        contentsTextView.text = contents
+        
+        
+//        contentsTextView.text = contents
         title = type.rawValue
          
         switch type {
@@ -33,6 +37,9 @@ class AddViewController: UIViewController, UITextViewDelegate{
             let xmark = UIImage(systemName: "xmark")
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: xmark, style: .plain , target: self , action: #selector(closeButtonClicked))
             navigationItem.leftBarButtonItem?.tintColor = .red
+            
+            contentsTextView.text = placeholderText
+            contentsTextView.textColor = .lightGray
             
         case .edit:
 //            title = "수정 화면"
@@ -44,10 +51,24 @@ class AddViewController: UIViewController, UITextViewDelegate{
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        print(textView.text.count)
+
         title = "\(textView.text.count)글자"
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print(#function)
+        if textView.text == placeholderText {
+            textView.text = nil
+            textView.textColor = .black
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print(#function)
+        if textView.text.isEmpty {
+            textView.text = placeholderText
+            textView.textColor = .lightGray
+        }
+    }
     @objc func closeButtonClicked() {
         dismiss(animated: true)
       

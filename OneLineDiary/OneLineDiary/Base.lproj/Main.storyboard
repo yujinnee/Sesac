@@ -25,6 +25,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zce-zd-zCf">
+                                <rect key="frame" x="169" y="566" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -257,6 +263,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="725-eD-76D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4107.6335877862593" y="921.83098591549299"/>
+        </scene>
+        <!--Lotto View Controller-->
+        <scene sceneID="dLS-4E-1X4">
+            <objects>
+                <viewController storyboardIdentifier="LottoViewController" id="5kQ-mV-Yyf" customClass="LottoViewController" customModule="OneLineDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xOx-YA-x2o">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Egx-pu-F7X">
+                                <rect key="frame" x="10" y="88" width="373" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LYR-KA-25R"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Egx-pu-F7X" firstAttribute="top" secondItem="LYR-KA-25R" secondAttribute="top" constant="29" id="ANJ-iP-UxZ"/>
+                            <constraint firstItem="LYR-KA-25R" firstAttribute="trailing" secondItem="Egx-pu-F7X" secondAttribute="trailing" constant="10" id="U41-0E-8V9"/>
+                            <constraint firstItem="Egx-pu-F7X" firstAttribute="leading" secondItem="LYR-KA-25R" secondAttribute="leading" constant="10" id="blB-0z-Kh7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="Egx-pu-F7X" id="Gye-jT-2YK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FJE-kf-IiR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5121.3740458015263" y="921.83098591549299"/>
         </scene>
         <!--Setting Table View Controller-->
         <scene sceneID="Mhf-P3-26c">
