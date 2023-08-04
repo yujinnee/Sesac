@@ -69,6 +69,12 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     @objc func heartButtonDidTap(_ sender: UIButton){
         searchedList[sender.tag].favorite.toggle()
+        let title = searchedList[sender.tag].title
+        for (index,item) in movieList.enumerated(){
+            if(item.title == title){
+                movieList[index].favorite.toggle()
+            }
+        }
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var sb = UIStoryboard(name: "Main", bundle: nil)
