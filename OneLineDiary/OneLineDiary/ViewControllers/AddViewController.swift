@@ -24,10 +24,6 @@ class AddViewController: UIViewController, UITextViewDelegate{
         super.viewDidLoad()
         
         contentsTextView.delegate = self
-        
-        
-        
-        
 //        contentsTextView.text = contents
         title = type.rawValue
          
@@ -46,8 +42,6 @@ class AddViewController: UIViewController, UITextViewDelegate{
             print("수정화면")
             print("테스트커밋")
         }
-        
-        
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -57,7 +51,7 @@ class AddViewController: UIViewController, UITextViewDelegate{
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         print(#function)
-        if textView.text == placeholderText {
+        if textView.textColor == .lightGray {
             textView.text = nil
             textView.textColor = .black
         }
