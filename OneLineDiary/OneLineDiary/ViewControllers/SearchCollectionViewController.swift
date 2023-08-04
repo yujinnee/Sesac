@@ -61,7 +61,6 @@ class SearchCollectionViewController: UICollectionViewController {
 extension SearchCollectionViewController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchWord()
-
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
