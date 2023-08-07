@@ -16,12 +16,17 @@ class SearchViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        design()
+        setNavigationBar()
+    }
+    func design(){
         navigationItem.title = "검색"
+        screenLabel.text = "검색화면"
+    }
+    func setNavigationBar(){
         let xmark = UIImage(systemName: "xmark")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: xmark, style: .plain , target: self , action: #selector(closeButtonClicked))
         navigationItem.leftBarButtonItem?.tintColor = .black
-        
-        screenLabel.text = "검색화면"
     }
     @objc
     func closeButtonClicked() {
