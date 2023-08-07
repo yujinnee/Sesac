@@ -23,6 +23,7 @@
 		6A95FC642A77C2DE00C04179 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A95FC622A77C2DE00C04179 /* MovieCollectionViewCell.swift */; };
 		6A95FC652A77C2DE00C04179 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A95FC632A77C2DE00C04179 /* MovieCollectionViewCell.xib */; };
 		6A95FC672A77C4D200C04179 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A95FC662A77C4D200C04179 /* MovieData.swift */; };
+		6AD0BC0E2A7BF8A500A0B41E /* TransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0BC0D2A7BF8A500A0B41E /* TransitionType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		6A95FC622A77C2DE00C04179 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		6A95FC632A77C2DE00C04179 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		6A95FC662A77C4D200C04179 /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
+		6AD0BC0D2A7BF8A500A0B41E /* TransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 		6A95FC492A77C04D00C04179 /* BookWorm Project */ = {
 			isa = PBXGroup;
 			children = (
+				6AD0BC0C2A7BF89000A0B41E /* Enum */,
 				6A1DE1512A7A94800083CDF7 /* Storyboard */,
 				6A1DE14D2A7A940A0083CDF7 /* ViewControllers */,
 				6A1DE14F2A7A944F0083CDF7 /* Data */,
@@ -135,6 +138,14 @@
 				6A95FC582A77C05200C04179 /* Info.plist */,
 			);
 			path = "BookWorm Project";
+			sourceTree = "<group>";
+		};
+		6AD0BC0C2A7BF89000A0B41E /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				6AD0BC0D2A7BF8A500A0B41E /* TransitionType.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +230,7 @@
 				6A95FC642A77C2DE00C04179 /* MovieCollectionViewCell.swift in Sources */,
 				6A95FC4B2A77C04D00C04179 /* AppDelegate.swift in Sources */,
 				6A1DE15A2A7A952D0083CDF7 /* RecentCollectionViewCell.swift in Sources */,
+				6AD0BC0E2A7BF8A500A0B41E /* TransitionType.swift in Sources */,
 				6A2CF3E62A7A9A6400D7359A /* LookAroundViewController.swift in Sources */,
 				6A95FC4D2A77C04D00C04179 /* SceneDelegate.swift in Sources */,
 			);
