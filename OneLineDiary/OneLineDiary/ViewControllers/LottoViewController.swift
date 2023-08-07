@@ -7,21 +7,53 @@
 
 import UIKit
 
+import Alamofire
+import SwiftyJSON
+
 class LottoViewController: UIViewController, UIPickerViewDelegate,UIPickerViewDataSource {
     
+    @IBOutlet var dateLabel: UILabel!
     
-    var list = ["영화","드라마","SF","애니메이션"]
+    @IBOutlet var bonusNumberLabel: UILabel!
     let pickerView = UIPickerView()
     @IBOutlet var textField: UITextField!
     
+    var list: [Int] = Array(1...1079).reversed()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("1")
+        print("2")
+        
+        
+        callRequest(num: 1079)
+       
+        print("4")
         pickerView.delegate = self
         pickerView.dataSource = self
-        
         textField.inputView = pickerView
-        
+        print("5")
+    }
+    
+    func callRequest(num:Int){
+        let url = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=" + String(num)
+        AF.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("JSON: \(json)")
+                
+                let date = json["drwNoDate"].stringValue
+                let bonusNumber = json["bnusNo"].intValue
+
+                print(date,bonusNumber)
+                self.dateLabel.text = date
+                self.bonusNumberLabel.text = "\(bonusNumber)번"
+
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -33,12 +65,11 @@ class LottoViewController: UIViewController, UIPickerViewDelegate,UIPickerViewDa
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("select \(row)")
-        textField.text = list[row]
+        callRequest(num: list[row])
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return list[row]
+        return String(list[row])
     }
     
 }
