@@ -17,8 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0C-1f-lkB">
-                                <rect key="frame" x="175.66666666666666" y="428" width="42" height="21"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="L0r-1Z-bZq">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="P9T-wq-bXV"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="tYa-Bw-uO1"/>
+                                </connections>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0C-1f-lkB">
+                                <rect key="frame" x="20" y="123" width="353" height="675"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -27,12 +37,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="y0C-1f-lkB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="5v0-vZ-wnR"/>
-                            <constraint firstItem="y0C-1f-lkB" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="EMU-RH-cQD"/>
+                            <constraint firstItem="L0r-1Z-bZq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5KJ-m1-IR1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="y0C-1f-lkB" secondAttribute="bottom" constant="20" id="6To-rv-wVE"/>
+                            <constraint firstItem="y0C-1f-lkB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8h1-3J-KsW"/>
+                            <constraint firstItem="y0C-1f-lkB" firstAttribute="top" secondItem="L0r-1Z-bZq" secondAttribute="bottom" constant="20" id="EKy-GP-7zn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="L0r-1Z-bZq" secondAttribute="trailing" id="JHw-JK-ueB"/>
+                            <constraint firstItem="L0r-1Z-bZq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="av9-dj-9Fd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="y0C-1f-lkB" secondAttribute="trailing" constant="20" id="ony-B9-h5E"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="screenLabel" destination="y0C-1f-lkB" id="PbD-xC-25f"/>
+                        <outlet property="bookSearchBar" destination="L0r-1Z-bZq" id="S9A-Tt-BGM"/>
+                        <outlet property="resultLabel" destination="y0C-1f-lkB" id="PbD-xC-25f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
