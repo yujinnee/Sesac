@@ -18,6 +18,7 @@ class LottoViewController: UIViewController, UIPickerViewDelegate,UIPickerViewDa
     let pickerView = UIPickerView()
     @IBOutlet var textField: UITextField!
     
+    @IBOutlet var numberLabel: UILabel!
     var list: [Int] = Array(1...1079).reversed()
     
     override func viewDidLoad() {
@@ -45,11 +46,17 @@ class LottoViewController: UIViewController, UIPickerViewDelegate,UIPickerViewDa
                 
                 let date = json["drwNoDate"].stringValue
                 let bonusNumber = json["bnusNo"].intValue
+                var numbers = [Int]()
+                for i in 1...6{
+                    numbers.append(json["drwtNo\(i)"].intValue)
+                }
+                numbers.append(bonusNumber)
 
-                print(date,bonusNumber)
+                var numberString = ""
+                numbers.map{numberString.append(String($0)+" ")}
                 self.dateLabel.text = date
                 self.bonusNumberLabel.text = "\(bonusNumber)번"
-
+                self.numberLabel.text = numberString
             case .failure(let error):
                 print(error)
             }
