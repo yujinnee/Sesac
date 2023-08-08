@@ -19,6 +19,8 @@
 		6A7936572A809BA600316F2F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6A7936562A809BA600316F2F /* .gitignore */; };
 		6A7936592A809C3C00316F2F /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7936582A809C3C00316F2F /* TranslationViewController.swift */; };
 		6A79365B2A809C6B00316F2F /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A79365A2A809C6B00316F2F /* APIKey.swift */; };
+		6A79365D2A81C52800316F2F /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A79365C2A81C52800316F2F /* WeatherViewController.swift */; };
+		6A79365F2A81E83900316F2F /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A79365E2A81E83900316F2F /* VideoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		6A7936562A809BA600316F2F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		6A7936582A809C3C00316F2F /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		6A79365A2A809C6B00316F2F /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		6A79365C2A81C52800316F2F /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		6A79365E2A81E83900316F2F /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 				6A7936562A809BA600316F2F /* .gitignore */,
 				6A7936582A809C3C00316F2F /* TranslationViewController.swift */,
 				6A79365A2A809C6B00316F2F /* APIKey.swift */,
+				6A79365C2A81C52800316F2F /* WeatherViewController.swift */,
+				6A79365E2A81E83900316F2F /* VideoViewController.swift */,
 			);
 			path = SeSAC3Week4;
 			sourceTree = "<group>";
@@ -165,6 +171,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A7936592A809C3C00316F2F /* TranslationViewController.swift in Sources */,
+				6A79365F2A81E83900316F2F /* VideoViewController.swift in Sources */,
+				6A79365D2A81C52800316F2F /* WeatherViewController.swift in Sources */,
 				6A79363E2A80969200316F2F /* ViewController.swift in Sources */,
 				6A79363A2A80969200316F2F /* AppDelegate.swift in Sources */,
 				6A79363C2A80969200316F2F /* SceneDelegate.swift in Sources */,
