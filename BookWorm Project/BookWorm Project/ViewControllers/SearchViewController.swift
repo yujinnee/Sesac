@@ -38,7 +38,7 @@ class SearchViewController: UIViewController {
     var pageNum = 1
     let sizeNum = 20
     var searchList = [Book]()
-
+    var isEnd = false
     @IBOutlet var bookSearchBar: UISearchBar!
     
     @IBOutlet var bookTableView: UITableView!
@@ -74,6 +74,7 @@ class SearchViewController: UIViewController {
         bookSearchBar.delegate = self
         bookTableView.delegate = self
         bookTableView.dataSource = self
+        bookTableView.prefetchDataSource = self
         
     }
     @objc
@@ -82,33 +83,43 @@ class SearchViewController: UIViewController {
     }
 
     func callRequest(word: String,size:Int,page: Int){
-        let url = "https://dapi.kakao.com/v3/search/book?query=\(word)&size=\(size)&page=\(page)"
+        let text = word.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let url = "https://dapi.kakao.com/v3/search/book?query=\(text)&size=\(size)&page=\(page)"
         let header: HTTPHeaders = ["Authorization": APIKeys.kakaoKey]
         
-        AF.request(url, method: .get,headers: header).validate().responseJSON { response in
+        AF.request(url, method: .get,headers: header).validate(statusCode: 200...500).responseJSON { response in
             switch response.result {
             case .success(let value):
-                let json = JSON(value)
-                print("JSON: \(json)")
-                let books = json["documents"].arrayValue
-                print("=============\(books)")
+               
+                    let json = JSON(value)
+                    print("JSON: \(json)")
+                    
+                let statusCode = response.response?.statusCode ?? 500
+                
+                if(statusCode == 200){
+                    
+                    self.isEnd = json["meta"]["is_end"].boolValue
+                    
+                    let books = json["documents"].arrayValue
 
-                for item in books{
-                    let title = item["title"].stringValue
-                    var authors = [String]()
-                    for author in item["authors"].arrayValue{
-                        authors.append(author.stringValue)
+                    for item in books{
+                        let title = item["title"].stringValue
+                        var authors = [String]()
+                        for author in item["authors"].arrayValue{
+                            authors.append(author.stringValue)
+                        }
+                        let thumbnail = item["thumbnail"].stringValue
+                        let contents = item["contents"].stringValue
+                        let publisher = item["publisher"].stringValue
+                        let price = item["price"].intValue
+                        self.searchList.append(Book(title: title, price: price, authors: authors, thumbnail: thumbnail, contents: contents, publisher: publisher))
                     }
-                    let thumbnail = item["thumbnail"].stringValue
-                    let contents = item["contents"].stringValue
-                    let publisher = item["publisher"].stringValue
-                    let price = item["price"].intValue
-                    self.searchList.append(Book(title: title, price: price, authors: authors, thumbnail: thumbnail, contents: contents, publisher: publisher))
-                    print("====================")
-                    print(self.searchList)
-                    self.bookTableView.reloadData()
 
-                }
+                        self.bookTableView.reloadData()
+                    }else{
+                        print("문제가 발생하였습니다. ")
+                    }
+               
 
             case .failure(let error):
                 print(error)
@@ -120,9 +131,10 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        pageNum = 1
         searchList.removeAll()
+        
         var word = bookSearchBar.text!
-        word = word.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
       callRequest(word: word, size: sizeNum, page: pageNum)
        
         
@@ -144,4 +156,22 @@ extension SearchViewController: UITableViewDelegate,UITableViewDataSource{
     }
 
 }
+extension SearchViewController: UITableViewDataSourcePrefetching{
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
 
+        for indexPath in indexPaths {
+          
+
+           
+            if searchList.count - 1 == indexPath.row && pageNum<15 && isEnd == false{
+                pageNum += 1
+                var word = bookSearchBar.text!
+                callRequest(word: word, size: sizeNum, page: pageNum)
+     
+            }
+        }
+        
+    }
+    
+    
+}
