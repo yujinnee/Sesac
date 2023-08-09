@@ -277,16 +277,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wa4-7x-n98">
-                                <rect key="frame" x="111" y="244" width="171" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNa-Q3-div">
+                                <rect key="frame" x="176" y="346" width="41.333333333333343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNa-Q3-div">
-                                <rect key="frame" x="98" y="346" width="155" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gri-jG-MhW">
+                                <rect key="frame" x="50" y="469" width="293" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wa4-7x-n98">
+                                <rect key="frame" x="176" y="212" width="41.333333333333343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -295,14 +299,22 @@
                         <viewLayoutGuide key="safeArea" id="LYR-KA-25R"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="gri-jG-MhW" firstAttribute="top" secondItem="bNa-Q3-div" secondAttribute="bottom" constant="102" id="2cJ-p3-bnw"/>
                             <constraint firstItem="Egx-pu-F7X" firstAttribute="top" secondItem="LYR-KA-25R" secondAttribute="top" constant="29" id="ANJ-iP-UxZ"/>
+                            <constraint firstItem="bNa-Q3-div" firstAttribute="centerX" secondItem="LYR-KA-25R" secondAttribute="centerX" id="LlK-yW-DYs"/>
+                            <constraint firstItem="Wa4-7x-n98" firstAttribute="centerX" secondItem="LYR-KA-25R" secondAttribute="centerX" id="QYD-XD-JbJ"/>
+                            <constraint firstItem="bNa-Q3-div" firstAttribute="top" secondItem="Wa4-7x-n98" secondAttribute="bottom" constant="113" id="SBM-il-bRM"/>
                             <constraint firstItem="LYR-KA-25R" firstAttribute="trailing" secondItem="Egx-pu-F7X" secondAttribute="trailing" constant="10" id="U41-0E-8V9"/>
+                            <constraint firstItem="Wa4-7x-n98" firstAttribute="top" secondItem="Egx-pu-F7X" secondAttribute="bottom" constant="90" id="beP-JH-NIA"/>
                             <constraint firstItem="Egx-pu-F7X" firstAttribute="leading" secondItem="LYR-KA-25R" secondAttribute="leading" constant="10" id="blB-0z-Kh7"/>
+                            <constraint firstItem="LYR-KA-25R" firstAttribute="trailing" secondItem="gri-jG-MhW" secondAttribute="trailing" constant="50" id="gx6-Hh-TGr"/>
+                            <constraint firstItem="gri-jG-MhW" firstAttribute="leading" secondItem="LYR-KA-25R" secondAttribute="leading" constant="50" id="s6a-hf-PYk"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bonusNumberLabel" destination="bNa-Q3-div" id="brI-2f-leF"/>
                         <outlet property="dateLabel" destination="Wa4-7x-n98" id="HKc-T7-wtj"/>
+                        <outlet property="numberLabel" destination="gri-jG-MhW" id="i3o-F0-hGq"/>
                         <outlet property="textField" destination="Egx-pu-F7X" id="Gye-jT-2YK"/>
                     </connections>
                 </viewController>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="u1e-ra-Rzq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RAj-WX-HNi">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
@@ -134,6 +134,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iM-Mj-7C2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2411" y="33"/>
+        </scene>
+        <!--Beer View Controller-->
+        <scene sceneID="Qsm-XE-MSM">
+            <objects>
+                <viewController storyboardIdentifier="BeerViewController" id="RAj-WX-HNi" customClass="BeerViewController" customModule="SeSAC3Week4" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ttQ-KX-F38">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘은 이 맥주를 추천합니다!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRq-Qj-Ns5">
+                                <rect key="frame" x="82.666666666666671" y="99" width="227.66666666666663" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="urh-UF-RN5">
+                                <rect key="frame" x="98.333333333333329" y="160.66666666666669" width="196.33333333333337" height="255.66666666666669"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2WW-gq-t6x">
+                                <rect key="frame" x="50" y="484" width="293" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCO-dZ-9j9">
+                                <rect key="frame" x="121" y="733" width="151" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="다른 맥주 추천받기"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GF8-Cj-oeT">
+                                <rect key="frame" x="175.66666666666666" y="441" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3La-6P-oQL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sCO-dZ-9j9" firstAttribute="centerX" secondItem="3La-6P-oQL" secondAttribute="centerX" id="8GA-WL-VAr"/>
+                            <constraint firstItem="XRq-Qj-Ns5" firstAttribute="centerX" secondItem="3La-6P-oQL" secondAttribute="centerX" id="98C-MU-BDc"/>
+                            <constraint firstItem="urh-UF-RN5" firstAttribute="centerY" secondItem="3La-6P-oQL" secondAttribute="centerY" constant="-150" id="ETg-ZB-ohK"/>
+                            <constraint firstItem="3La-6P-oQL" firstAttribute="trailing" secondItem="2WW-gq-t6x" secondAttribute="trailing" constant="50" id="HNw-O1-CMD"/>
+                            <constraint firstItem="3La-6P-oQL" firstAttribute="bottom" secondItem="sCO-dZ-9j9" secondAttribute="bottom" constant="50" id="KZu-qp-dn4"/>
+                            <constraint firstItem="urh-UF-RN5" firstAttribute="height" secondItem="ttQ-KX-F38" secondAttribute="height" multiplier="0.3" id="S6y-kH-hu4"/>
+                            <constraint firstItem="urh-UF-RN5" firstAttribute="width" secondItem="3La-6P-oQL" secondAttribute="width" multiplier="0.5" id="SpP-IS-OBa"/>
+                            <constraint firstItem="2WW-gq-t6x" firstAttribute="leading" secondItem="3La-6P-oQL" secondAttribute="leading" constant="50" id="Vuu-rr-s2e"/>
+                            <constraint firstItem="GF8-Cj-oeT" firstAttribute="centerX" secondItem="3La-6P-oQL" secondAttribute="centerX" id="YDj-cR-W4T"/>
+                            <constraint firstItem="urh-UF-RN5" firstAttribute="centerX" secondItem="3La-6P-oQL" secondAttribute="centerX" id="Zgb-ug-3MI"/>
+                            <constraint firstItem="urh-UF-RN5" firstAttribute="top" secondItem="XRq-Qj-Ns5" secondAttribute="bottom" constant="37.666666666666686" id="hAj-pI-gU5"/>
+                            <constraint firstItem="2WW-gq-t6x" firstAttribute="centerX" secondItem="3La-6P-oQL" secondAttribute="centerX" id="k7N-1c-5dI"/>
+                            <constraint firstItem="2WW-gq-t6x" firstAttribute="top" secondItem="GF8-Cj-oeT" secondAttribute="bottom" constant="22" id="t3l-2d-NC3"/>
+                            <constraint firstItem="GF8-Cj-oeT" firstAttribute="top" secondItem="urh-UF-RN5" secondAttribute="bottom" constant="24.666666666666629" id="tor-eF-yTE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="beerImageView" destination="urh-UF-RN5" id="9wB-fS-e9W"/>
+                        <outlet property="descriptionLabel" destination="2WW-gq-t6x" id="Xmi-Gi-3qx"/>
+                        <outlet property="nameLabel" destination="GF8-Cj-oeT" id="yXU-Y3-ViB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CRA-FO-nUh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3203.8167938931297" y="31.690140845070424"/>
         </scene>
     </scenes>
     <resources>
