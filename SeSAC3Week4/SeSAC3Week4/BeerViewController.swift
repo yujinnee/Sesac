@@ -29,8 +29,12 @@ class BeerViewController: UIViewController {
         AF.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
-                let json = JSON(value)
+//                let json = JSON(value)
+                let json = JSON(value).arrayValue
                 print("JSON: \(json)")
+//                let name = json.["name"].stringValue
+//                let image = json[0]["image_url"].stringValue
+//                let description = json[0]["description"].stringValue
                 let name = json[0]["name"].stringValue
                 let image = json[0]["image_url"].stringValue
                 let description = json[0]["description"].stringValue

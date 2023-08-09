@@ -7,38 +7,130 @@
 
 import UIKit
 import Alamofire
+import Kingfisher
 import SwiftyJSON
+
+struct Video {
+    let author: String
+    let date: String
+    let time: Int
+    let thumbnail: String
+    let title: String
+    let link: String
+    
+    var contents: String {
+        get{
+            return "\(author) | \(time)회\n\(date)"
+        }
+    }
+}
 
 class VideoViewController: UIViewController {
     
-    var videoList: [String] = []
 
+    var videoList: [Video] = []
+    var page = 1
+    var isEnd = false
+
+    @IBOutlet var videoTableView: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        videoTableView.delegate = self
+        videoTableView.dataSource = self
+        videoTableView.prefetchDataSource = self
+        searchBar.delegate = self
+        
+        videoTableView.rowHeight = 130
 
-        callRequest()
     }
     
 
-    func callRequest(){
-        let url = "https://dapi.kakao.com/v2/search/vclip?query=NewJeans"
-        let header: HTTPHeaders = ["Authorization": "KakaoAK 868aedc703e71db462ffa16a8a48f902"]
+    func callRequest(query: String,page: Int){
+        let text = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let url = "https://dapi.kakao.com/v2/search/vclip?query=\(text)&size=10&page=\(page)"
+        let header: HTTPHeaders = ["Authorization": APIKey.videoKey]
         
-        AF.request(url, method: .get,headers:  header).validate().responseJSON { response in
+        AF.request(url, method: .get,headers:  header).validate(statusCode: 200...500).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
                 print("JSON: \(json)")
                 
-                for item in json["documents"].arrayValue{
-                    let title = item["title"].stringValue
-                    self.videoList.append(title)
-                }
+                print(response.response?.statusCode)
+                
+                let statusCode = response.response?.statusCode ?? 500
+                
+                if statusCode == 200 {
+                    
+                    self.isEnd = json["meta"]["is_end"].boolValue
+                    
+                    
+                    for item in json["documents"].arrayValue{
+                        let author = item["author"].stringValue
+                        let date = item["datetime"].stringValue
+                        let time = item["time"].intValue
+                        let thumbnail = item["thumbnail"].stringValue
+                        let title = item["title"].stringValue
+                        let link = item["link"].stringValue
                         
+                        let data = Video(author: author, date: date, time: time, thumbnail: thumbnail, title: title, link: link)
+
+                        self.videoList.append(data)
+                        print("======================")
+                        print(self.videoList.count)
+                    }
+                    self.videoTableView.reloadData()
+                }else {
+                    print("문제가 발생했어요. 잠시후 다시 시도 해주세요!!")
+                }
             case .failure(let error):
                 print(error)
             }
         }
     }
 
+}
+
+extension VideoViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        page  = 1
+        videoList.removeAll()
+        
+        guard let query = searchBar.text else {return}
+        callRequest(query: query,page:page)
+    }
+    
+}
+
+extension VideoViewController: UITableViewDelegate,UITableViewDataSource,UITableViewDataSourcePrefetching{
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if videoList.count - 1 == indexPath.row && page < 15 && isEnd == false{
+                page += 1
+                callRequest(query: searchBar.text!, page: page)
+            }
+        }
+    }
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        print("=====취소: \(indexPaths)")
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return videoList.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:VideoTableViewCell.identifier) as? VideoTableViewCell else {return UITableViewCell()}
+        cell.titleLabel.text = videoList[indexPath.row].title
+        cell.contentLabel.text = videoList[indexPath.row].title
+        if let url = URL(string: videoList[indexPath.row].thumbnail) {
+            cell.thumbnailImageView.kf.setImage(with: url)
+        }
+
+        return cell
+    }
+  
 }
