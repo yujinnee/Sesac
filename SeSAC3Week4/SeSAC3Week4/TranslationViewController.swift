@@ -7,12 +7,20 @@
 
 import UIKit
 
-class TranslationViewController: UIViewController {
+import Alamofire
+import SwiftyJSON
 
+class TranslationViewController: UIViewController {
+    
+    
+    @IBOutlet var originalTextView: UITextView!
+    @IBOutlet var requestButton: UIButton!
+    @IBOutlet var translateTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        originalTextView.text = ""
+        translateTextView.text = ""
+        translateTextView.isEditable = false
     }
     
     @IBAction func requestButtonClicked(_ sender: Any) {
@@ -71,3 +79,4 @@ class TranslationViewController: UIViewController {
     
     
 }
+ 

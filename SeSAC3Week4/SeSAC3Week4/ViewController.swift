@@ -15,8 +15,13 @@ var title: String
 }
 
 class ViewController: UIViewController {
+    
 
     var movieList: [Movie] = []
+    
+    
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var indicatorView: UIActivityIndicatorView!
     @IBOutlet var movieTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,27 +30,21 @@ class ViewController: UIViewController {
         
         movieTableView.delegate = self
         movieTableView.dataSource = self
-        callRequest()
+        
+        indicatorView.isHidden = true
     }
     
-    func callRequest() {
-        let url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=\(APIKey.boxOfficeKey)&targetDt=20120101"
+    func callRequest(date: String) {
+        indicatorView.startAnimating()
+        indicatorView.isHidden  = false
+        let url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=\(APIKey.boxOfficeKey)&targetDt=\(date)"
         
         AF.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
                 print("JSON: \(json)")
-                
-//                let name1 = json["boxOfficeResult"]["dailyBoxOfficeList"][0]["movieNm"].stringValue
-//
-//                let name2 = json["boxOfficeResult"]["dailyBoxOfficeList"][1]["movieNm"].stringValue
-//
-//                let name3 = json["boxOfficeResult"]["dailyBoxOfficeList"][2]["movieNm"].stringValue
-//                self.movieList.append(name1)
-//                self.movieList.append(name2)
-//                self.movieList.append(name3)
-                
+
                 for item in json["boxOfficeResult"]["dailyBoxOfficeList"].arrayValue {
                     let movieNm = item["movieNm"].stringValue
                     let openDt = item["openDt"].stringValue
@@ -53,7 +52,8 @@ class ViewController: UIViewController {
                     self.movieList.append(data)
                 }
                 
-                
+                self.indicatorView.stopAnimating()
+                self.indicatorView.isHidden = true
                 self.movieTableView.reloadData()
             
                 
@@ -79,5 +79,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
     
+    
+}
+
+extension ViewController: UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+       
+        callRequest(date: searchBar.text!)
+    }
 }
