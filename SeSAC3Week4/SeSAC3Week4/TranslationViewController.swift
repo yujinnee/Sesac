@@ -24,31 +24,57 @@ class TranslationViewController: UIViewController {
     }
     
     @IBAction func requestButtonClicked(_ sender: Any) {
-        let url = "https://openapi.naver.com/v1/papago/n2mt"
+        let detectionUrl = "https://openapi.naver.com/v1/papago/detectLangs"
+        
+        let translationUrl = "https://openapi.naver.com/v1/papago/n2mt"
         let header: HTTPHeaders = [
-            "X-Naver-Client-Id": "UW25USu_ZAk33vq1UucI",
-            "X-Naver-Client-Secret": "paCIVowNVZ"
-        ]
-        let parameters: Parameters = [
-            "source": "ko",
-            "target": "en",
-            "text": originalTextView.text ?? ""
+            "X-Naver-Client-Id": APIKey.naverClientId,
+            "X-Naver-Client-Secret": APIKey.naverClientSecret
         ]
         
-        AF.request(url, method: .post,parameters: parameters ,headers: header).validate().responseJSON { response in
+        let detectionParameter: Parameters = [
+            "query": originalTextView.text ?? ""
+        ]
+        
+        AF.request(detectionUrl,method:.post,parameters:detectionParameter,headers: header).validate().responseJSON{ response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print("JSON: \(json)")
+                print("JSON:\(json)")
                 
-                let data = json["message"]["result"]["translatedText"].stringValue
-                self.translateTextView.text = data
+                let langCode = json["langCode"].stringValue
+
+                let translationParameters: Parameters = [
+                    "source": "\(langCode)",
+                    "target": "en",
+                    "text": self.originalTextView.text ?? ""
+                ]
+                
+                AF.request(translationUrl, method: .post,parameters: translationParameters ,headers: header).validate().responseJSON { response in
+                    switch response.result {
+                    case .success(let value):
+                        let json = JSON(value)
+                        print("JSON: \(json)")
+                        
+                        let data = json["message"]["result"]["translatedText"].stringValue
+                        self.translateTextView.text = data
+                        
+                    case .failure(let error):
+                        print("번역 오류")
+                        print(error)
+                    }
+                }
+
                 
             case .failure(let error):
+                print("언어감지 오류")
                 print(error)
             }
+            
+            
         }
-
+        
+       
     }
     
     
