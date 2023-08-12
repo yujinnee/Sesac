@@ -13,7 +13,12 @@ struct Video{
     var releaseDate: String
     var genre: String
     var overview: String
-    var imageURL: String
+    var imagePath: String
+    var imageURL: String {
+        return "https://image.tmdb.org/t/p/original/"+imagePath
+//        return "https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.png"
+        
+    }
     
     
 }

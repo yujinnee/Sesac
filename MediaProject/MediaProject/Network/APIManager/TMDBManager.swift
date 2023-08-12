@@ -24,17 +24,28 @@ class TMDBManager{
                 let json = JSON(value)
                 
                 var videoArray = [Video]()
+//                print(json)
                 let items = json["results"].arrayValue
+//                print("====================")
+//                print(items)
                 for item in items{
-                    let id = item["id"].intValue
-                    let title = item["title"].stringValue
-                    let overview = item["overview"].stringValue
-                    let releaseDate = item["release_date"].stringValue
                     let genre = item["media_type"].stringValue
-                    let imageURL = item["backdrop_path"].stringValue
-                    videoArray.append(Video(id: id, title: title, releaseDate: releaseDate, genre: genre, overview: overview, imageURL: imageURL))
+                    let title: String
+                    var overview = ""
+                    var releaseDate = ""
+                    if genre == "movie"{
+                        title = item["title"].stringValue
+                        overview = item["overview"].stringValue
+                        releaseDate = item["release_date"].stringValue
+                    }else {
+                        title = item["name"].stringValue
+                    }
+                    let id = item["id"].intValue
+
+                    let imagePath = item["backdrop_path"].stringValue
+                    videoArray.append(Video(id: id, title: title, releaseDate: releaseDate, genre: genre, overview: overview, imagePath: imagePath))
                 }
-                
+                print(videoArray)
                 completionHandler(videoArray)
             case .failure(let error):
                 print(error)

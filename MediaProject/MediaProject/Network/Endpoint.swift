@@ -24,8 +24,9 @@ enum Endpoint{
     
     var requestURL: String {
         switch self {
-        case .credit : return URL.makeEndpointString("trending/all/week?api_key=\(APIKeys.tmdbKey)")
-        case .trend : return URL.makeEndpointString("/movies/get-movie-credits")
+        case .credit : return URL.makeEndpointString("/movies/get-movie-credits")
+        case .trend :return URL.makeEndpointString("/trending/all/week?api_key=\(APIKeys.tmdbKey)")
+            
         }
     }
     

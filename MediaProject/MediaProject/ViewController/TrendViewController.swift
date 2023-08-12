@@ -13,10 +13,13 @@ class TrendViewController: BaseViewController{
     @IBOutlet var trendVideoTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        setDelegate()
+        registerCell()
+        trendVideoTableView.rowHeight = 400
         TMDBManager.shared.callTrendRequest(type: Endpoint.trend){ result in
 
             self.list.append(contentsOf: result)
-
+            print(self.list)
             self.trendVideoTableView.reloadData()
         }
     }
@@ -27,8 +30,13 @@ class TrendViewController: BaseViewController{
     override func initLayout() {
         print("layout")
     }
-    
-    
+    func registerCell(){
+        trendVideoTableView.register(UINib(nibName: TrendMovieTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: TrendMovieTableViewCell.identifier)
+    }
+    func setDelegate(){
+        trendVideoTableView.dataSource = self
+        trendVideoTableView.delegate = self
+    }
 
 }
 
