@@ -17,8 +17,10 @@ struct Video{
     var imageURL: String {
         return "https://image.tmdb.org/t/p/original/"+imagePath
 //        return "https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.png"
-        
     }
-    
+    var posterPath: String
+    var posterURL: String{
+        return "https://image.tmdb.org/t/p/original/"+posterPath
+    }
     
 }

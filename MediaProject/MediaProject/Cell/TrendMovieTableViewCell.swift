@@ -21,15 +21,11 @@ class TrendMovieTableViewCell: UITableViewCell {
     }
 
     func setData(video: Video){
-        print("======================")
-        print("======================")
-        print(video.releaseDate)
-        print("======================")
-        print("======================")
+  
         releaseDateLabel.text = video.releaseDate
         genreLabel.text = "#"+video.genre
         let url = URL(string: video.imageURL)
-        print(url)
+
         thumbnailImageView.kf.setImage(with: url)
         titleLabel.text = video.title
         overviewLabel.text = video.overview
