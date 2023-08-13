@@ -56,7 +56,6 @@ class TMDBManager{
     }
     
     func callDetailRequest(id:Int,completionHandler: @escaping ([People]) -> ()) {
-        let maximumPeopleCount = 10
         let url = Endpoint.credit(id).requestURL
         AF.request(url,method: .get).validate(statusCode: 200...500).responseJSON{ response in
             switch response.result{
@@ -66,9 +65,7 @@ class TMDBManager{
                 var peopleArray = [People]()
                 let items = json["cast"].arrayValue
 
-                for i in 0..<items.count{
-                    if(i>=maximumPeopleCount){break}
-                    var item = items[i]
+                for item in items{
                     let id = item["id"].intValue
                     let name = item["name"].stringValue
                     let profilePath = item["profile_path"].stringValue
