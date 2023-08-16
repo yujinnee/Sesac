@@ -26,7 +26,7 @@ class DetailViewController: BaseViewController {
         TMDBManager.shared.callDetailRequest(id: video?.id ?? 0){ result in
             self.list.append(contentsOf: result)
             self.castTableView.reloadData()
-            
+
         }
 
     }
