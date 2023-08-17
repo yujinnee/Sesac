@@ -4,5 +4,6 @@
         <page name='FirstClassObject'/>
         <page name='Closure'/>
         <page name='Untitled Page 2'/>
+        <page name='MetaType'/>
     </pages>
 </playground>
