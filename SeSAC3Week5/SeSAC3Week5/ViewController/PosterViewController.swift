@@ -20,6 +20,8 @@ protocol CollectionViewAttributeProtocol{
 class PosterViewController: UIViewController {
     var list: Recommendation = Recommendation(totalPages: 0, page: 0, totalResults: 0, results: [])
     var secondList: Recommendation = Recommendation(totalPages: 0, page: 0, totalResults: 0, results: [])
+    var thirdList: Recommendation = Recommendation(totalPages: 0, page: 0, totalResults: 0, results: [])
+    var fourthList: Recommendation = Recommendation(totalPages: 0, page: 0, totalResults: 0, results: [])
     
     @IBOutlet var posterCollectionView: UICollectionView!
     override func viewDidLoad() {
@@ -31,12 +33,22 @@ class PosterViewController: UIViewController {
         
         callRecommendation(id: 671){ data in
             self.list = data
-//            self.posterCollectionView.reloadData()
+            self.posterCollectionView.reloadData()
             
         }
         callRecommendation(id: 479718){ data in
             self.secondList = data
             self.posterCollectionView.reloadData()
+        }
+        callRecommendation(id: 204553){ data in
+            self.thirdList = data
+            self.posterCollectionView.reloadData()
+            
+        }
+        callRecommendation(id: 825){ data in
+            self.fourthList = data
+            self.posterCollectionView.reloadData()
+            
         }
         
         configureCollectionView()
@@ -47,21 +59,6 @@ class PosterViewController: UIViewController {
     func callRecommendation(id: Int, completionHandler: @escaping (Recommendation) -> Void) {
         let url = "https://api.themoviedb.org/3/movie/\(id)/recommendations?api_key=\(APIKey.tmdb)&language=ko-KR"
         
-        AF.request(url,method: .get).validate(statusCode: 200...500)
-            .responseJSON{ response in
-                switch response.result {
-                case .success(let value):
-                    print("제이쓴")
-                    print(JSON(value))
-                    
-//                    self.list = value
-//                    print(self.list)
-                case .failure(let error):
-                    print(error)
-                }
-
-        }
-
         AF.request(url,method: .get).validate(statusCode: 200...500)
             .responseDecodable(of:Recommendation.self){ response in
                 switch response.result {
@@ -102,12 +99,12 @@ extension PosterViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return list.results.count
-        } else if section == 1{
-            return secondList.results.count
-        }else {
-            return 9
+        switch section{
+        case 0: return list.results.count
+        case 1: return secondList.results.count
+        case 2: return thirdList.results.count
+        case 3: return fourthList.results.count
+        default : return 9
         }
      
     }
@@ -115,14 +112,24 @@ extension PosterViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PosterCollectionViewCell", for: indexPath) as? PosterCollectionViewCell else { return UICollectionViewCell() }
         
-        if indexPath.section == 0 {
+        switch indexPath.section{
+        case 0:
             let url = "https://www.themoviedb.org/t/p/w220_and_h330_face\(list.results[indexPath.item].posterPath ?? "")"
             cell.posterImageView.kf.setImage(with: URL(string: url))
-        }else if indexPath.section == 1{
+        case 1:
             let url = "https://www.themoviedb.org/t/p/w220_and_h330_face\(secondList.results[indexPath.item].posterPath ?? "")"
             cell.posterImageView.kf.setImage(with: URL(string: url))
+        case 2:
+            let url = "https://www.themoviedb.org/t/p/w220_and_h330_face\(thirdList.results[indexPath.item].posterPath ?? "")"
+            cell.posterImageView.kf.setImage(with: URL(string: url))
+        case 3:
+            let url = "https://www.themoviedb.org/t/p/w220_and_h330_face\(fourthList.results[indexPath.item].posterPath ?? "")"
+            cell.posterImageView.kf.setImage(with: URL(string: url))
+        default:
+            let url = "https://www.themoviedb.org/t/p/w220_and_h330_face\(list.results[indexPath.item].posterPath ?? "")"
+            cell.posterImageView.kf.setImage(with: URL(string: url))
+
         }
-        
         cell.posterImageView.backgroundColor = UIColor(red:CGFloat.random(in: 0...1), green: CGFloat.random(in: 0...1), blue: CGFloat.random(in: 0...1), alpha: 1)
         return cell
         
