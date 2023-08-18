@@ -10,20 +10,6 @@ import Alamofire
 import Kingfisher
 import SwiftyJSON
 
-struct Video {
-    let author: String
-    let date: String
-    let time: Int
-    let thumbnail: String
-    let title: String
-    let link: String
-    
-    var contents: String {
-        get{
-            return "\(author) | \(time)회\n\(date)"
-        }
-    }
-}
 
 class VideoViewController: UIViewController {
     
@@ -48,38 +34,15 @@ class VideoViewController: UIViewController {
 
     func callRequest(query: String,page: Int){
         
-        KakaoAPIManager.shared.callRequest(type: .video, query: query) { json in
-            print(json)
+        KakaoAPIManager.shared.callRequest(type: .video, query: query) { (videoArray,isEnd) in
+//            print(json)
+            self.isEnd = isEnd
+            self.videoList.append(contentsOf: videoArray)
+            print(self.videoList)
+//            self.videoList = videoArray
+            self.videoTableView.reloadData()
         }
-//        print("JSON: \(json)")
-//
-//                        print(response.response?.statusCode)
-//
-//                        let statusCode = response.response?.statusCode ?? 500
-//
-//                        if statusCode == 200 {
-//
-//                            self.isEnd = json["meta"]["is_end"].boolValue
-//
-//
-//                            for item in json["documents"].arrayValue{
-//                                let author = item["author"].stringValue
-//                                let date = item["datetime"].stringValue
-//                                let time = item["time"].intValue
-//                                let thumbnail = item["thumbnail"].stringValue
-//                                let title = item["title"].stringValue
-//                                let link = item["link"].stringValue
-//
-//                                let data = Video(author: author, date: date, time: time, thumbnail: thumbnail, title: title, link: link)
-//
-//                                self.videoList.append(data)
-//                                print("======================")
-//                                print(self.videoList.count)
-//                            }
-//                            self.videoTableView.reloadData()
-//                        }else {
-//                            print("문제가 발생했어요. 잠시후 다시 시도 해주세요!!")
-//                        }
+
     }
 }
 
@@ -101,12 +64,13 @@ extension VideoViewController: UITableViewDelegate,UITableViewDataSource,UITable
         for indexPath in indexPaths {
             if videoList.count - 1 == indexPath.row && page < 15 && isEnd == false{
                 page += 1
+                print(page)
                 callRequest(query: searchBar.text!, page: page)
             }
         }
     }
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-        print("=====취소: \(indexPaths)")
+       
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
