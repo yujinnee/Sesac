@@ -27,32 +27,42 @@ class PosterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        LottoManager.shared.callLotto{bonus,number in
-//            print("클로저로 꺼내온 값: \(bonus),\(number)")
-//        }
-        
-        callRecommendation(id: 671){ data in
-            self.list = data
-            self.posterCollectionView.reloadData()
-            
-        }
-        callRecommendation(id: 479718){ data in
-            self.secondList = data
-            self.posterCollectionView.reloadData()
-        }
-        callRecommendation(id: 204553){ data in
-            self.thirdList = data
-            self.posterCollectionView.reloadData()
-            
-        }
-        callRecommendation(id: 825){ data in
-            self.fourthList = data
-            self.posterCollectionView.reloadData()
-            
-        }
         
         configureCollectionView()
         configureCollectionViewLayout()
+        
+//
+//        let id = [673,674,675,675]
+//
+//        let group = DispatchGroup()
+//
+//        for item in id {
+//            group.enter()
+//            callRecommendation(id: item) { data in
+//                group.leave()
+//            }
+//        }
+//        group.notify(queue:.main) {
+//            self.posterCollectionView.reloadData()
+//        }
+        
+
+        
+        //포그라운드에서 알림이 안뜨는게 디폴트
+        
+        let content = UNMutableNotificationContent()
+        content.title = "viewdidload다마고치에게 물을 주세요"
+        content.body = "아직 레벨 3이에요. 물을 주세요!!"
+        content.badge = 100
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        
+        let request = UNNotificationRequest(identifier: "\(Date())", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request){ error in
+            print(error)
+        }
         
     }
     
@@ -63,15 +73,92 @@ class PosterViewController: UIViewController {
             .responseDecodable(of:Recommendation.self){ response in
                 switch response.result {
                 case .success(let value):
-                
+                    
                     completionHandler(value)
                 case .failure(let error):
                     print(error)
                 }
-
+                
+            }
+        
+        
+    }
+    func dispatchGroupEnterLeave() {
+        let group = DispatchGroup()
+        
+        group.enter() // +1
+        callRecommendation(id: 671){ data in
+            self.list = data
+            self.posterCollectionView.reloadData()
+            print("===1===")
+            group.leave() // -1
         }
-
-            
+        group.enter() // +1
+        callRecommendation(id: 479718){ data in
+            self.secondList = data
+            self.posterCollectionView.reloadData()
+            print("===2===")
+            group.leave() // -1
+        }
+        group.enter() // +1
+        callRecommendation(id: 204553){ data in
+            self.thirdList = data
+            self.posterCollectionView.reloadData()
+            print("===3===")
+            group.leave() // -1
+        }
+        group.enter() // +1
+        callRecommendation(id: 825){ data in
+            self.fourthList = data
+            self.posterCollectionView.reloadData()
+            print("===4===")
+            group.leave() // -1
+        }
+        group.notify(queue: .main){
+            print("END")
+            self.posterCollectionView.reloadData()
+        }
+        
+    }
+    func dispatchGroupNotify() {
+        
+        let group = DispatchGroup()
+       
+        DispatchQueue.global().async(group: group) {
+            self.callRecommendation(id: 671){ data in
+                self.list = data
+                self.posterCollectionView.reloadData()
+                print("===1===")
+                
+            }
+        }
+        DispatchQueue.global().async(group: group) {
+            self.callRecommendation(id: 479718){ data in
+                self.secondList = data
+                self.posterCollectionView.reloadData()
+                print("===2===")
+              
+            }
+        }
+        DispatchQueue.global().async(group: group) {
+            self.callRecommendation(id: 204553){ data in
+                self.thirdList = data
+                self.posterCollectionView.reloadData()
+                print("===3===")
+              
+            }
+        }
+        DispatchQueue.global().async(group: group) {
+            self.callRecommendation(id: 825){ data in
+                self.fourthList = data
+                self.posterCollectionView.reloadData()
+                print("===4===")
+            }
+        }
+        group.notify(queue: .main){
+            print("END")
+        }
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -89,6 +176,25 @@ class PosterViewController: UIViewController {
             }
     }
     
+    @IBAction func sendNotification(_ sender: UIButton) {
+        print("tapped")
+        
+        //포그라운드에서 알림이 안뜨는게 디폴트
+        
+        let content = UNMutableNotificationContent()
+        content.title = "111111111다마고치에게 물을 주세요"
+        content.body = "아직 레벨 3이에요. 물을 주세요!!"
+        content.badge = 100
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        
+        let request = UNNotificationRequest(identifier: "\(Date())", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request){ error in
+            print(error)
+        }
+    }
     
 }
 
@@ -106,7 +212,7 @@ extension PosterViewController: UICollectionViewDelegate, UICollectionViewDataSo
         case 3: return fourthList.results.count
         default : return 9
         }
-     
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -128,7 +234,7 @@ extension PosterViewController: UICollectionViewDelegate, UICollectionViewDataSo
         default:
             let url = "https://www.themoviedb.org/t/p/w220_and_h330_face\(list.results[indexPath.item].posterPath ?? "")"
             cell.posterImageView.kf.setImage(with: URL(string: url))
-
+            
         }
         cell.posterImageView.backgroundColor = UIColor(red:CGFloat.random(in: 0...1), green: CGFloat.random(in: 0...1), blue: CGFloat.random(in: 0...1), alpha: 1)
         return cell
@@ -141,6 +247,7 @@ extension PosterViewController: UICollectionViewDelegate, UICollectionViewDataSo
             guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderPosterCollectionReusableView", for: indexPath) as? HeaderPosterCollectionReusableView else { return UICollectionReusableView() }
             
             view.titleLabel.text = "테스트 섹션\(indexPath.section)"
+            view.titleLabel.font = UIFont(name: "GmarketSansTTFBold", size: 20)
             return view
             
         } else {
@@ -173,7 +280,7 @@ extension PosterViewController: CollectionViewAttributeProtocol{
         posterCollectionView.collectionViewLayout = layout
         
     }
-
+    
 }
 
 

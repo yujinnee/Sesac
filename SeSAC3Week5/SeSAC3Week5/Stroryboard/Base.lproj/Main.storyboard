@@ -184,8 +184,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e38-pS-0KP">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e38-pS-0KP">
+                                <rect key="frame" x="0.0" y="168" width="393" height="650"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gyd-yj-eiO">
                                     <size key="itemSize" width="128" height="128"/>
@@ -204,12 +204,27 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0Q-Ux-ZFQ">
+                                <rect key="frame" x="0.0" y="64" width="393" height="44"/>
+                                <color key="backgroundColor" red="0.97454887629999998" green="0.85464024540000005" blue="0.58818399909999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Uoj-aR-vZa"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="sendNotification:" destination="JZM-z4-CT9" eventType="touchUpInside" id="U5P-2p-JIp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QLL-XH-TJK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="E0Q-Ux-ZFQ" firstAttribute="leading" secondItem="QLL-XH-TJK" secondAttribute="leading" id="5TP-eF-2ha"/>
                             <constraint firstItem="QLL-XH-TJK" firstAttribute="bottom" secondItem="e38-pS-0KP" secondAttribute="bottom" id="81a-Ba-bdn"/>
+                            <constraint firstItem="QLL-XH-TJK" firstAttribute="trailing" secondItem="E0Q-Ux-ZFQ" secondAttribute="trailing" id="iLM-sK-dq3"/>
                             <constraint firstItem="e38-pS-0KP" firstAttribute="top" secondItem="QLL-XH-TJK" secondAttribute="top" id="j0D-Hz-FfO"/>
+                            <constraint firstItem="E0Q-Ux-ZFQ" firstAttribute="top" secondItem="QLL-XH-TJK" secondAttribute="top" constant="5" id="mQB-Da-q08"/>
                             <constraint firstItem="e38-pS-0KP" firstAttribute="trailing" secondItem="QLL-XH-TJK" secondAttribute="trailing" id="yd2-vg-Hie"/>
                             <constraint firstItem="e38-pS-0KP" firstAttribute="leading" secondItem="QLL-XH-TJK" secondAttribute="leading" id="zwx-mg-o0J"/>
                         </constraints>
@@ -220,7 +235,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNc-82-UXY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3277" y="-59"/>
+            <point key="canvasLocation" x="3275.5725190839694" y="-59.154929577464792"/>
+        </scene>
+        <!--Basic View Controller-->
+        <scene sceneID="Bkm-yv-BXs">
+            <objects>
+                <viewController storyboardIdentifier="GCDBasicViewController" id="D0W-V0-Gg9" customClass="GCDBasicViewController" customModule="SeSAC3Week5" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oEQ-1y-tzy">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="cWG-1S-SLH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LQ2-XQ-QfQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4335" y="-82"/>
         </scene>
     </scenes>
     <resources>

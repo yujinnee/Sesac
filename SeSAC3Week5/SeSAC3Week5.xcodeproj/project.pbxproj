@@ -26,6 +26,9 @@
 		6A2503142A8DE94800211DF9 /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2503132A8DE94800211DF9 /* MovieManager.swift */; };
 		6A2503162A8DED7400211DF9 /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2503152A8DED7400211DF9 /* Recommendation.swift */; };
 		6A2503192A8DF4FF00211DF9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6A2503182A8DF4FF00211DF9 /* Kingfisher */; };
+		6A96AF652A8EF10F00E0B3B3 /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A96AF632A8EF10F00E0B3B3 /* GmarketSansTTFLight.ttf */; };
+		6A96AF662A8EF10F00E0B3B3 /* GmarketSansTTFMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A96AF642A8EF10F00E0B3B3 /* GmarketSansTTFMedium.ttf */; };
+		6A96AF682A8EF1A200E0B3B3 /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A96AF672A8EF1A200E0B3B3 /* GmarketSansTTFBold.ttf */; };
 		6AA114322A8C751100B4C93F /* PosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA114302A8C751100B4C93F /* PosterCollectionViewCell.swift */; };
 		6AA114332A8C751100B4C93F /* PosterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AA114312A8C751100B4C93F /* PosterCollectionViewCell.xib */; };
 		6AA114392A8C761B00B4C93F /* HeaderPosterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA114372A8C761B00B4C93F /* HeaderPosterCollectionReusableView.swift */; };
@@ -47,7 +50,7 @@
 		041AE3E12A899D1C007724AE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		041AE3E32A899D2C007724AE /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		041AE3E62A899D84007724AE /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		041AE3E82A89A265007724AE /* GCDBasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBasicViewController.swift; sourceTree = "<group>"; };
+		041AE3E82A89A265007724AE /* GCDBasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GCDBasicViewController.swift; path = ../Network/GCDBasicViewController.swift; sourceTree = "<group>"; };
 		6A2502FD2A8DA39B00211DF9 /* Extension+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Alert.swift"; sourceTree = "<group>"; };
 		6A2503042A8DABDC00211DF9 /* LottoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoManager.swift; sourceTree = "<group>"; };
 		6A2503072A8DB24C00211DF9 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
@@ -55,6 +58,9 @@
 		6A25030F2A8DE3D600211DF9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		6A2503132A8DE94800211DF9 /* MovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
 		6A2503152A8DED7400211DF9 /* Recommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
+		6A96AF632A8EF10F00E0B3B3 /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
+		6A96AF642A8EF10F00E0B3B3 /* GmarketSansTTFMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFMedium.ttf; sourceTree = "<group>"; };
+		6A96AF672A8EF1A200E0B3B3 /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
 		6AA114302A8C751100B4C93F /* PosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		6AA114312A8C751100B4C93F /* PosterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PosterCollectionViewCell.xib; sourceTree = "<group>"; };
 		6AA114372A8C761B00B4C93F /* HeaderPosterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderPosterCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -97,6 +103,7 @@
 		041AE3CB2A899B28007724AE /* SeSAC3Week5 */ = {
 			isa = PBXGroup;
 			children = (
+				6A96AF622A8EF0B800E0B3B3 /* Font */,
 				6A2503112A8DE92D00211DF9 /* Movie */,
 				6A2503092A8DC92F00211DF9 /* Weather */,
 				6A2503062A8DB23900211DF9 /* Protocol */,
@@ -117,7 +124,6 @@
 			children = (
 				041AE3E32A899D2C007724AE /* APIKey.swift */,
 				041AE3E62A899D84007724AE /* Endpoint.swift */,
-				041AE3E82A89A265007724AE /* GCDBasicViewController.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -141,6 +147,7 @@
 		6A2503012A8DAB8D00211DF9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				041AE3E82A89A265007724AE /* GCDBasicViewController.swift */,
 				041AE3D02A899B28007724AE /* ViewController.swift */,
 				6AB7B85B2A8C4B4D001A31A7 /* CodableViewController.swift */,
 				6AA1143B2A8C77A600B4C93F /* PosterViewController.swift */,
@@ -191,6 +198,16 @@
 				6A2503152A8DED7400211DF9 /* Recommendation.swift */,
 			);
 			path = Movie;
+			sourceTree = "<group>";
+		};
+		6A96AF622A8EF0B800E0B3B3 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				6A96AF672A8EF1A200E0B3B3 /* GmarketSansTTFBold.ttf */,
+				6A96AF632A8EF10F00E0B3B3 /* GmarketSansTTFLight.ttf */,
+				6A96AF642A8EF10F00E0B3B3 /* GmarketSansTTFMedium.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		6AA114342A8C751C00B4C93F /* View */ = {
@@ -273,8 +290,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				041AE3E22A899D1C007724AE /* .gitignore in Resources */,
+				6A96AF652A8EF10F00E0B3B3 /* GmarketSansTTFLight.ttf in Resources */,
 				6AA1143A2A8C761B00B4C93F /* HeaderPosterCollectionReusableView.xib in Resources */,
+				6A96AF662A8EF10F00E0B3B3 /* GmarketSansTTFMedium.ttf in Resources */,
 				041AE3D92A899B29007724AE /* LaunchScreen.storyboard in Resources */,
+				6A96AF682A8EF1A200E0B3B3 /* GmarketSansTTFBold.ttf in Resources */,
 				6AA114332A8C751100B4C93F /* PosterCollectionViewCell.xib in Resources */,
 				041AE3D62A899B29007724AE /* Assets.xcassets in Resources */,
 				041AE3D42A899B28007724AE /* Main.storyboard in Resources */,
