@@ -63,7 +63,7 @@ class DetailViewController: BaseViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
-
+    
 extension DetailViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         list.count

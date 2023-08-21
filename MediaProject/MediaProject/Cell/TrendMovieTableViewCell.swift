@@ -15,6 +15,7 @@ class TrendMovieTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var overviewLabel: UILabel!
     
+    @IBOutlet var originalTitle: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,6 +30,7 @@ class TrendMovieTableViewCell: UITableViewCell {
         thumbnailImageView.kf.setImage(with: url)
         titleLabel.text = video.title
         overviewLabel.text = video.overview
+        originalTitle.text = video.originalTitle
         
     }
     

@@ -38,29 +38,37 @@
                                     <constraint firstAttribute="width" secondItem="YDO-aN-moo" secondAttribute="height" multiplier="1.5:1" id="7eL-Vb-7rh"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2o-SL-cEs">
-                                <rect key="frame" x="0.0" y="220.33333333333331" width="319" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="엄청나게긴 제목이지롱 어떡할거니" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2o-SL-cEs">
+                                <rect key="frame" x="12" y="219.66666666666669" width="229" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPh-99-PCs">
-                                <rect key="frame" x="0.0" y="249.33333333333331" width="319" height="21"/>
+                                <rect key="frame" x="12" y="248.66666666666669" width="295" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="엄청나게긴 제목이지롱 어떡할거니" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFl-xZ-Qaf">
+                                <rect key="frame" x="261" y="219.66666666666669" width="48" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
-                            <constraint firstItem="f2o-SL-cEs" firstAttribute="leading" secondItem="YDO-aN-moo" secondAttribute="leading" id="DSF-3Z-SkF"/>
-                            <constraint firstItem="f2o-SL-cEs" firstAttribute="trailing" secondItem="YDO-aN-moo" secondAttribute="trailing" id="E0B-ue-09d"/>
+                            <constraint firstItem="jFl-xZ-Qaf" firstAttribute="leading" secondItem="f2o-SL-cEs" secondAttribute="trailing" constant="20" id="IDG-eb-OyK"/>
                             <constraint firstItem="YDO-aN-moo" firstAttribute="leading" secondItem="J7T-Kq-7uM" secondAttribute="leading" id="ITz-X2-tWa"/>
-                            <constraint firstItem="xPh-99-PCs" firstAttribute="trailing" secondItem="f2o-SL-cEs" secondAttribute="trailing" id="KZK-aM-nhQ"/>
+                            <constraint firstAttribute="trailing" secondItem="jFl-xZ-Qaf" secondAttribute="trailing" constant="10" id="LlP-Fg-qOI"/>
                             <constraint firstAttribute="trailing" secondItem="YDO-aN-moo" secondAttribute="trailing" id="N36-rZ-Lsd"/>
                             <constraint firstItem="YDO-aN-moo" firstAttribute="top" secondItem="J7T-Kq-7uM" secondAttribute="top" id="QeU-Ge-Zs2"/>
+                            <constraint firstAttribute="trailing" secondItem="xPh-99-PCs" secondAttribute="trailing" constant="12" id="RMz-BS-FgU"/>
+                            <constraint firstItem="jFl-xZ-Qaf" firstAttribute="top" secondItem="YDO-aN-moo" secondAttribute="bottom" constant="7.0000000000000284" id="VhY-FP-Xpy"/>
+                            <constraint firstItem="f2o-SL-cEs" firstAttribute="leading" secondItem="J7T-Kq-7uM" secondAttribute="leading" constant="12" id="bnx-tu-JFZ"/>
                             <constraint firstItem="xPh-99-PCs" firstAttribute="leading" secondItem="f2o-SL-cEs" secondAttribute="leading" id="bpd-ey-kVW"/>
-                            <constraint firstItem="f2o-SL-cEs" firstAttribute="top" secondItem="YDO-aN-moo" secondAttribute="bottom" constant="7.6666666666666572" id="nEc-IT-GK2"/>
+                            <constraint firstItem="f2o-SL-cEs" firstAttribute="top" secondItem="YDO-aN-moo" secondAttribute="bottom" constant="7" id="nEc-IT-GK2"/>
                             <constraint firstItem="xPh-99-PCs" firstAttribute="top" secondItem="f2o-SL-cEs" secondAttribute="bottom" constant="8" symbolic="YES" id="xXh-et-6AO"/>
                         </constraints>
                     </view>
@@ -82,6 +90,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="genreLabel" destination="H5f-DV-bnN" id="6b6-Xv-BCN"/>
+                <outlet property="originalTitle" destination="jFl-xZ-Qaf" id="abr-YH-24H"/>
                 <outlet property="overviewLabel" destination="xPh-99-PCs" id="smu-an-oGL"/>
                 <outlet property="releaseDateLabel" destination="sud-ud-VtL" id="e6a-9t-raW"/>
                 <outlet property="thumbnailImageView" destination="YDO-aN-moo" id="tQe-gs-MAq"/>

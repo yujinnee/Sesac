@@ -40,10 +40,11 @@ class TMDBManager{
                     case .tv:
                         title = item.name ?? ""
                     }
+                    let originalTitle = item.originalTitle ?? ""
                     let id = item.id
                     let imagePath = item.backdropPath
                     let posterPath = item.posterPath
-                    videoArray.append(Video(id: id, title: title, releaseDate: releaseDate, genre: genre.rawValue, overview: overview, imagePath: imagePath,posterPath:posterPath ))
+                    videoArray.append(Video(id: id, title: title, originalTitle: originalTitle, releaseDate: releaseDate, genre: genre.rawValue, overview: overview, imagePath: imagePath,posterPath:posterPath ))
                 }
                 completionHandler(videoArray)
                 
