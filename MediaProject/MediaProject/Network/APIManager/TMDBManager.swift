@@ -80,4 +80,36 @@ class TMDBManager{
             }
         }
     
+    func callSimilarRequest(id:Int,completionHandler: @escaping ([SimilarVideo]) -> ()) {
+        let url = Endpoint.similar(id).requestURL
+        AF.request(url,method: .get).validate(statusCode: 200...500).responseDecodable(of:Similar.self){ response in
+            switch response.result{
+            case .success(let value):
+                guard let data = response.value else {return}
+
+                completionHandler(data.results)
+            case .failure(let error):
+                print(error)
+            }
+
+        }
+    }
+    
+    func callVideosRequest(id:Int,completionHandler: @escaping ([VideosVideo]) -> ()) {
+        let url = Endpoint.video(id).requestURL
+        AF.request(url,method: .get).validate(statusCode: 200...500).responseDecodable(of:Videos.self){ response in
+            print(response)
+            switch response.result{
+            case .success(let value):
+                guard let data = response.value else {return}
+
+                completionHandler(data.results)
+            case .failure(let error):
+                print(error)
+
+            }
+
+        }
+    }
+    
 }

@@ -12,6 +12,7 @@ class DetailViewController: BaseViewController {
     var list = DetailModel().actorList
     var video: Video?
     
+    @IBOutlet var moreButton: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var backdropImageView: UIImageView!
@@ -23,9 +24,11 @@ class DetailViewController: BaseViewController {
         registerCell()
         setDelegate()
         castTableView.rowHeight = 120
+        print(video?.id)
         TMDBManager.shared.callDetailRequest(id: video?.id ?? 0){ result in
             self.list.append(contentsOf: result)
             self.castTableView.reloadData()
+            
 
         }
 
@@ -39,7 +42,7 @@ class DetailViewController: BaseViewController {
         let backdropURL = URL(string: video?.imageURL ?? "")
         backdropImageView.kf.setImage(with: backdropURL)
         overviewLabel.text = video?.overview ?? ""
-        
+        moreButton.setTitle("more", for: .normal)
     }
     override func initLayout() {
       
@@ -52,6 +55,13 @@ class DetailViewController: BaseViewController {
         castTableView.delegate = self
     }
 
+    @IBAction func moreButtonTapped(_ sender: UIButton) {
+        guard let vc = storyboard?.instantiateViewController(identifier: MoreViewController.identifier) as? MoreViewController else {return}
+        vc.id = video?.id ?? 0
+        vc.modalTransitionStyle = .coverVertical
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension DetailViewController: UITableViewDataSource,UITableViewDelegate{
