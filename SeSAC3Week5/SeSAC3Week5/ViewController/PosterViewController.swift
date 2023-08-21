@@ -181,12 +181,23 @@ class PosterViewController: UIViewController {
         
         //포그라운드에서 알림이 안뜨는게 디폴트
         
+//        let content = UNMutableNotificationContent()
+//        content.title = "111111111다마고치에게 물을 주세요"
+//        content.body = "아직 레벨 3이에요. 물을 주세요!!"
+//        content.badge = 100
+        
         let content = UNMutableNotificationContent()
-        content.title = "111111111다마고치에게 물을 주세요"
-        content.body = "아직 레벨 3이에요. 물을 주세요!!"
+        content.title = "알림 알림 알림"
+        content.body = ["5초 뒤에 알림 받기","Asd","Asdf"].randomElement()!
         content.badge = 100
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        var component = DateComponents()
+        component.minute = 5
+        component.hour = 10
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
+        
+        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
         
         let request = UNNotificationRequest(identifier: "\(Date())", content: content, trigger: trigger)
