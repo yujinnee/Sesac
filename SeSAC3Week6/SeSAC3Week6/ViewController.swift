@@ -73,6 +73,7 @@ class ViewController: UIViewController {
       
 //        let vc = LocationViewController()
         let vc = TextViewController()
+//        let vc = Example2ViewController
         present(vc,animated:true)
         
     }
