@@ -10,6 +10,7 @@ import Foundation
 struct Video: Codable{
     var id: Int
     var title: String
+    var originalTitle: String
     var releaseDate: String
     var genre: String
     var overview: String

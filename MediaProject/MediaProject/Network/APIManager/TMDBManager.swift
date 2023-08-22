@@ -40,10 +40,11 @@ class TMDBManager{
                     case .tv:
                         title = item.name ?? ""
                     }
+                    let originalTitle = item.originalTitle ?? ""
                     let id = item.id
                     let imagePath = item.backdropPath
                     let posterPath = item.posterPath
-                    videoArray.append(Video(id: id, title: title, releaseDate: releaseDate, genre: genre.rawValue, overview: overview, imagePath: imagePath,posterPath:posterPath ))
+                    videoArray.append(Video(id: id, title: title, originalTitle: originalTitle, releaseDate: releaseDate, genre: genre.rawValue, overview: overview, imagePath: imagePath,posterPath:posterPath ))
                 }
                 completionHandler(videoArray)
                 
@@ -79,5 +80,37 @@ class TMDBManager{
     
             }
         }
+    
+    func callSimilarRequest(id:Int,completionHandler: @escaping ([SimilarVideo]) -> ()) {
+        let url = Endpoint.similar(id).requestURL
+        AF.request(url,method: .get).validate(statusCode: 200...500).responseDecodable(of:Similar.self){ response in
+            switch response.result{
+            case .success(let value):
+                guard let data = response.value else {return}
+
+                completionHandler(data.results)
+            case .failure(let error):
+                print(error)
+            }
+
+        }
+    }
+    
+    func callVideosRequest(id:Int,completionHandler: @escaping ([VideosVideo]) -> ()) {
+        let url = Endpoint.video(id).requestURL
+        AF.request(url,method: .get).validate(statusCode: 200...500).responseDecodable(of:Videos.self){ response in
+            print(response)
+            switch response.result{
+            case .success(let value):
+                guard let data = response.value else {return}
+
+                completionHandler(data.results)
+            case .failure(let error):
+                print(error)
+
+            }
+
+        }
+    }
     
 }
