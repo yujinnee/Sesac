@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     let passwordTextField = UITextField()
     let signButton = UIButton()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,7 +71,8 @@ class ViewController: UIViewController {
     
     @objc func signButtonClicked() {
       
-        let vc = LocationViewController()
+//        let vc = LocationViewController()
+        let vc = TextViewController()
         present(vc,animated:true)
         
     }
