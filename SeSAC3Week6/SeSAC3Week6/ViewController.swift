@@ -68,13 +68,10 @@ class ViewController: UIViewController {
 
         passwordTextField.backgroundColor = .red
     }
-    
+  	  
     @objc func signButtonClicked() {
-      
-//        let vc = LocationViewController()
-        let vc = TextViewController()
-//        let vc = Example2ViewController
-        present(vc,animated:true)
+ 	
+        transition(viewController: GenericViewController.self, storyboard: "Main", style: .presentFullNavigation)
         
     }
     
