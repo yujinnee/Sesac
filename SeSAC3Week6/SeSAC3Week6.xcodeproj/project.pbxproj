@@ -21,6 +21,9 @@
 		6A96AFA82A94468500E0B3B3 /* SnapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96AFA72A94468500E0B3B3 /* SnapViewController.swift */; };
 		6A96AFAA2A945D0A00E0B3B3 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96AFA92A945D0A00E0B3B3 /* TextViewController.swift */; };
 		6A96AFAC2A947F2900E0B3B3 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96AFAB2A947F2900E0B3B3 /* LocationViewController.swift */; };
+		6A9C35452A982BC400740BB9 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C35442A982BC400740BB9 /* CustomTableViewCell.swift */; };
+		6A9C35472A98416800740BB9 /* PosterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C35462A98416800740BB9 /* PosterImageView.swift */; };
+		6A9C354A2A984B5F00740BB9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C35492A984B5F00740BB9 /* OnboardingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		6A96AFA72A94468500E0B3B3 /* SnapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapViewController.swift; sourceTree = "<group>"; };
 		6A96AFA92A945D0A00E0B3B3 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		6A96AFAB2A947F2900E0B3B3 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		6A9C35442A982BC400740BB9 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		6A9C35462A98416800740BB9 /* PosterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterImageView.swift; sourceTree = "<group>"; };
+		6A9C35492A984B5F00740BB9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,8 @@
 				6A08C4292A971CFD00A2E6D3 /* CustomViewController.swift */,
 				6A08C42B2A971E9E00A2E6D3 /* BlackRadiusTextField.swift */,
 				6A08C42D2A972A2C00A2E6D3 /* CustomTableViewController.swift */,
+				6A9C35442A982BC400740BB9 /* CustomTableViewCell.swift */,
+				6A9C35462A98416800740BB9 /* PosterImageView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -91,6 +99,7 @@
 		6A96AF7A2A930AC100E0B3B3 /* SeSAC3Week6 */ = {
 			isa = PBXGroup;
 			children = (
+				6A9C35482A984B3B00740BB9 /* Onboarding */,
 				6A08C4282A971CB500A2E6D3 /* CustomView */,
 				6A08C4232A96F0DA00A2E6D3 /* Generic */,
 				6A96AFA62A94466C00E0B3B3 /* Test */,
@@ -112,6 +121,14 @@
 				6A96AFA72A94468500E0B3B3 /* SnapViewController.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		6A9C35482A984B3B00740BB9 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				6A9C35492A984B5F00740BB9 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,11 +213,13 @@
 				6A08C4272A96F14D00A2E6D3 /* ExtensionViewController.swift in Sources */,
 				6A08C42E2A972A2C00A2E6D3 /* CustomTableViewController.swift in Sources */,
 				6A08C4252A96F13F00A2E6D3 /* GenericViewController.swift in Sources */,
-				6A96AFAE2A95101600E0B3B3 /* Example2ViewController.swift in Sources */,
+				6A9C35452A982BC400740BB9 /* CustomTableViewCell.swift in Sources */,
 				6A96AF802A930AC100E0B3B3 /* ViewController.swift in Sources */,
 				6A96AFAC2A947F2900E0B3B3 /* LocationViewController.swift in Sources */,
 				6A08C42A2A971CFD00A2E6D3 /* CustomViewController.swift in Sources */,
 				6A96AF7C2A930AC100E0B3B3 /* AppDelegate.swift in Sources */,
+				6A9C354A2A984B5F00740BB9 /* OnboardingViewController.swift in Sources */,
+				6A9C35472A98416800740BB9 /* PosterImageView.swift in Sources */,
 				6A96AF7E2A930AC100E0B3B3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
