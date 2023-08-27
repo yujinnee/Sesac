@@ -21,10 +21,22 @@ class CustomTableViewController: UIViewController {
         Sample(text: "테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트테스트 셀 텍스트", isExpand: false)
     ]
     
-    let tableView = {
+    lazy var tableView = {
         let view = UITableView()
+        view.rowHeight = UITableView.automaticDimension
+        view.delegate = self
+        view.dataSource = self
+        view.register(CustomTableViewCell.self, forCellReuseIdentifier: "customCell")
         return view
     }()
+    
+    let imageView = {
+        let view = PosterImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        print(#function)
+        return view
+    }()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +50,14 @@ class CustomTableViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "customCell")
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "customCell")
+        
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            make.size.equalTo(200)
+            make.center.equalToSuperview()
+            print(#function)
+        }
        
     }
 
