@@ -21,6 +21,8 @@ class TrendViewController: BaseViewController{
             self.list.append(contentsOf: result)
             self.trendVideoTableView.reloadData()
         }
+        
+
     }
     
     func registerCell(){
