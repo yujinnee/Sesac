@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     let passwordTextField = UITextField()
     let signButton = UIButton()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

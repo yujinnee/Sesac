@@ -21,6 +21,7 @@
 		6A96AFA82A94468500E0B3B3 /* SnapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96AFA72A94468500E0B3B3 /* SnapViewController.swift */; };
 		6A96AFAA2A945D0A00E0B3B3 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96AFA92A945D0A00E0B3B3 /* TextViewController.swift */; };
 		6A96AFAC2A947F2900E0B3B3 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96AFAB2A947F2900E0B3B3 /* LocationViewController.swift */; };
+		6A96AFAE2A95101600E0B3B3 /* Example2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96AFAD2A95101600E0B3B3 /* Example2ViewController.swift */; };
 		6A9C35452A982BC400740BB9 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C35442A982BC400740BB9 /* CustomTableViewCell.swift */; };
 		6A9C35472A98416800740BB9 /* PosterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C35462A98416800740BB9 /* PosterImageView.swift */; };
 		6A9C354A2A984B5F00740BB9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C35492A984B5F00740BB9 /* OnboardingViewController.swift */; };
@@ -42,6 +43,7 @@
 		6A96AFA72A94468500E0B3B3 /* SnapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapViewController.swift; sourceTree = "<group>"; };
 		6A96AFA92A945D0A00E0B3B3 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		6A96AFAB2A947F2900E0B3B3 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		6A96AFAD2A95101600E0B3B3 /* Example2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example2ViewController.swift; sourceTree = "<group>"; };
 		6A9C35442A982BC400740BB9 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		6A9C35462A98416800740BB9 /* PosterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterImageView.swift; sourceTree = "<group>"; };
 		6A9C35492A984B5F00740BB9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				6A96AF892A930AC300E0B3B3 /* Info.plist */,
 				6A96AFA92A945D0A00E0B3B3 /* TextViewController.swift */,
 				6A96AFAB2A947F2900E0B3B3 /* LocationViewController.swift */,
+				6A96AFAD2A95101600E0B3B3 /* Example2ViewController.swift */,
 			);
 			path = SeSAC3Week6;
 			sourceTree = "<group>";
