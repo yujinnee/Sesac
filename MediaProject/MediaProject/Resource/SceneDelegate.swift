@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let vc = sb.instantiateViewController(withIdentifier: "TrendViewController") as! TrendViewController
             let nav = UINavigationController(rootViewController: vc)
           
-            window?.rootViewController = vc
+            window?.rootViewController = nav
         }
         
         window?.makeKeyAndVisible()
