@@ -9,9 +9,9 @@ import UIKit
 import Kingfisher
 
 class DetailViewController: BaseViewController {
-    var list = DetailModel().actorList
+    private var list = DetailModel().actorList
     var video: Video?
-    var mainView = DetailView()
+    private var mainView = DetailView()
     
 //    @IBOutlet var moreButton: UIButton!
 //    @IBOutlet var titleLabel: UILabel!
@@ -25,19 +25,26 @@ class DetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCell()
+       
         setDelegate()
         
         TMDBManager.shared.callDetailRequest(id: video?.id ?? 0){ result in
             self.list.append(contentsOf: result)
             self.mainView.castTableView.reloadData()
-            
-
         }
-
+        addTarget()
     }
     
-    
+    func addTarget(){
+        mainView.moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
+    }
+    @objc func moreButtonTapped() {
+        guard let vc = storyboard?.instantiateViewController(identifier: MoreViewController.identifier) as? MoreViewController else {return}
+        vc.id = video?.id ?? 0
+        vc.modalTransitionStyle = .coverVertical
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     override func configureView() {
         
         mainView.titleLabel.text = video?.title ?? ""
@@ -49,21 +56,18 @@ class DetailViewController: BaseViewController {
         mainView.moreButton.setTitle("more", for: .normal)
     }
 
-    func registerCell(){
-        
-    }
-    func setDelegate(){
+    private func setDelegate(){
         mainView.castTableView.dataSource = self
         mainView.castTableView.delegate = self
     }
 
-    @IBAction func moreButtonTapped(_ sender: UIButton) {
-        guard let vc = storyboard?.instantiateViewController(identifier: MoreViewController.identifier) as? MoreViewController else {return}
-        vc.id = video?.id ?? 0
-        vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+//    @IBAction func moreButtonTapped(_ sender: UIButton) {
+//        guard let vc = storyboard?.instantiateViewController(identifier: MoreViewController.identifier) as? MoreViewController else {return}
+//        vc.id = video?.id ?? 0
+//        vc.modalTransitionStyle = .coverVertical
+//        vc.modalPresentationStyle = .fullScreen
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
 }
     
 extension DetailViewController: UITableViewDataSource,UITableViewDelegate{

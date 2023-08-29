@@ -8,13 +8,13 @@
 import UIKit
 
 class GenderPronounViewController: BaseViewController {
-    let contentsNameLabel = {
+    private let contentsNameLabel = {
         let view = UILabel()
         view.text = "성별 대명사"
         view.textColor = .gray
         return view
     }()
-    let contentsTextField = {
+    private  let contentsTextField = {
         let view = UITextField()
         view.borderStyle = .bezel
         return view
@@ -28,7 +28,7 @@ class GenderPronounViewController: BaseViewController {
         NotificationCenter.default.post(name: NSNotification.Name("GenderPronoun"), object: nil,userInfo: ["genderPronoun" : contentsTextField.text!])
         print("!1")
     }
-    func setNavigationBar() {
+    private func setNavigationBar() {
         navigationItem.title = "성별 대명사"
     }
     

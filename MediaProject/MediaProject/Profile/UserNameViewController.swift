@@ -9,13 +9,13 @@ import UIKit
 
 class UserNameViewController: BaseViewController {
     var completionHandler: ((String)->(Void))?
-    let contentsNameLabel = {
+    private  let contentsNameLabel = {
         let view = UILabel()
         view.text = "사용자 이름"
         view.textColor = .gray
         return view
     }()
-    let contentsTextField = {
+    private let contentsTextField = {
         let view = UITextField()
         view.borderStyle = .bezel
         return view
@@ -29,7 +29,7 @@ class UserNameViewController: BaseViewController {
     override func viewDidDisappear(_ animated: Bool) {
         completionHandler?(contentsTextField.text!)
     }
-    func setNavigationBar() {
+    private func setNavigationBar() {
         navigationItem.title = "사용자 이름"
     }
     

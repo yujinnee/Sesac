@@ -14,9 +14,9 @@ enum SegmentType: String{
 
 class MoreViewController: BaseViewController {
     var id = 0
-    var SimilarList = [SimilarVideo]()
-    var VideosList = [VideosVideo]()
-    var segmentType = SegmentType.similar
+    private var similarList = [SimilarVideo]()
+    private var videosList = [VideosVideo]()
+    private var segmentType = SegmentType.similar
     
     @IBOutlet var moreCollectionView: UICollectionView!
     
@@ -39,7 +39,7 @@ class MoreViewController: BaseViewController {
         setSegmentedControl()
         requestData()
     }
-    func requestData(){
+    private func requestData(){
         let group = DispatchGroup()
         group.enter()
         requestSimilarData(group: group)
@@ -50,29 +50,29 @@ class MoreViewController: BaseViewController {
             self.moreCollectionView.reloadData()
         }
     }
-    func requestSimilarData(group: DispatchGroup){
+    private func requestSimilarData(group: DispatchGroup){
         TMDBManager.shared.callSimilarRequest(id: id){ data in
-            self.SimilarList = data
+            self.similarList = data
             group.leave()
             
         }
     }
-    func requestVideosData(group: DispatchGroup){
+    private func requestVideosData(group: DispatchGroup){
         TMDBManager.shared.callVideosRequest(id: id){ data in
-            self.VideosList = data
+            self.videosList = data
             group.leave()
             
         }
         
     }
     
-    func setSegmentedControl(){
+    private func setSegmentedControl(){
         segmentedControl.setTitle(SegmentType.similar.rawValue, forSegmentAt: 0)
         segmentedControl.setTitle(SegmentType.videos.rawValue, forSegmentAt: 1)
         
     }
     
-    func setMoreCollectionView(){
+    private func setMoreCollectionView(){
         moreCollectionView.register(UINib(nibName: MoreCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: MoreCollectionViewCell.identifier)
         moreCollectionView.dataSource = self
         moreCollectionView.delegate = self
@@ -93,8 +93,8 @@ class MoreViewController: BaseViewController {
 extension MoreViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch segmentType{
-        case .similar: return SimilarList.count
-        case .videos: return VideosList.count
+        case .similar: return similarList.count
+        case .videos: return videosList.count
         }
     }
     
@@ -102,9 +102,9 @@ extension MoreViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         guard let cell = moreCollectionView.dequeueReusableCell(withReuseIdentifier: MoreCollectionViewCell.identifier, for: indexPath) as? MoreCollectionViewCell else {return UICollectionViewCell()}
         switch segmentType{
         case .similar:
-            cell.setData(data: SimilarList[indexPath.row])
+            cell.setData(data: similarList[indexPath.row])
         case .videos:
-            cell.setData(data:VideosList[indexPath.row])
+            cell.setData(data:videosList[indexPath.row])
         }
         return cell
     }

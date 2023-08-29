@@ -13,13 +13,13 @@ protocol passNameDelegate{
 
 class NameViewController: BaseViewController {
     var delegate: passNameDelegate?
-    let contentsNameLabel = {
+    private let contentsNameLabel = {
         let view = UILabel()
         view.text = "이름"
         view.textColor = .gray
         return view
     }()
-    let contentsTextField = {
+    private let contentsTextField = {
         let view = UITextField()
         view.borderStyle = .bezel
         return view
@@ -33,7 +33,7 @@ class NameViewController: BaseViewController {
     override func viewDidDisappear(_ animated: Bool) {
         delegate?.receiveName(name: contentsTextField.text!)
     }
-    func setNavigationBar() {
+    private func setNavigationBar() {
         navigationItem.title = "이름"
     }
     override func setConstraints() {

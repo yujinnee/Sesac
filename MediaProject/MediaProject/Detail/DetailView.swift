@@ -10,11 +10,6 @@ import UIKit
 class DetailView: BaseView {
  
     
-    let moreButton = {
-        let view = UIButton()
-        view.tintColor = .systemIndigo
-        return view
-    }()
     let titleLabel = {
         let view = UILabel()
         view.font = UIFont.systemFont(ofSize: 30, weight: .bold)
@@ -32,6 +27,13 @@ class DetailView: BaseView {
         let view = UILabel()
         view.text = "Overview"
         view.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        return view
+    }()
+    let moreButton = {
+        let view = UIButton()
+        view.setTitle("more", for: .normal)
+        view.setTitleColor(.systemIndigo, for: .normal)
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .light)
         return view
     }()
     let overviewLabel = {

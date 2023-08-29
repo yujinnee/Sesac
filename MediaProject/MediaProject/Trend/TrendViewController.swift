@@ -8,10 +8,10 @@
 import UIKit
 
 class TrendViewController: BaseViewController{
-    var list = TrendModel().videoList
+    private var list = TrendModel().videoList
 
 //    @IBOutlet var trendVideoTableView: UITableView!
-    let mainView = TrendView()
+    private let mainView = TrendView()
     
 //    let profileButton = {
 //        let view = UIButton()
@@ -36,18 +36,18 @@ class TrendViewController: BaseViewController{
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.fill"), style: .plain, target: self, action: #selector(profileButtonTapped))
         
     }
-    @objc func profileButtonTapped(){
+    @objc private func profileButtonTapped(){
         
         navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
                                                 
                                                             
                                                         
-    func setDelegate(){
+    private func setDelegate(){
         mainView.trendVideoTableView.dataSource = self
         mainView.trendVideoTableView.delegate = self
     }
-    func fetchData(){
+    private func fetchData(){
         TMDBManager.shared.callTrendRequest(){ result in
             self.list.append(contentsOf: result)
             self.mainView.trendVideoTableView.reloadData()
