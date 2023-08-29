@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol passImageDelegate{
+    func receiveImageData(image:UIImage)
+}
+
 class SearchViewController: BaseViewController {
+    
+    var delegate: passImageDelegate?
     
     let mainView = SearchView()
     
-    let imageList = ["pencil","star","star.fill"]
+    let imageList = ["pencil","star","person","star.fill"]
     override func loadView() {
         self.view = mainView
     }
@@ -23,7 +29,8 @@ class SearchViewController: BaseViewController {
     }
     
     @objc func recommendKeywordNotificationObserver(notification: NSNotification) {
-        print("recommendKeywordNotificationObserver")
+
+
     }
    
     override func configureView() {
@@ -51,9 +58,9 @@ extension SearchViewController: UICollectionViewDataSource,UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(imageList[indexPath.item])
+        delegate?.receiveImageData(image: UIImage(systemName:imageList[indexPath.item] ) ?? UIImage())
         
-        NotificationCenter.default.post(name: NSNotification.Name("SelectImage"), object: nil,userInfo: ["name" : imageList[indexPath.item], "sample" : "고래밥" ])
+//        NotificationCenter.default.post(name: NSNotification.Name("SelectImage"), object: nil,userInfo: ["name" : imageList[indexPath.item], "sample" : "고래밥" ])
         
         dismiss(animated: true)
     }

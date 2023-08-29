@@ -26,7 +26,7 @@ class SearchView: BaseView {
         addSubview(collectionView)
     }
     
-    func collectionViewLayout() -> UICollectionViewFlowLayout {
+    private func collectionViewLayout() -> UICollectionViewFlowLayout {
         print("dd")
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 8
