@@ -23,11 +23,14 @@ class UserNameViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setNavigationBar()
+    
     }
     override func viewDidDisappear(_ animated: Bool) {
         completionHandler?(contentsTextField.text!)
+    }
+    func setNavigationBar() {
+        navigationItem.title = "사용자 이름"
     }
     
     override func setConstraints() {

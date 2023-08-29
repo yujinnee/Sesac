@@ -27,10 +27,14 @@ class NameViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
 
     }
     override func viewDidDisappear(_ animated: Bool) {
         delegate?.receiveName(name: contentsTextField.text!)
+    }
+    func setNavigationBar() {
+        navigationItem.title = "이름"
     }
     override func setConstraints() {
         view.addSubview(contentsNameLabel)

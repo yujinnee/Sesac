@@ -22,14 +22,15 @@ class GenderPronounViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setNavigationBar()
     }
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.post(name: NSNotification.Name("GenderPronoun"), object: nil,userInfo: ["genderPronoun" : contentsTextField.text!])
         print("!1")
     }
-   
+    func setNavigationBar() {
+        navigationItem.title = "성별 대명사"
+    }
     
     override func setConstraints() {
         view.addSubview(contentsNameLabel)

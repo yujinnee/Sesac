@@ -14,6 +14,7 @@ class ProfileViewController: BaseViewController {
         super.viewDidLoad()
         addTarget()
         addObserver()
+        setNavigationBar()
      
     }
     override func loadView() {
@@ -21,7 +22,16 @@ class ProfileViewController: BaseViewController {
     }
     
     func setNavigationBar() {
-//        naviga
+        navigationItem.title = "프로필 편집"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtontapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .plain, target: self , action: #selector(doneButtontapped))
+    }
+    @objc func cancelButtontapped(){
+        navigationController?.popViewController(animated: true)
+    }
+    @objc func doneButtontapped(){
+        navigationController?.popViewController(animated: true)
+
     }
     func addObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(genderPronounNotificationObserver), name: NSNotification.Name("GenderPronoun"), object: nil)
@@ -60,6 +70,6 @@ class ProfileViewController: BaseViewController {
 
 extension ProfileViewController: passNameDelegate{
     func receiveName(name: String) {
-        mainView.userNameTitleLabel.text = name
+        mainView.nameContentsButton.setTitle(name, for: .normal)
     }
 }
