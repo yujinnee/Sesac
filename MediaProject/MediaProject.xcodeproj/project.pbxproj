@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A0B511E2A9CEF290062FAB3 /* TrendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0B511D2A9CEF290062FAB3 /* TrendView.swift */; };
+		6A0B51202A9CEF570062FAB3 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0B511F2A9CEF570062FAB3 /* BaseView.swift */; };
+		6A0B51262A9CF2EA0062FAB3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0B51252A9CF2EA0062FAB3 /* DetailView.swift */; };
 		6A49FC9E2A8682EE0007A2B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A49FC9D2A8682EE0007A2B6 /* AppDelegate.swift */; };
 		6A49FCA02A8682EE0007A2B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A49FC9F2A8682EE0007A2B6 /* SceneDelegate.swift */; };
 		6A49FCA22A8682EE0007A2B6 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A49FCA12A8682EE0007A2B6 /* TrendViewController.swift */; };
@@ -38,9 +41,17 @@
 		6A96AF9B2A93B5B900E0B3B3 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96AF9A2A93B5B900E0B3B3 /* MoreViewController.swift */; };
 		6A96AF9E2A93B74800E0B3B3 /* MoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96AF9C2A93B74800E0B3B3 /* MoreCollectionViewCell.swift */; };
 		6A96AF9F2A93B74800E0B3B3 /* MoreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A96AF9D2A93B74800E0B3B3 /* MoreCollectionViewCell.xib */; };
+		6A9C354E2A9BC9B100740BB9 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C354D2A9BC9B100740BB9 /* OnboardingPageViewController.swift */; };
+		6A9C35542A9BCA6100740BB9 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C35532A9BCA6100740BB9 /* SecondPageViewController.swift */; };
+		6A9C35562A9BCA7700740BB9 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C35552A9BCA7700740BB9 /* FirstPageViewController.swift */; };
+		6A9C35582A9BCA8B00740BB9 /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C35572A9BCA8B00740BB9 /* ThirdPageViewController.swift */; };
+		6A9C355B2A9BCD9600740BB9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6A9C355A2A9BCD9600740BB9 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A0B511D2A9CEF290062FAB3 /* TrendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendView.swift; sourceTree = "<group>"; };
+		6A0B511F2A9CEF570062FAB3 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		6A0B51252A9CF2EA0062FAB3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		6A49FC9A2A8682EE0007A2B6 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A49FC9D2A8682EE0007A2B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A49FC9F2A8682EE0007A2B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +82,10 @@
 		6A96AF9A2A93B5B900E0B3B3 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		6A96AF9C2A93B74800E0B3B3 /* MoreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCollectionViewCell.swift; sourceTree = "<group>"; };
 		6A96AF9D2A93B74800E0B3B3 /* MoreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreCollectionViewCell.xib; sourceTree = "<group>"; };
+		6A9C354D2A9BC9B100740BB9 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
+		6A9C35532A9BCA6100740BB9 /* SecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
+		6A9C35552A9BCA7700740BB9 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
+		6A9C35572A9BCA8B00740BB9 /* ThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A49FCD02A87C1810007A2B6 /* SwiftyJSON in Frameworks */,
+				6A9C355B2A9BCD9600740BB9 /* SnapKit in Frameworks */,
 				6A49FCCA2A87C1690007A2B6 /* Kingfisher in Frameworks */,
 				6A49FCCD2A87C1740007A2B6 /* Alamofire in Frameworks */,
 			);
@@ -87,6 +103,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A0B511C2A9CEF0E0062FAB3 /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				6A49FCA12A8682EE0007A2B6 /* TrendViewController.swift */,
+				6A0B511D2A9CEF290062FAB3 /* TrendView.swift */,
+			);
+			path = Trend;
+			sourceTree = "<group>";
+		};
+		6A0B51212A9CF2B50062FAB3 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				6A49FCDF2A88D3F50007A2B6 /* DetailViewController.swift */,
+				6A0B51252A9CF2EA0062FAB3 /* DetailView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		6A0B51222A9CF2C10062FAB3 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				6A96AF9A2A93B5B900E0B3B3 /* MoreViewController.swift */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
 		6A49FC912A8682EE0007A2B6 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +148,10 @@
 		6A49FC9C2A8682EE0007A2B6 /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
+				6A0B51222A9CF2C10062FAB3 /* More */,
+				6A0B51212A9CF2B50062FAB3 /* Detail */,
+				6A0B511C2A9CEF0E0062FAB3 /* Trend */,
+				6A9C354F2A9BCA1300740BB9 /* OnBoarding */,
 				6A49FCDB2A87C8720007A2B6 /* APIKeys.swift */,
 				6A49FCD92A87C85E0007A2B6 /* .gitignore */,
 				6A49FCD42A87C44D0007A2B6 /* Network */,
@@ -114,7 +160,6 @@
 				6A49FCB92A87B09F0007A2B6 /* Storyboard */,
 				6A49FCB82A87B08E0007A2B6 /* Base */,
 				6A49FCB72A87B0770007A2B6 /* Resource */,
-				6A49FCB62A87B06B0007A2B6 /* ViewController */,
 				6A49FCB52A87B0000007A2B6 /* Protocol */,
 				6A49FCAB2A8682F30007A2B6 /* Info.plist */,
 			);
@@ -128,16 +173,6 @@
 				6A49FCBB2A87B1990007A2B6 /* InitialSetting.swift */,
 			);
 			path = Protocol;
-			sourceTree = "<group>";
-		};
-		6A49FCB62A87B06B0007A2B6 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				6A49FCA12A8682EE0007A2B6 /* TrendViewController.swift */,
-				6A49FCDF2A88D3F50007A2B6 /* DetailViewController.swift */,
-				6A96AF9A2A93B5B900E0B3B3 /* MoreViewController.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		6A49FCB72A87B0770007A2B6 /* Resource */ = {
@@ -154,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				6A49FCB12A87AE360007A2B6 /* BaseViewController.swift */,
+				6A0B511F2A9CEF570062FAB3 /* BaseView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -211,6 +247,25 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		6A9C354F2A9BCA1300740BB9 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				6A9C35522A9BCA4700740BB9 /* Pages */,
+				6A9C354D2A9BC9B100740BB9 /* OnboardingPageViewController.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		6A9C35522A9BCA4700740BB9 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				6A9C35552A9BCA7700740BB9 /* FirstPageViewController.swift */,
+				6A9C35532A9BCA6100740BB9 /* SecondPageViewController.swift */,
+				6A9C35572A9BCA8B00740BB9 /* ThirdPageViewController.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -231,6 +286,7 @@
 				6A49FCC92A87C1690007A2B6 /* Kingfisher */,
 				6A49FCCC2A87C1740007A2B6 /* Alamofire */,
 				6A49FCCF2A87C1810007A2B6 /* SwiftyJSON */,
+				6A9C355A2A9BCD9600740BB9 /* SnapKit */,
 			);
 			productName = MediaProject;
 			productReference = 6A49FC9A2A8682EE0007A2B6 /* MediaProject.app */;
@@ -264,6 +320,7 @@
 				6A49FCC82A87C1690007A2B6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				6A49FCCB2A87C1740007A2B6 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				6A49FCCE2A87C1810007A2B6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				6A9C35592A9BCD9600740BB9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 6A49FC9B2A8682EE0007A2B6 /* Products */;
 			projectDirPath = "";
@@ -296,17 +353,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A0B511E2A9CEF290062FAB3 /* TrendView.swift in Sources */,
 				6A49FCC72A87BD4A0007A2B6 /* TrendModel.swift in Sources */,
 				6A49FCA22A8682EE0007A2B6 /* TrendViewController.swift in Sources */,
 				6A49FCDC2A87C8720007A2B6 /* APIKeys.swift in Sources */,
 				6A49FCD32A87C3420007A2B6 /* TMDBManager.swift in Sources */,
 				6A96AF992A93B41900E0B3B3 /* Videos.swift in Sources */,
+				6A0B51202A9CEF570062FAB3 /* BaseView.swift in Sources */,
 				6A96AF9B2A93B5B900E0B3B3 /* MoreViewController.swift in Sources */,
 				6A49FCD62A87C45F0007A2B6 /* URL+Extension.swift in Sources */,
 				6A49FCC12A87B36C0007A2B6 /* TrendMovieTableViewCell.swift in Sources */,
 				6A49FCE72A892DC80007A2B6 /* PersonTableViewCell.swift in Sources */,
+				6A9C35582A9BCA8B00740BB9 /* ThirdPageViewController.swift in Sources */,
+				6A9C35542A9BCA6100740BB9 /* SecondPageViewController.swift in Sources */,
 				6A49FCE22A88D5490007A2B6 /* DetailModel.swift in Sources */,
+				6A9C354E2A9BC9B100740BB9 /* OnboardingPageViewController.swift in Sources */,
+				6A9C35562A9BCA7700740BB9 /* FirstPageViewController.swift in Sources */,
 				6A49FCB42A87AEA70007A2B6 /* ReusableViewProtocol.swift in Sources */,
+				6A0B51262A9CF2EA0062FAB3 /* DetailView.swift in Sources */,
 				6A49FCB22A87AE360007A2B6 /* BaseViewController.swift in Sources */,
 				6A49FCBC2A87B1990007A2B6 /* InitialSetting.swift in Sources */,
 				6A49FC9E2A8682EE0007A2B6 /* AppDelegate.swift in Sources */,
@@ -560,6 +624,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		6A9C35592A9BCD9600740BB9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -577,6 +649,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6A49FCCE2A87C1810007A2B6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		6A9C355A2A9BCD9600740BB9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6A9C35592A9BCD9600740BB9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

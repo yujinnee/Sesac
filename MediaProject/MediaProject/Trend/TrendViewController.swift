@@ -10,25 +10,32 @@ import UIKit
 class TrendViewController: BaseViewController{
     var list = TrendModel().videoList
 
-    @IBOutlet var trendVideoTableView: UITableView!
+//    @IBOutlet var trendVideoTableView: UITableView!
+    let mainView = TrendView()
+    
+    override func loadView() {
+        self.view = mainView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegate()
-        registerCell()
-        trendVideoTableView.rowHeight = 400
-        TMDBManager.shared.callTrendRequest(){ result in
-
-            self.list.append(contentsOf: result)
-            self.trendVideoTableView.reloadData()
-        }
+        fetchData()
+        
     }
     
-    func registerCell(){
-        trendVideoTableView.register(UINib(nibName: TrendMovieTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: TrendMovieTableViewCell.identifier)
+    override func configureView() {
+        mainView.trendVideoTableView.rowHeight = 400
     }
     func setDelegate(){
-        trendVideoTableView.dataSource = self
-        trendVideoTableView.delegate = self
+        mainView.trendVideoTableView.dataSource = self
+        mainView.trendVideoTableView.delegate = self
+    }
+    func fetchData(){
+        TMDBManager.shared.callTrendRequest(){ result in
+            self.list.append(contentsOf: result)
+            self.mainView.trendVideoTableView.reloadData()
+        }
     }
 
 }
@@ -45,8 +52,10 @@ extension TrendViewController: UITableViewDataSource,UITableViewDelegate{
                 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("ddddd")
         guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else {return}
         vc.video = list[indexPath.row]
+        print(navigationController)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

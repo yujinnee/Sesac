@@ -11,48 +11,50 @@ import Kingfisher
 class DetailViewController: BaseViewController {
     var list = DetailModel().actorList
     var video: Video?
+    var mainView = DetailView()
     
-    @IBOutlet var moreButton: UIButton!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var posterImageView: UIImageView!
-    @IBOutlet var backdropImageView: UIImageView!
-    @IBOutlet var overviewLabel: UILabel!
-    @IBOutlet var castTableView: UITableView!
+//    @IBOutlet var moreButton: UIButton!
+//    @IBOutlet var titleLabel: UILabel!
+//    @IBOutlet var posterImageView: UIImageView!
+//    @IBOutlet var backdropImageView: UIImageView!
+//    @IBOutlet var overviewLabel: UILabel!
+//    @IBOutlet var castTableView: UITableView!
+    override func loadView() {
+        self.view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
         setDelegate()
-        castTableView.rowHeight = 120
-        print(video?.id)
+        
         TMDBManager.shared.callDetailRequest(id: video?.id ?? 0){ result in
             self.list.append(contentsOf: result)
-            self.castTableView.reloadData()
+            self.mainView.castTableView.reloadData()
             
 
         }
 
     }
     
-    override func initData() {
+    
+    override func configureView() {
         
-        titleLabel.text = video?.title ?? ""
+        mainView.titleLabel.text = video?.title ?? ""
         let posterURL = URL(string: video?.posterURL ?? "" )
-        posterImageView.kf.setImage(with: posterURL)
+        mainView.posterImageView.kf.setImage(with: posterURL)
         let backdropURL = URL(string: video?.imageURL ?? "")
-        backdropImageView.kf.setImage(with: backdropURL)
-        overviewLabel.text = video?.overview ?? ""
-        moreButton.setTitle("more", for: .normal)
+        mainView.backdropImageView.kf.setImage(with: backdropURL)
+        mainView.overviewLabel.text = video?.overview ?? ""
+        mainView.moreButton.setTitle("more", for: .normal)
     }
-    override func initLayout() {
-      
-    }
+
     func registerCell(){
-        castTableView.register(UINib(nibName: PersonTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PersonTableViewCell.identifier)
+        
     }
     func setDelegate(){
-        castTableView.dataSource = self
-        castTableView.delegate = self
+        mainView.castTableView.dataSource = self
+        mainView.castTableView.delegate = self
     }
 
     @IBAction func moreButtonTapped(_ sender: UIButton) {

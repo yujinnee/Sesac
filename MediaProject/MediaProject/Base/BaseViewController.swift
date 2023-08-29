@@ -6,24 +6,26 @@
 //
 
 import UIKit
+import SnapKit
 
-class BaseViewController: UIViewController, InitialSetting{
+class BaseViewController: UIViewController{
    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        initLayout()
-        initData()
+        view.backgroundColor = .white
+        configureView()
+        setConstraints()
+    }
+    
+    func configureView() {
+        view.backgroundColor = .white
+        print("Base ConfigureView")
+    }
+    
+    func setConstraints() {
+        print("Base setconstraints")
+        
+    }
 
-    }
-    func initLayout() {
-        
-    }
-    
-    func initData() {
-        
-    }
-    
     
 }
