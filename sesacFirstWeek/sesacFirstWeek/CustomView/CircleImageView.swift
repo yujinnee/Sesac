@@ -17,7 +17,6 @@ class CircleImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func layoutSubviews() {
         layer.cornerRadius = frame.width/2
         layer.borderColor = UIColor.brown.cgColor

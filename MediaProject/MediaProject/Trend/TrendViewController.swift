@@ -13,6 +13,12 @@ class TrendViewController: BaseViewController{
 //    @IBOutlet var trendVideoTableView: UITableView!
     let mainView = TrendView()
     
+//    let profileButton = {
+//        let view = UIButton()
+//        view.imageView?.image = UIImage(systemName: "person")
+//        return view
+//    }
+    
     override func loadView() {
         self.view = mainView
     }
@@ -26,7 +32,17 @@ class TrendViewController: BaseViewController{
     
     override func configureView() {
         mainView.trendVideoTableView.rowHeight = 400
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.fill"), style: .plain, target: self, action: #selector(profileButtonTapped))
+        
     }
+    @objc func profileButtonTapped(){
+        
+        navigationController?.pushViewController(ProfileViewController(), animated: true)
+    }
+                                                
+                                                            
+                                                        
     func setDelegate(){
         mainView.trendVideoTableView.dataSource = self
         mainView.trendVideoTableView.delegate = self

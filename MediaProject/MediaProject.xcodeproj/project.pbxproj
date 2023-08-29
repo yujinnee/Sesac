@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A0566B62A9DD51400F0E595 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0566B52A9DD51400F0E595 /* ProfileViewController.swift */; };
+		6A0566B82A9DD52E00F0E595 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0566B72A9DD52E00F0E595 /* ProfileView.swift */; };
+		6A0566BA2A9DF13C00F0E595 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0566B92A9DF13C00F0E595 /* NameViewController.swift */; };
+		6A0566BC2A9DF14C00F0E595 /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0566BB2A9DF14C00F0E595 /* UserNameViewController.swift */; };
+		6A0566BE2A9DF15C00F0E595 /* GenderPronounViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0566BD2A9DF15C00F0E595 /* GenderPronounViewController.swift */; };
 		6A0B511E2A9CEF290062FAB3 /* TrendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0B511D2A9CEF290062FAB3 /* TrendView.swift */; };
 		6A0B51202A9CEF570062FAB3 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0B511F2A9CEF570062FAB3 /* BaseView.swift */; };
 		6A0B51262A9CF2EA0062FAB3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0B51252A9CF2EA0062FAB3 /* DetailView.swift */; };
@@ -49,6 +54,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A0566B52A9DD51400F0E595 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		6A0566B72A9DD52E00F0E595 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		6A0566B92A9DF13C00F0E595 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		6A0566BB2A9DF14C00F0E595 /* UserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewController.swift; sourceTree = "<group>"; };
+		6A0566BD2A9DF15C00F0E595 /* GenderPronounViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPronounViewController.swift; sourceTree = "<group>"; };
 		6A0B511D2A9CEF290062FAB3 /* TrendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendView.swift; sourceTree = "<group>"; };
 		6A0B511F2A9CEF570062FAB3 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		6A0B51252A9CF2EA0062FAB3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -103,6 +113,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A0566B42A9DD50000F0E595 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				6A0566B52A9DD51400F0E595 /* ProfileViewController.swift */,
+				6A0566B72A9DD52E00F0E595 /* ProfileView.swift */,
+				6A0566B92A9DF13C00F0E595 /* NameViewController.swift */,
+				6A0566BB2A9DF14C00F0E595 /* UserNameViewController.swift */,
+				6A0566BD2A9DF15C00F0E595 /* GenderPronounViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		6A0B511C2A9CEF0E0062FAB3 /* Trend */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +170,7 @@
 		6A49FC9C2A8682EE0007A2B6 /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
+				6A0566B42A9DD50000F0E595 /* Profile */,
 				6A0B51222A9CF2C10062FAB3 /* More */,
 				6A0B51212A9CF2B50062FAB3 /* Detail */,
 				6A0B511C2A9CEF0E0062FAB3 /* Trend */,
@@ -359,13 +382,16 @@
 				6A49FCDC2A87C8720007A2B6 /* APIKeys.swift in Sources */,
 				6A49FCD32A87C3420007A2B6 /* TMDBManager.swift in Sources */,
 				6A96AF992A93B41900E0B3B3 /* Videos.swift in Sources */,
+				6A0566BE2A9DF15C00F0E595 /* GenderPronounViewController.swift in Sources */,
 				6A0B51202A9CEF570062FAB3 /* BaseView.swift in Sources */,
 				6A96AF9B2A93B5B900E0B3B3 /* MoreViewController.swift in Sources */,
+				6A0566BA2A9DF13C00F0E595 /* NameViewController.swift in Sources */,
 				6A49FCD62A87C45F0007A2B6 /* URL+Extension.swift in Sources */,
 				6A49FCC12A87B36C0007A2B6 /* TrendMovieTableViewCell.swift in Sources */,
 				6A49FCE72A892DC80007A2B6 /* PersonTableViewCell.swift in Sources */,
 				6A9C35582A9BCA8B00740BB9 /* ThirdPageViewController.swift in Sources */,
 				6A9C35542A9BCA6100740BB9 /* SecondPageViewController.swift in Sources */,
+				6A0566B62A9DD51400F0E595 /* ProfileViewController.swift in Sources */,
 				6A49FCE22A88D5490007A2B6 /* DetailModel.swift in Sources */,
 				6A9C354E2A9BC9B100740BB9 /* OnboardingPageViewController.swift in Sources */,
 				6A9C35562A9BCA7700740BB9 /* FirstPageViewController.swift in Sources */,
@@ -373,7 +399,9 @@
 				6A0B51262A9CF2EA0062FAB3 /* DetailView.swift in Sources */,
 				6A49FCB22A87AE360007A2B6 /* BaseViewController.swift in Sources */,
 				6A49FCBC2A87B1990007A2B6 /* InitialSetting.swift in Sources */,
+				6A0566BC2A9DF14C00F0E595 /* UserNameViewController.swift in Sources */,
 				6A49FC9E2A8682EE0007A2B6 /* AppDelegate.swift in Sources */,
+				6A0566B82A9DD52E00F0E595 /* ProfileView.swift in Sources */,
 				6A96AF9E2A93B74800E0B3B3 /* MoreCollectionViewCell.swift in Sources */,
 				6A49FCC52A87BC010007A2B6 /* Video.swift in Sources */,
 				6A49FCE42A88D8A60007A2B6 /* People.swift in Sources */,
