@@ -28,6 +28,8 @@ class AddViewController: BaseViewController {
         setConstraints()
         
         NotificationCenter.default.addObserver(self, selector: #selector(selectImageNotificationObserver(notification:)), name: NSNotification.Name.seletImage, object: nil)
+        
+        APIService.shared.callRequest()
  
     }
     override func viewWillAppear(_ animated: Bool) {
