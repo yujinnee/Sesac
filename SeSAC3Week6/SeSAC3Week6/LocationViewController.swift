@@ -14,6 +14,7 @@ class LocationViewController: UIViewController {
     //2. 위치 매니저 생성: 위치에 대한 대부분을 담당
     let locationManager = CLLocationManager()
     let mapView = MKMapView()
+    
     let cafeButton = UIButton()
     let foodButton = UIButton()
 
@@ -127,13 +128,15 @@ class LocationViewController: UIViewController {
     }
     
     
+    // MARK: - 위치 서비스 권한을 확인하는 함수
     func checkDeviceLocationAuthorization() {
-        
+        // iOS 위치 서비스 활성화 체크
+        // 위치 권한 체크는 비동기로 처리해야함.
         DispatchQueue.global().async {
-            //iOS 위치 서비스 활성화 체크
+            // 위치 서비스가 활성화되어 있는지 확인. 만약 활성화되어 있으면, 권한 확인 및 처리(현재 사용자의 위치 권한 상태를 가지고 옴)를 진행.
             if CLLocationManager.locationServicesEnabled() {
-                
-                //현재 사용자의 위치 권한 상태를 가지고 옴.
+            //현재 사용자의 위치 권한 상태를 가져옴. iOS 14.0 이상의 경우에는 locationManager.authorizationStatus를 사용하고,
+            //그 이하 버전에서는 CLLocationManager.authorizationStatus()를 사용하여 상태를 가져옴. 가져온 권한 상태는 authorization 변수에 저장됨.
                 let authorization: CLAuthorizationStatus
                 
                 if #available(iOS 14.0, *) {
@@ -141,71 +144,98 @@ class LocationViewController: UIViewController {
                 } else {
                     authorization = CLLocationManager.authorizationStatus()
                 }
-                print(authorization)
-                
-                self.checkCurrentLocationAuthorization(status: authorization)
-                
+                print(authorization, "77")
+            //메인 스레드에서 권한 상태를 처리하는 부분. 메인 스레드에서 UI 업데이트 및 사용자 액션을 처리해야 하므로, 백그라운드 스레드에서 확인한 권한 상태를 메인 스레드에서 처리함.
+                DispatchQueue.main.async {
+                    self.checkCurrentLocationAuthorization(status: authorization)
+                }
             } else {
-                print("위치 서비스가 꺼져 있어서 위치 권한 요청을 못합니다")
+                print("위치 서비스가 꺼져 있어서 위치 권한 요청을 못합니다.")
             }
         }
-        
-       
     }
     
+    // MARK: - 위치 서비스 권한의 상태에 따라 적절한 동작을 수행하는 역할을 하는 함수
+    /// - Parameter status: status 매개변수로 권한 상태를 전달받음.
     func checkCurrentLocationAuthorization(status: CLAuthorizationStatus) {
-        print("check",status)
+        print("Check", status)
+        //    @frozen >> 더 이상 열거형에 절대 추가될 케이스가 없다고 확인한다.!!!
         switch status {
-        case .notDetermined:
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            print("restriced")
-        case .denied:
+        case .notDetermined: //사용자가 위치 권한을 아직 결정하지 않은 상태
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest // 위치 업뎃 정확도 설정
+            locationManager.requestWhenInUseAuthorization() //권한 허용을 위한 alert(info.plist)창을 표시하도록 요청함. 사용자에게 위치 정보를 사용할 때의 권한을 요청.
+        case .restricted: //앱에 의해 제한된 상태. 일반적으로 부모가 관리하는 계정이나 디바이스 제한.
+            print("restricted")
+        case .denied: //사용자가 위치 권한을 거부한 상태.
             print("denied")
-        case .authorizedAlways:
+            showLocationSetiingAlert() //위치 설정을 변경하도록 유도하는 알림창을 표시
+        case .authorizedAlways: //항상 위치 사용 권한이 허용된 상태
             print("authorizedAlways")
-        case .authorizedWhenInUse:
+        case .authorizedWhenInUse: //앱 사용 중에 위치 사용 권한이 허용된 상태
             print("authorizedWhenInUse")
-            locationManager.startUpdatingLocation()
-        case .authorized:
+            locationManager.startUpdatingLocation() // 위치 업데이트를 시작. 이후 didUpdateLocation 메서드 호출.
+        case .authorized: // iOS 14.0 이상에서 deprecated된 상태, .authorizedAlways 또는 .authorizedWhenInUse로 처리됨.
             print("authorized")
+        @unknown default: // 위치 권한 종류가 더 생길 가능성 대비하여 기본 처리를 정의
+            print("default")
         }
     }
     
 }
 
-//4. 프로토콜 선언
+// 4. 프로토콜 선언
+// MARK: - 위치 관련 이벤트를 처리하는 메서드들을 구현하고 있는 프로토콜 확장. 각 메서드는 사용자의 위치 정보 및 위치 권한 변경에 대한 처리를 담당
 extension LocationViewController: CLLocationManagerDelegate {
-    
-    //5. 사용자의 위치를 성공적으로 가지고 온 경우
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("===",locations)
-        print(#function)
-        
+// 5. 사용자의 위치 정보를 성공적으로 가져왔을 때 호출됨
+// 한번만 실행되지 않는다. iOS 위치 업데이트가 필요한 시점에 알아서 여러번 호출
+func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    print(#function)
+    if let coordinate = locations.last?.coordinate {
+        let lat = coordinate.latitude //위도
+        let lon = coordinate.longitude //경도
+        print(lat, lon)
+        print(coordinate)
+        //날씨api호출
     }
+    locationManager.stopUpdatingLocation()
+    //stopUpdatingLocation()을 호출하여 위치 업데이트를 중단함. 이렇게 하면 한 번 위치를 가져온 후 업데이트를 중단할 수 있다.
+}
+// 사용자의 위치를 가지고 오지 못한 경우
+func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     
-    //사용자의 위치를 가지고 오지 못한 경우
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(#function)
-        
-    }
+}
+// 사용자의 권한 상태가 바뀔 때를 알려줌
+// 거부했다가 설정에서 변경을 했거나, 혹은 notDetermined 상태에서 허용을 했거나
+// 허용해서 위치를 가지고 오는 도중에, 설정에서 거부를 하고 앱으로 다시 돌아올 때 등
+// iOS 14 이상
+func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+    print(#function)
+    checkDeviceLocationAuthorization() //위치 권한 상태를 확인하고 처리.
+}
+
+//사용자의 위치 권한 상태가 변경되었을 때(iOS 14 미만), 호출됨. iOS 14 이상에서는 위의 locationManagerDidChangeAuthorization를 사용하므로
+//이 메서드는 deprecated된 상태. 위치 권한 변경에 따른 추가 처리를 이곳에서 구현할 수 있다.
+func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
     
-    //사용자의 권한 상태가 바뀔 때를 알려줌 : iOS 14 이상
-    //거부했다가 설정에서 변경을 했거나, 혹은 notDetermined 상태에서 혀용을 했거나
-    //허용해서 위치를 가지고 오는 도중에, 설정에서 거부를 하고 앱으로 다시 돌아 올 때 등
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        print(#function)
-        checkDeviceLocationAuthorization()
-        
-        
-    }
-    
-    //사용자의 권한 상태가 바뀔 때를 알려줌 : iOS 14 미만
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        print(#function)
-        
-        
-    }
-    
+}
+}
+
+// MARK: - MKMapViewDelegate 프로토콜을 확장, 지도 뷰에 관련된 이벤트를 처리하는 메서드
+// 지도 영역이 변경되거나 어노테이션을 선택할 때 필요한 로직을 이 메서드들 내에서 구현
+extension LocationViewController: MKMapViewDelegate {
+//지도의 표시 영역이 변경되었을 때 호출
+/// - Parameters:
+///   - mapView: 변경된 지도 뷰의 인스턴스
+///   - animated: 지도 표시 영역이 애니메이션으로 변경되었는지 여부를 나타냄
+func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+    print(#function)
+}
+
+//지도 상에서 어노테이션(annotation)을 선택했을 때 호출
+func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
+    print(#function)
+}
+//  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//    print(#function)
+//  }
 }
