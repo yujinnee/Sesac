@@ -13,7 +13,7 @@ type(of: user.name)
 
 
 
-type(of: user).name
+//type(of: user).name
 type(of: user).originalName
 
 print(type(of: user.name))

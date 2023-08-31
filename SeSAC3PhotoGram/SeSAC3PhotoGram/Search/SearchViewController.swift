@@ -26,6 +26,9 @@ class SearchViewController: BaseViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(recommendKeywordNotificationObserver(notification: )), name: NSNotification.Name("RecommendKeyword"), object: nil)
+        
+        mainView.searchBar.becomeFirstResponder()
+        mainView.searchBar.delegate = self
     }
     
     @objc func recommendKeywordNotificationObserver(notification: NSNotification) {
@@ -42,6 +45,12 @@ class SearchViewController: BaseViewController {
     
     override func setConstraints() {
         super.setConstraints()
+    }
+}
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        mainView.searchBar.resignFirstResponder()
+     
     }
 }
 

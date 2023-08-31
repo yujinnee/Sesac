@@ -21,6 +21,10 @@ class AddViewController: BaseViewController {
         self.view = mainView
     }
     
+    deinit {
+        print("deinit",self)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +32,8 @@ class AddViewController: BaseViewController {
         setConstraints()
         
         NotificationCenter.default.addObserver(self, selector: #selector(selectImageNotificationObserver(notification:)), name: NSNotification.Name.seletImage, object: nil)
+        
+        APIService.shared.callRequest()
  
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +75,7 @@ class AddViewController: BaseViewController {
         let vc = ContentViewController()
         vc.completionHandler = { text in
             self.mainView.contentButton.setTitle(text, for: .normal)
-            print("completionHandler")
+//            print("completionHandler")
         }
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -87,13 +93,15 @@ class AddViewController: BaseViewController {
         present(vc,animated:  true)
     }
     @objc func dateButtonClicked() {
-        let vc = DateViewController()
-        vc.delegate = self
+//        let vc = DateViewController()
+//        vc.delegate = self
+//        navigationController?.pushViewController(vc, animated: true)
+        
+        let vc = HomeViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     override func setConstraints() {
         super.setConstraints()
-        print("Add SetConstraints")
     }
 
 }
