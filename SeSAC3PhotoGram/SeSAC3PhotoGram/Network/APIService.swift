@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class APIService {
     
@@ -30,4 +31,18 @@ class APIService {
         }.resume()
         
     }
+    
+    func callImageRequest(word: String,comletionHandler: @escaping ([String]) -> Void) {
+        let url = URL(string: "https://api.unsplash.com/search/photos?query=\(word)&client_id=\(APIKeys.unsplashKey)")!
+        AF.request(url, method: .get).validate()
+            .responseDecodable(of: UnsplashImageDataModel.self) { response in
+                print(response)
+                guard let value = response.value else { return }
+                print("responseDecodable:", value)
+                var imageUrls = value.results.map{$0.urls.regular}
+                
+                comletionHandler(imageUrls)
+            }
+    }
+        
 }

@@ -6,20 +6,22 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol passImageDelegate{
     func receiveImageData(image:UIImage)
 }
 
 class SearchViewController: BaseViewController {
+    var imageList: [String]?
     
     var delegate: passImageDelegate?
     
-    var completionHandler: ((UIImage)->Void)?
+    var completionHandler: ((String)->Void)?
     
     let mainView = SearchView()
     
-    let imageList = ["pencil","star","person","star.fill"]
+
     override func loadView() {
         self.view = mainView
     }
@@ -51,6 +53,11 @@ class SearchViewController: BaseViewController {
 }
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        APIService.shared.callImageRequest(word: searchBar.text!) { images in
+            print(images)
+            self.imageList = images
+            self.mainView.collectionView.reloadData()
+        }
         mainView.searchBar.resignFirstResponder()
      
     }
@@ -58,21 +65,27 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UICollectionViewDataSource,UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageList.count
+        return imageList?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         cell.imageView.backgroundColor = .systemBrown
-        cell.imageView.image = UIImage(systemName: imageList[indexPath.item])
+        let url = URL(string: imageList?[indexPath.item] ?? "")
+        cell.imageView.kf.setImage(with: url)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.receiveImageData(image: UIImage(systemName:imageList[indexPath.item] ) ?? UIImage())
+        print("누름!!!!")
+        completionHandler?(imageList?[indexPath.item] ?? "")
+//        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
+        
+//        delegate?.receiveImageData(image: UIImage(systemName:imageList?[indexPath.item] ?? "" ) ?? UIImage())
         
 //        NotificationCenter.default.post(name: NSNotification.Name("SelectImage"), object: nil,userInfo: ["name" : imageList[indexPath.item], "sample" : "고래밥" ])
         
-        dismiss(animated: true)
+       
     }
 }

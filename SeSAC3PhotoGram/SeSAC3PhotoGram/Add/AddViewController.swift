@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SeSACPhotoFramework
+import Kingfisher
 
 protocol PassDataDelegate {
     func receiveDate(date: Date)
@@ -83,10 +84,14 @@ class AddViewController: BaseViewController {
         }
         let web = UIAlertAction(title: "웹에서 검색하기", style: .default) { action in
             let vc  = SearchViewController()
-            vc.completionHandler = { image in
-                self.mainView.photoImageView.image = image
+            vc.completionHandler = { imageUrl in
+                let url = URL(string: imageUrl)
+                self.mainView.photoImageView.kf.setImage(with: url)
             }
-            self.navigationController?.pushViewController(vc, animated: true)
+//            self.navigationController?.pushViewController(vc, animated: true)
+            vc.modalTransitionStyle = .coverVertical
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
         }
         let gallery = UIAlertAction(title: "갤러리에서 가져오기", style: .default) { action in
             guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
