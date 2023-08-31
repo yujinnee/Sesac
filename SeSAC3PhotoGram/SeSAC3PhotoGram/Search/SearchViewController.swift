@@ -15,6 +15,8 @@ class SearchViewController: BaseViewController {
     
     var delegate: passImageDelegate?
     
+    var completionHandler: ((UIImage)->Void)?
+    
     let mainView = SearchView()
     
     let imageList = ["pencil","star","person","star.fill"]
