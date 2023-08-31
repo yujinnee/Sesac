@@ -33,11 +33,11 @@ extension URLSessionViewController: URLSessionDataDelegate{
 
     //서버에서 데이터 받을 때마다 반복적으로 호출
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-        print("DATA:", data)
+//        print("DATA:", data)
     }
     //서버에서 응답이 완료가 된 이후에 호출
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        print("END")
+//        print("END")
     }
     
 }

@@ -22,11 +22,11 @@ class APIService {
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             let value = String(data:data!,encoding:  .utf8)
-            print(value)
-            
-            print(data)
-            print(response)
-            print(error)
+//            print(value)
+//            
+//            print(data)
+//            print(response)
+//            print(error)
         }.resume()
         
     }

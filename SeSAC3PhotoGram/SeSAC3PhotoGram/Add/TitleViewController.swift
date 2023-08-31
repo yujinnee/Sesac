@@ -17,6 +17,10 @@ class TitleViewController: BaseViewController {
     
     var completionHandler: ((String, Int, Bool) -> Void)?
     
+    deinit {
+        print("deinit",self)
+    }
+    
     override func configureView() {
         super.configureView()
         
