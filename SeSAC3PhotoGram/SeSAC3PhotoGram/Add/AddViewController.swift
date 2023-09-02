@@ -33,8 +33,16 @@ class AddViewController: BaseViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(selectImageNotificationObserver(notification:)), name: NSNotification.Name.seletImage, object: nil)
         
+<<<<<<< Updated upstream
         APIService.shared.callRequest()
  
+=======
+//        APIService.shared.callRequest(query: "sky")
+        
+    }
+    func setDelegate() {
+        imagePicker.delegate = self
+>>>>>>> Stashed changes
     }
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(selectImageNotificationObserver(notification:)), name: NSNotification.Name("SelectImage"), object: nil)
