@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 class ThirdPageViewController: UIViewController {
     
-    let label = {
+    private let label = {
         let view = UILabel()
         view.text = "세번째 페이지"
         view.textColor = .white
@@ -36,7 +36,7 @@ class ThirdPageViewController: UIViewController {
        
     }
     
-    func setConstraints(){
+    private func setConstraints(){
         view.addSubview(label)
 //        view.addSubview(button)
         

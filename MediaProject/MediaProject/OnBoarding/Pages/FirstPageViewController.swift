@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 class FirstPageViewController: UIViewController {
     
-    let label = {
+    private let label = {
         let view = UILabel()
         view.text = "첫번째 페이지"
         view.textColor = .white
@@ -24,7 +24,7 @@ class FirstPageViewController: UIViewController {
         setConstraints()
     }
     
-    func setConstraints(){
+    private func setConstraints(){
         view.addSubview(label)
         label.snp.makeConstraints { make in
             make.center.equalToSuperview()

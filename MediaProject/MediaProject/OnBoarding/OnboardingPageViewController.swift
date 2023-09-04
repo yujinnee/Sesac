@@ -9,7 +9,7 @@ import UIKit
 
 
 class OnboardingPageViewController: UIPageViewController {
-    var pageList = [UIViewController]()
+    private var pageList = [UIViewController]()
     override func viewDidLoad() {
         super.viewDidLoad()
         pageList = [FirstPageViewController(),SecondPageViewController(),ThirdPageViewController()]

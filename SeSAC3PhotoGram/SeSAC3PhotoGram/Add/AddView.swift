@@ -27,6 +27,12 @@ class AddView: BaseView {
         view.backgroundColor = .brown
         return view
     }()
+    let searchClosureButton = {
+        let view = UIButton()
+        view.backgroundColor = .systemPink
+        view.setTitle("클로저검색버튼", for: .normal)
+        return view
+    }()
     
     let dateButton = {
         let view = UIButton()
@@ -57,6 +63,7 @@ class AddView: BaseView {
         addSubview(searchProtocolButton)
         addSubview(titleButton)
         addSubview(contentButton)
+        addSubview(searchClosureButton)
     }
     
     override func setConstraints() {
@@ -78,6 +85,12 @@ class AddView: BaseView {
         searchProtocolButton.snp.makeConstraints { make in
             make.size.equalTo(50)
             make.bottom.leading.equalTo(photoImageView)
+        }
+        searchClosureButton.snp.makeConstraints { make in
+            make.height.equalTo(50)
+            make.width.equalTo(150)
+            make.centerX.bottom.equalTo(photoImageView)
+         
         }
         titleButton.snp.makeConstraints { make in
             make.top.equalTo(dateButton.snp.bottom).offset(10)
