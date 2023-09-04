@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 struct Photo: Codable {
     let total: Int
@@ -77,9 +78,6 @@ class APIService {
         }.resume()
         
     }
-<<<<<<< Updated upstream
-=======
- */
     
     func callImageRequest(word: String,comletionHandler: @escaping ([String]) -> Void) {
         let url = URL(string: "https://api.unsplash.com/search/photos?query=\(word)&client_id=\(APIKeys.unsplashKey)")!
@@ -93,6 +91,6 @@ class APIService {
                 comletionHandler(imageUrls)
             }
     }
+ */
         
->>>>>>> Stashed changes
 }
