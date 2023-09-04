@@ -183,7 +183,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="줄거리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KS-Za-epP">
-                                <rect key="frame" x="20" y="417.33333333333331" width="353" height="21.666666666666686"/>
+                                <rect key="frame" x="20" y="417.33333333333331" width="353" height="22"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -205,7 +205,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWT-Ki-RVR">
-                                <rect key="frame" x="20" y="449" width="353" height="112"/>
+                                <rect key="frame" x="20" y="449.33333333333331" width="353" height="111.99999999999994"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="112" id="Q9j-YW-Ca5"/>
                                 </constraints>
@@ -214,7 +214,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qgm-yd-RsQ">
-                                <rect key="frame" x="20" y="569" width="353" height="239"/>
+                                <rect key="frame" x="20" y="569.33333333333337" width="353" height="238.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

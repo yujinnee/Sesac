@@ -47,7 +47,7 @@ class LookAroundViewController: UIViewController {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else {return}
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .coverVertical
-        vc.movie = data
+//        vc.movie = data
         vc.viewTransitionType = .present
         present(vc, animated: true)
     }

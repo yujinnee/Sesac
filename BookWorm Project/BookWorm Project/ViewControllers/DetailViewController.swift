@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 
 class DetailViewController: UIViewController {
     static let identifier = "DetailViewController"
     var navigationTitle: String = "타이틀"
-    var movie = Movie(title: "", releaseDate: "", runtime: 0, overview: "", rate: 0)
+//    var movie = Movie(title: "", releaseDate: "", runtime: 0, overview: "", rate: 0)
+    var book = BookTable(title: "", author: "", thumbnailURL: "", price: 0)
     var viewTransitionType: TransitionType = .push
     let placeholder = "느낀 점을 입력해주세요."
 
@@ -35,10 +37,12 @@ class DetailViewController: UIViewController {
         view.endEditing(true)
     }
     func designUI() {
-        posterImageView.image = UIImage(named: movie.title)
-        movieTitleLabel.text = movie.title
-        movieRateLabel.text = "평점: \(movie.rate)"
-        overviewLabel.text = movie.overview
+        let url = URL(string: book.thumbnailURL)
+        posterImageView.kf.setImage(with: url)
+//        posterImageView.image = UIImage(named: movie.title)
+        movieTitleLabel.text = book.title
+        movieRateLabel.text = "가격: \(book.price) 작가: \(book.author)"
+        overviewLabel.text = ""
         overviewLabel.numberOfLines = 0
         switch viewTransitionType {
         case .present:

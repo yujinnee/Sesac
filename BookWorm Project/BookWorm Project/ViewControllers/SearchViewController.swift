@@ -9,6 +9,7 @@ import UIKit
 
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 struct Book {
     let title: String
@@ -154,6 +155,19 @@ extension SearchViewController: UITableViewDelegate,UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BookTableViewCell.identifier, for: indexPath) as? BookTableViewCell else {return UITableViewCell()}
         cell.setData(data: searchList[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = searchList[indexPath.row]
+        let realm = try! Realm()
+        
+        let task = BookTable(title: item.title, author: item.authorsString, thumbnailURL: item.thumbnail, price: item.price)
+        
+        try! realm.write {
+            realm.add(task)
+            print("Realm Add Succeed")
+        }
+        
     }
     
 }
