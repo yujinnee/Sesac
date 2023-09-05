@@ -19,7 +19,7 @@ class WriteTextField: UITextField {
     }
     
     func setupView() {
-        backgroundColor = .white
+        backgroundColor = Constants.BaseColor.background
         textAlignment = .center
         borderStyle = .none
         layer.cornerRadius = Constants.Desgin.cornerRadius

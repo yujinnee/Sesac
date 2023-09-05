@@ -10,6 +10,9 @@ import SnapKit
 import RealmSwift
 
 class HomeViewController: BaseViewController {
+    //Realm Read
+    let realm = try! Realm()
+    
     
     lazy var tableView: UITableView = {
         let view = UITableView()
@@ -26,14 +29,12 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Realm Read
-        let realm = try! Realm()
-        
         tasks = realm.objects(DiaryTable.self).sorted(byKeyPath: "diaryTitle",ascending: true)
+        print(realm.configuration.fileURL)
         
         print(tasks)
         
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,8 +74,20 @@ class HomeViewController: BaseViewController {
     }
     
     @objc func filterButtonClicked() {
-       
         
+        let result = realm.objects(DiaryTable.self).where {
+            //대소문자 구별 없음 - caseInsensitive
+            //            $0.diaryTitle.contains("제목", options: .caseInsensitive)
+            
+            //2. Bool
+            //            $0.diaryLike == true
+            
+            //3. 사진이 있는 데이터만 불러오기(diaryPhoto의 nil 여부 판단)
+            $0.diaryPhotoURL != nil
+        }
+        
+        tasks = result
+        tableView.reloadData()
     }
 }
 
@@ -93,6 +106,63 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.contentLabel.text = data.diaryContents
         cell.dateLabel.text = "\(data.diaryDate)"
         
+        cell.diaryImageView.image = loadImageFromDocument(fileName: "jack_\(data._id).jpg")
+        
+        /*
+         let value = URL(string: data.diaryPhotoURL ?? "")
+         //String -> Url -> Data -> UIImageView
+         //셀에서 서버통신 중
+         DispatchQueue.global().async {
+         if let url = value, let data = try? Data(contentsOf: url) {
+         DispatchQueue.main.async {
+         cell.diaryImageView.image = UIImage(data: data)
+         }
+         }
+         }
+         */
+        
+        
+        
+        
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = DetailViewController()
+        vc.data = tasks[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+        
+        //Realm Delete
+        //        let data = tasks[indexPath.row]
+        //        removeImageFromDocument(fileName: "jack_\(data._id).jpg")
+        //        try! realm.write {
+        //            realm.delete(data)
+        //        }
+        //
+        //
+        //
+        //        tableView.reloadData()
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let like = UIContextualAction(style: .normal, title: "좋아여") { action, view, completionHandler in
+            print("좋아여 선택됨")
+        }
+        like.backgroundColor = .orange
+        
+        switch tasks[indexPath.row].diaryLike{
+        case true: like.image = UIImage(systemName: "star.fill")
+        case false: like.image = UIImage(systemName: "star")
+        }
+        let sample = UIContextualAction(style: .normal, title: "테스트") { action, view, completionHandler in
+            print("테스트 선택됨")
+        }
+        return UISwipeActionsConfiguration(actions: [like,sample])
+    }
 }
+
+

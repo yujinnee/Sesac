@@ -19,12 +19,14 @@ class AddViewController: BaseViewController {
      let titleTextField: WriteTextField = {
          let view = WriteTextField()
          view.placeholder = "제목을 입력해주세요"
+         view.textColor = Constants.BaseColor.text
          return view
      }()
      
      let dateTextField: WriteTextField = {
          let view = WriteTextField()
          view.placeholder = "날짜를 입력해주세요"
+         view.textColor = Constants.BaseColor.text
          return view
      }()
      
@@ -57,9 +59,10 @@ class AddViewController: BaseViewController {
         return view
     }()
       
+    var fullURL: String?
     override func viewDidLoad() {
         super.viewDidLoad() //안하는 경우 생기는 문제
-        view.backgroundColor = .white
+        view.backgroundColor = Constants.BaseColor.background
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
     }
     
@@ -68,11 +71,15 @@ class AddViewController: BaseViewController {
         //realm 파일에 접근할 수 있도록, 위치를 찾는 코드
         let realm = try! Realm()
         
-        let task = DiaryTable(diaryTitle: titleTextField.text!, diaryDate: Date(), diaryContents: contentTextView.text, diaryPhotoURL: nil)
+        let task = DiaryTable(diaryTitle: titleTextField.text!, diaryDate: Date(), diaryContents: contentTextView.text, diaryPhotoURL: fullURL)
         
         try! realm.write {
             realm.add(task)
             print("Realm Add Succeed")
+        }
+        
+        if userImageView.image != nil {
+            saveImageToDocument(fileName: "jack_\(task._id).jpg", image: userImageView.image!)
         }
         
         navigationController?.popViewController(animated: true)

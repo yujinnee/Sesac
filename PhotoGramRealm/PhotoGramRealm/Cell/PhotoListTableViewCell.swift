@@ -66,6 +66,11 @@ class PhotoListTableViewCell: BaseTableViewCell {
             stackView.addArrangedSubview($0)
         }
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        diaryImageView.image = nil
+    }
     
     override func setConstraints() {
         let spacing = 8
