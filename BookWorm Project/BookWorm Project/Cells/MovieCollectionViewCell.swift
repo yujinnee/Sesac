@@ -31,7 +31,15 @@ class MovieCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(book: BookTable){
-        print("Dd")
+        titleLabel.text = book.title
+        rateLabel.text = "₩\(book.price)"
+        let url = URL(string: book.thumbnailURL)
+        posterImageView.kf.setImage(with: url)
+        var buttonImage = book.favorite ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        heartButton.setImage(buttonImage, for: .normal)
+    }
+    
+    func configure(book: BookData){
         titleLabel.text = book.title
         rateLabel.text = "₩\(book.price)"
         let url = URL(string: book.thumbnailURL)

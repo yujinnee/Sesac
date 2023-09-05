@@ -8,13 +8,45 @@
 import UIKit
 import RealmSwift
 
+struct BookData {
+    
+    var _id: String
+    var title: String = ""
+    var author: String = ""
+    var thumbnailURL: String = ""
+    var price: Int = 0
+    var favorite: Bool = false
+    
+    init(book: BookTable){
+        self._id = book._id.stringValue
+        self.title = book.title
+        self.author = book.author
+        self.thumbnailURL = book.thumbnailURL
+        self.price = book.price
+        self.favorite = book.favorite
+    }
+    
+    init(_id:String,title: String, author: String, thumbnailURL: String, price: Int,favorite: Bool) {
+        self._id = _id
+        self.title = title
+        self.author = author
+        self.thumbnailURL = thumbnailURL
+        self.price = price
+        self.favorite = favorite
+    }
+    
+}
+
+
 class HomeCollectionViewController: UICollectionViewController {
+    let realm = try! Realm()
     //    var tasks: Results<BookTable>!
     var bookList: Results<BookTable>!
     //    var bookList: Results<BookTable>!
     //    var searchedList = Results<BookTable>()
-    var searchedList = [BookTable](){
+    var searchedList = [BookData](){
         didSet{
+            print("searchedList didset")
             collectionView.reloadData()
         }
     }
@@ -52,10 +84,11 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         print(bookList)
-        collectionView.reloadData()
+        print(searchedList)
+        searchedList = bookList.map{BookData(_id: $0._id.stringValue, title: $0.title, author: $0.author, thumbnailURL: $0.thumbnailURL, price: $0.price, favorite: $0.favorite)}
     }
     func readBookTable(){
-        let realm = try! Realm()
+      
         bookList = realm.objects(BookTable.self)
         
     }
@@ -69,7 +102,7 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     func initData(){
         //                searchedList = movieList
-        searchedList = bookList.map{BookTable(value: $0)}
+//        searchedList = bookList.map{BookTable(value: $0)}
     }
     func setDelegate(){
         searchBar.delegate = self
@@ -97,35 +130,43 @@ class HomeCollectionViewController: UICollectionViewController {
     }
     @objc func heartButtonDidTap(_ sender: UIButton){
         
-        let realm = try! Realm()
+       
         try! realm.write {
+            print("검색111111\(searchedList[0].favorite)")
             searchedList[sender.tag].favorite.toggle()
-          
-            let title = searchedList[sender.tag].title
-            for (index,item) in bookList.enumerated(){
-                if(item.title == title){
-                    bookList[index].favorite.toggle()
-                    print("찾음")
-                    print("==========")
-                    print("검색\(searchedList[0].favorite)")
-                    print("북\(bookList[0].favorite)")
-                    print("==========")
-
-                    collectionView.reloadData()
-                    
-                    
-                }
+            bookList[sender.tag].favorite.toggle()
+            print("검색\(searchedList[0].favorite)")
+            print("북\(bookList[0].favorite)")
+            
+//            let title = searchedList[sender.tag].title
+            
+//            for (index,item) in bookList.enumerated(){
+//                if(item.title == title){
+////                    bookList[index].favorite.toggle()
+//                    print("찾음")
+//                    print("==========")
+//                    print("검색\(searchedList[0].favorite)")
+//                    print("북\(bookList[0].favorite)")
+//                    print("==========")
+//
+////                    collectionView.reloadData()
+//
+//
+//                }
             }
         }
         
         
         
-    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var sb = UIStoryboard(name: "Main", bundle: nil)
         var vc = sb.instantiateViewController(identifier: DetailViewController.identifier) as! DetailViewController
         vc.navigationTitle = searchedList[indexPath.row].title
-        vc.book = searchedList[indexPath.row]
+//        vc.book = searchedList[indexPath.row]
+//        let book = searchedList[indexPath.row]
+//        vc.book = BookTable(_id:book._id,title: book.title, author: book.author, thumbnailURL: book.thumbnailURL, price: book.price)
+        vc.bookId = searchedList[indexPath.row]._id
         vc.viewTransitionType = .push
         searchBar.endEditing(true)
         navigationController?.pushViewController(vc, animated: true)
@@ -150,15 +191,18 @@ extension HomeCollectionViewController:UISearchBarDelegate{
     }
     
     func searchingMovie(){
-        searchedList = [BookTable]()
+//        searchedList = [BookTable]()
+        searchedList = [BookData]()
         
         for m in bookList{
             if m.title.contains(searchBar.text!){
-                searchedList.append(m)
+//                searchedList.append(m)
+                searchedList.append(BookData(book: m))
             }
         }
         if(searchBar.text == ""){
-            searchedList = bookList.map{BookTable(value: $0)}
+//            searchedList = bookList.map{BookTable(value: $0)}
+            searchedList = bookList.map{BookData(book:$0)}
         }
         
     }

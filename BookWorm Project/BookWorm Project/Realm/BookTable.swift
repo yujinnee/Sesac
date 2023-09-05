@@ -18,7 +18,7 @@ class BookTable: Object {
     @Persisted var favorite: Bool = false
     
     
-    convenience init(title: String, author: String, thumbnailURL: String, price: Int) {
+    convenience init(title: String, author: String, thumbnailURL: String, price: Int,favorite: Bool) {
         self.init()
         self.title = title
         self.author = author

@@ -7,15 +7,22 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 
 class DetailViewController: UIViewController {
+    let realm = try! Realm()
+    
     static let identifier = "DetailViewController"
     var navigationTitle: String = "타이틀"
 //    var movie = Movie(title: "", releaseDate: "", runtime: 0, overview: "", rate: 0)
-    var book = BookTable(title: "", author: "", thumbnailURL: "", price: 0)
+//    var book = BookTable(_id: 0,title: "", author: "", thumbnailURL: "", price: 0)
+//    var book = BookData(_id: "", title: "", author: "", thumbnailURL: "", price: 0, favorite: false)
+    var bookId: String?
     var viewTransitionType: TransitionType = .push
     let placeholder = "느낀 점을 입력해주세요."
+    var book: BookTable?
+    var books: Results<BookTable>?
 
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var movieTitleLabel: UILabel!
@@ -28,20 +35,35 @@ class DetailViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        designUI()
+//        designUI()
         setDelegate()
         setNavigationItem()
         setKeyboardObserver()
+        readBookFromRealm()
+//        let specificPerson = realm.object(ofType: Person.self, forPrimaryKey: 12345)
+        
+    }
+    func readBookFromRealm(){
+        do {
+            let id = try ObjectId(string: bookId ?? "")
+            print(id)
+            book = realm.object(ofType: BookTable.self, forPrimaryKey: id)
+            designUI()
+        } catch {
+            print("error")
+        }
+    
+//        book = realm.object(ofType: BookTable.self, forPrimaryKey: bookId)
     }
     @IBAction func rootViewDidTap(_ sender: Any) {
         view.endEditing(true)
     }
     func designUI() {
-        let url = URL(string: book.thumbnailURL)
+        let url = URL(string: book?.thumbnailURL ?? "")
         posterImageView.kf.setImage(with: url)
 //        posterImageView.image = UIImage(named: movie.title)
-        movieTitleLabel.text = book.title
-        movieRateLabel.text = "가격: \(book.price) 작가: \(book.author)"
+        movieTitleLabel.text = book?.title
+        movieRateLabel.text = "가격: \(book?.price ?? 0) 작가: \(book?.author ?? "")"
         overviewLabel.text = ""
         overviewLabel.numberOfLines = 0
         switch viewTransitionType {

@@ -161,7 +161,7 @@ extension SearchViewController: UITableViewDelegate,UITableViewDataSource{
         let item = searchList[indexPath.row]
         let realm = try! Realm()
         
-        let task = BookTable(title: item.title, author: item.authorsString, thumbnailURL: item.thumbnail, price: item.price)
+        let task = BookTable(title: item.title, author: item.authorsString, thumbnailURL: item.thumbnail, price: item.price,favorite: false)
         
         try! realm.write {
             realm.add(task)
