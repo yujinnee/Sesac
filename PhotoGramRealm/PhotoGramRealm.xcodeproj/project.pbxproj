@@ -34,6 +34,7 @@
 		6A074DC22AA6F2510020C48D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A074DC12AA6F2510020C48D /* DetailViewController.swift */; };
 		6AB0F4E62AA56D790088122B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6AB0F4E52AA56D790088122B /* RealmSwift */; };
 		6AB0F4E82AA56DE20088122B /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB0F4E72AA56DE20088122B /* RealmModel.swift */; };
+		6AF5D4F62AA80070001A0B25 /* DiaryTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF5D4F52AA80070001A0B25 /* DiaryTableRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		6A074DBF2AA6CB1B0020C48D /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		6A074DC12AA6F2510020C48D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		6AB0F4E72AA56DE20088122B /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		6AF5D4F52AA80070001A0B25 /* DiaryTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				6AB0F4E72AA56DE20088122B /* RealmModel.swift */,
+				6AF5D4F52AA80070001A0B25 /* DiaryTableRepository.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				04BAEAF92AA4BF3F005A3A69 /* AppDelegate.swift in Sources */,
 				04BAEB222AA4C0BB005A3A69 /* BaseViewController.swift in Sources */,
 				04BAEB362AA550E9005A3A69 /* Photo.swift in Sources */,
+				6AF5D4F62AA80070001A0B25 /* DiaryTableRepository.swift in Sources */,
 				04BAEB192AA4BFFB005A3A69 /* PhotoImageView.swift in Sources */,
 				04BAEAFB2AA4BF3F005A3A69 /* SceneDelegate.swift in Sources */,
 				04BAEB132AA4BF8C005A3A69 /* HomeViewController.swift in Sources */,

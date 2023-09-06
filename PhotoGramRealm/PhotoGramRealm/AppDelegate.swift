@@ -6,15 +6,41 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let config = Realm.Configuration(schemaVersion:5) { migration,oldSchemaVersion in
+            if oldSchemaVersion < 1 { }//diaryPin Column 추가
+            
+            if oldSchemaVersion < 2 { }// diaryPin Column 삭제
+            
+            if oldSchemaVersion < 3 {
+                
+                migration.renameProperty(onType: DiaryTable.className(), from: "diartyPhoto", to: "photo")
+            }// diaryPhoto -> photo Column 이름 변경
+            
+            if oldSchemaVersion < 4 { } //diaryContents -> contents 컬럼명 수정
+            
+            if oldSchemaVersion < 5 { // diarySummary 컬럼 추가, title + contents 합쳐서 넣기
+                migration.enumerateObjects(ofType: DiaryTable.className()) { oldObject, newObject in
+                    guard let new = newObject else {return}
+                    guard let old = oldObject else {return}
+                    
+                    new["diarySummary"] = "제목은 \(old["diaryTitle"])'이고, 내용은 '\(old["contents"])'입니다"
+                }
+                
+            }
+
+        }
+//        let config = Realm.Configuration(schemaVersion: 1)
+        Realm.Configuration.defaultConfiguration = config
         return true
+        
     }
 
     // MARK: UISceneSession Lifecycle

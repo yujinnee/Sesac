@@ -10,6 +10,7 @@ import SnapKit
 import RealmSwift
 
 class AddViewController: BaseViewController {
+    
      
      let userImageView: PhotoImageView = {
          let view = PhotoImageView(frame: .zero)
@@ -60,6 +61,9 @@ class AddViewController: BaseViewController {
     }()
       
     var fullURL: String?
+    
+    let repository = DiaryTableRepository()
+    
     override func viewDidLoad() {
         super.viewDidLoad() //안하는 경우 생기는 문제
         view.backgroundColor = Constants.BaseColor.background
@@ -71,7 +75,7 @@ class AddViewController: BaseViewController {
         //realm 파일에 접근할 수 있도록, 위치를 찾는 코드
         let realm = try! Realm()
         
-        let task = DiaryTable(diaryTitle: titleTextField.text!, diaryDate: Date(), diaryContents: contentTextView.text, diaryPhotoURL: fullURL)
+        let task = DiaryTable(diaryTitle: titleTextField.text!, diaryDate: Date(), diaryContents: contentTextView.text, diaryPhoto: fullURL)
         
         try! realm.write {
             realm.add(task)

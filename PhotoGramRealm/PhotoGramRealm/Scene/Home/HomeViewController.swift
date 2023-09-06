@@ -12,6 +12,8 @@ import RealmSwift
 class HomeViewController: BaseViewController {
     //Realm Read
     let realm = try! Realm()
+    var tasks: Results<DiaryTable>!
+    let repository = DiaryTableRepository()
     
     
     lazy var tableView: UITableView = {
@@ -24,16 +26,15 @@ class HomeViewController: BaseViewController {
     }()
     
     
-    var tasks: Results<DiaryTable>!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
+         tasks = realm.objects(DiaryTable.self).sorted(byKeyPath: "diaryTitle",ascending: true)
+         */
         
-        tasks = realm.objects(DiaryTable.self).sorted(byKeyPath: "diaryTitle",ascending: true)
-        print(realm.configuration.fileURL)
+        tasks = repository.fetch()
         
-        print(tasks)
-        
+        repository.checkSchemaVersion()
         
     }
     
@@ -74,19 +75,23 @@ class HomeViewController: BaseViewController {
     }
     
     @objc func filterButtonClicked() {
+        tasks = repository.fetchFilter()
         
-        let result = realm.objects(DiaryTable.self).where {
-            //대소문자 구별 없음 - caseInsensitive
-            //            $0.diaryTitle.contains("제목", options: .caseInsensitive)
-            
-            //2. Bool
-            //            $0.diaryLike == true
-            
-            //3. 사진이 있는 데이터만 불러오기(diaryPhoto의 nil 여부 판단)
-            $0.diaryPhotoURL != nil
-        }
+        /*
+         let result = realm.objects(DiaryTable.self).where {
+         //대소문자 구별 없음 - caseInsensitive
+         //            $0.diaryTitle.contains("제목", options: .caseInsensitive)
+         
+         //2. Bool
+         //            $0.diaryLike == true
+         
+         //3. 사진이 있는 데이터만 불러오기(diaryPhoto의 nil 여부 판단)
+         $0.diaryPhotoURL != nil
+         }
+         tasks = result
+         */
         
-        tasks = result
+        
         tableView.reloadData()
     }
 }
@@ -103,23 +108,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let data = tasks[indexPath.row]
         
         cell.titleLabel.text = data.diaryTitle
-        cell.contentLabel.text = data.diaryContents
+        cell.contentLabel.text = data.contents
         cell.dateLabel.text = "\(data.diaryDate)"
         
         cell.diaryImageView.image = loadImageFromDocument(fileName: "jack_\(data._id).jpg")
-        
         /*
-         let value = URL(string: data.diaryPhotoURL ?? "")
-         //String -> Url -> Data -> UIImageView
-         //셀에서 서버통신 중
-         DispatchQueue.global().async {
-         if let url = value, let data = try? Data(contentsOf: url) {
-         DispatchQueue.main.async {
-         cell.diaryImageView.image = UIImage(data: data)
-         }
-         }
-         }
+        
+        let value = URL(string: data.photo ?? "")
+        //String -> Url -> Data -> UIImageView
+        //셀에서 서버통신 중
+        DispatchQueue.global().async {
+            if let url = value, let data = try? Data(contentsOf: url) {
+                DispatchQueue.main.async {
+                    cell.diaryImageView.image = UIImage(data: data)
+                }
+            }
+        }
          */
+        
         
         
         
