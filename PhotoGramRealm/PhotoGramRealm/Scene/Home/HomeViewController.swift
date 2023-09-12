@@ -66,7 +66,7 @@ class HomeViewController: BaseViewController {
     }
     
     @objc func backupButtonClicked() {
-        
+        navigationController?.pushViewController(BackupViewController(), animated: true)
     }
     
     
