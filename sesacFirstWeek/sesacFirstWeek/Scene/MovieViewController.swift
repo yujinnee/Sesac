@@ -17,6 +17,7 @@ class MovieViewController: UIViewController {
     //
     //    @IBOutlet var randomPlayButton: UIButton!
     //    @IBOutlet var informationLabel: UILabel!
+    
     let backgroundImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "어벤져스엔드게임")
