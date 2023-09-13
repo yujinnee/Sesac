@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  UnsplashProject
+
+  Created by 이유진 on 2023/09/13.
+  
+*/
+
+
+NSLocationWhenInUseUsageDescription = "이래 저래서 위치 필요하니 허용하세여";
+CFBundleDisplayName = "새싹";
