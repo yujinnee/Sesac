@@ -99,8 +99,8 @@ extension ToDoViewController: UITableViewDelegate,UITableViewDataSource {
 //        cell.textLabel?.text = "\(list[indexPath.row].title):\(list[indexPath.row].detail.count) \(list[indexPath.row].memo?.content)개"
         
         let data = list[indexPath.row]
-        
-        cell.textLabel?.text = "\(data.detail) in \(data.mainTodo.first?.title ?? "")"
+      
+//        cell.textLabel?.text = "\(data.detail) in \(data.mainTodo.first?.title ?? "")"
         return cell
         
     }

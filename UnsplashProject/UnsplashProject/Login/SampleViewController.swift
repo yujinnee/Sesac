@@ -67,9 +67,15 @@ extension SampleViewController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell")!
-        let data = viewModel.cellForRowAt(at: indexPath)
-        cell.textLabel?.text = "\(data.name),\(data.age) 살"
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell")!
+//        let data = viewModel.cellForRowAt(at: indexPath)
+//        cell.textLabel?.text = "\(data.name),\(data.age) 살"
+        let cell = UITableViewCell()
+        var content = cell.defaultContentConfiguration()
+        content.text = "테스트" //textLabel
+        content.secondaryText = "안녕하세요 \(indexPath.row)" //detailTextLabel
+        cell.contentConfiguration = content
+        
         return cell
     }
 }
