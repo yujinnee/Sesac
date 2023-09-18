@@ -67,6 +67,13 @@ class LoginViewController: UIViewController {
         view.placeholder = "추천코드 입력"
         return view
     }()
+    let resultLabel = {
+        let view = UILabel()
+        view.text = "alert"
+        view.textColor = .red
+        view.textAlignment = .center
+        return view
+    }()
     let registerButton = {
         let view = UIButton()
         view.setTitle("회원가입", for: .normal)
@@ -96,24 +103,8 @@ class LoginViewController: UIViewController {
         designInfoSwitch(mySwitch: infoSwitch, isSetOn: false, animated: true, onTintColor: .red, thumbTintColor: .white)
         
         addTargets()
-        
-        viewModel.nickname.bind{ text in
-            self.nicknameTextField.text = text
-            
-        }
-        viewModel.email.bind{ text in
-            self.emailTextField.text = text
-            
-        }
-        viewModel.pw.bind{ text in
-            self.passwordTextField.text = text
-            
-        }
-        
-        viewModel.isValid.bind { bool in
-            self.registerButton.isEnabled = bool
-            self.registerButton.backgroundColor = bool ? .green : .lightGray
-        }
+        bindData()
+       
        
 //        let testString = UserDefaults.standard.string(forKey: "testString")
 //        let testInt = UserDefaults.standard.integer(forKey: "testInt")
@@ -143,6 +134,38 @@ class LoginViewController: UIViewController {
 //
         
     }
+    
+    func bindData(){
+        viewModel.nickname.bind{ text in
+            self.nicknameTextField.text = text
+            
+        }
+        viewModel.email.bind{ text in
+            self.emailTextField.text = text
+            
+        }
+        viewModel.pw.bind{ text in
+            self.passwordTextField.text = text
+            
+        }
+        viewModel.location.bind{ text in
+            self.locationTextField.text = text
+            
+        }
+        viewModel.invitationCode.bind{ text in
+            self.codeTextField.text = text
+            
+        }
+        
+        viewModel.isValid.bind { bool in
+            self.registerButton.isEnabled = bool
+            self.registerButton.backgroundColor = bool ? .green : .lightGray
+            
+        }
+        viewModel.validationResult.bind { value in
+            self.resultLabel.text = value
+        }
+    }
     @objc func nicknameTextFieldChanged() {
         viewModel.nickname.value = nicknameTextField.text!
         viewModel.checkValidation()
@@ -155,6 +178,15 @@ class LoginViewController: UIViewController {
         viewModel.pw.value = passwordTextField.text!
         viewModel.checkValidation()
     }
+    @objc func locationdTextFieldChanged() {
+        viewModel.location.value = locationTextField.text!
+        viewModel.checkValidation()
+    }
+    @objc func codeTextFieldChanged() {
+        viewModel.invitationCode.value = codeTextField.text!
+        viewModel.checkValidation()
+    }
+    
     
    
     
@@ -163,6 +195,8 @@ class LoginViewController: UIViewController {
         nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldChanged), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(emailTextFieldChanged), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(passwordTextFieldChanged), for: .editingChanged)
+        locationTextField.addTarget(self, action: #selector(locationdTextFieldChanged), for: .editingChanged)
+        codeTextField.addTarget(self, action: #selector(codeTextFieldChanged), for: .editingChanged)
         
     }
     @objc func registerButtonTapped() {
@@ -185,7 +219,7 @@ class LoginViewController: UIViewController {
 
     
     func setupConstraints(){
-        [backgroundView,logoLabel,emailTextField,passwordTextField,nicknameTextField,locationTextField,codeTextField,registerButton,extraInfoLabel,infoSwitch].forEach{
+        [backgroundView,logoLabel,emailTextField,passwordTextField,nicknameTextField,locationTextField,codeTextField,registerButton,resultLabel,extraInfoLabel,infoSwitch].forEach{
             view.addSubview($0)
         }
         backgroundView.snp.makeConstraints { make in
@@ -221,9 +255,13 @@ class LoginViewController: UIViewController {
             make.top.equalTo(locationTextField.snp.bottom).offset(20)
             make.height.equalTo(40)
         }
+        resultLabel.snp.makeConstraints { make in
+            make.top.equalTo(codeTextField.snp.bottom).offset(20)
+            make.horizontalEdges.equalToSuperview().inset(40)
+        }
         registerButton.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(30)
-            make.top.equalTo(codeTextField.snp.bottom).offset(20)
+            make.top.equalTo(resultLabel.snp.bottom).offset(20)
             make.height.equalTo(40)
         }
         extraInfoLabel.snp.makeConstraints { make in
