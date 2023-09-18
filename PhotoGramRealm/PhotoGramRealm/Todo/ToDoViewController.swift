@@ -14,7 +14,7 @@ class ToDoViewController: UIViewController {
     
     let tableView = UITableView()
     
-    var list: Results<ToDoTable>!
+    var list: Results<DetailTable>!
     
     
     override func viewDidLoad() {
@@ -42,11 +42,9 @@ class ToDoViewController: UIViewController {
         //            realm.add(data)
         //        }
         //
-        list = realm.objects(ToDoTable.self)
+       
         
-        print(realm.configuration.fileURL)
-        
-        print(list)
+
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -57,6 +55,9 @@ class ToDoViewController: UIViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
+        list = realm.objects(DetailTable.self)
+        
+        print(realm.configuration.fileURL)
         
         
     }
@@ -67,14 +68,14 @@ class ToDoViewController: UIViewController {
         }.first!
         
         
-//        for i in 1...10 {
-//            let detailTodo = DetailToDoTable(detail: "장보기 세부 할 일 \(i)", deadline: Date())
-//
-//            try! realm.write {
-//                //                realm.add(detailTodo)
-//                main.detail.append(detailTodo)
-//            }
-//        }
+        for i in 1...10 {
+            let detailTodo = DetailTable(detail: "장보기 세부 할 일 \(i)", deadline: Date())
+
+            try! realm.write {
+                //                realm.add(detailTodo)
+                main.detail.append(detailTodo)
+            }
+        }
     }
     func createTodo() {
         
@@ -100,7 +101,7 @@ extension ToDoViewController: UITableViewDelegate,UITableViewDataSource {
         
         let data = list[indexPath.row]
       
-//        cell.textLabel?.text = "\(data.detail) in \(data.mainTodo.first?.title ?? "")"
+        cell.textLabel?.text = "\(data.detail) in \(data.mainTodo.first?.title ?? "")"
         return cell
         
     }

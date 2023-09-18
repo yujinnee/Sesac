@@ -15,8 +15,8 @@ class PhotoViewModel {
         return list.value.results?.count ?? 0
     }
     
-    func fetchPhoto() {
-        APIService.shared.searchPhoto(query: "sky") {photo in
+    func fetchPhoto(text: String) {
+        APIService.shared.searchPhoto(query: text) {photo in
             guard let photo = photo else {
                 return
             }
@@ -27,7 +27,11 @@ class PhotoViewModel {
     func cellForRowAt(at indexPath: IndexPath) -> PhotoResult {
         return list.value.results![indexPath.row]
     }
-    func cellForRowAtImageUrl(at indexPath: IndexPath) -> URL {
-        return URL(string:list.value.results![indexPath.row].urls.thumb)!
+//    func cellForRowAtImageUrl(at indexPath: IndexPath) -> URL {
+//        return URL(string:list.value.results![indexPath.row].urls.thumb)!
+//    }
+//    
+    func imageURL(at indexPath: IndexPath) -> String {
+        return cellForRowAt(at: indexPath).urls.full
     }
 }

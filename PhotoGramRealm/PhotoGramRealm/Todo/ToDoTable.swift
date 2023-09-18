@@ -45,25 +45,14 @@ class DetailTable: Object {
     
 }
 
-class DetailToDoTable: Object {
-    @Persisted(primaryKey:  true) var _id: ObjectId //Primary Key
-    @Persisted var detail: String
-    @Persisted var deadline: Date
-    
-    convenience init(detail: String, deadline: Date) {
-        self.init()
-        
-        self.detail = detail
-        self.deadline = deadline
-        
-    }
-    
-}
-
-
 
 class Memo: EmbeddedObject {
     @Persisted var content: String
     @Persisted var date: Date
     
+    convenience init(content: String, date: Date) {
+        self.init()
+        self.content = content
+        self.date = date
+    }
 }

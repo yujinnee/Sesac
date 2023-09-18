@@ -7,12 +7,14 @@
 
 import Foundation
 import RealmSwift
+
 protocol diaryTableRepositoryType: AnyObject {
     func findFileURL() -> URL?
     func fetch() -> Results<DiaryTable>
     func fetchFilter() -> Results<DiaryTable>
     func createItem(_ item: DiaryTable)
     func updateItem(_id: ObjectId, diaryTitle: String, diaryContents: String)
+    func deleteItem(_ item: DiaryTable)
 }
 
 class DiaryTableRepository: diaryTableRepositoryType{
@@ -88,4 +90,17 @@ class DiaryTableRepository: diaryTableRepositoryType{
             print("error")
         }
     }
+    
+    func deleteItem(_ item: DiaryTable) {
+        
+        do {
+            try realm.write {
+                realm.delete(item)
+            }
+        } catch {
+            print(error)
+        }
+        
+    }
+    
 }

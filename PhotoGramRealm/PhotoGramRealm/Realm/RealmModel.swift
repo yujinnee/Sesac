@@ -26,7 +26,7 @@ class DiaryTable: Object {
         self.diaryDate = diaryDate
         self.contents = diaryContents
         self.photo = diaryPhoto
-        self.diaryLike = false
+        self.diaryLike = true
         self.diarySummary = "제목은 '\(diaryTitle)'이고, 내용은 '\(diaryContents ?? "")'입니다."
     }
    
