@@ -28,7 +28,6 @@ class ViewController: UIViewController {
             }
         }
     
-        
         Network.shared.request(type: Photo.self, api: .search(query: "apple")) { response in
             switch response {
             case .success(let success):
@@ -49,8 +48,6 @@ class ViewController: UIViewController {
         }
     }
     
-   
- 
 }
 
 
