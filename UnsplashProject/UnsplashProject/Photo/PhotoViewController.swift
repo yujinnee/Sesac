@@ -9,46 +9,70 @@ import UIKit
 import Kingfisher
 
 class PhotoViewController: UIViewController {
+    private let viewModel = PhotoViewModel()
     
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet var tableView: UITableView!
-    
-    var viewModel = PhotoViewModel()
+    var dataSource: UICollectionViewDiffableDataSource<Int,PhotoResult>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.fetchPhoto()
-        
-        viewModel.list.bind { _ in//뷰모델의 리스트 코트가 바뀌면 어떻게 할래?
-            DispatchQueue.main.async{
-                self.tableView.reloadData()
-
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
+        collectionView.collectionViewLayout = createLayout()
+        configureDataSource()
+        viewModel.list.bind { _ in
+            self.updateSnapshot()
+        }
+    }
+    private func updateSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, PhotoResult>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(viewModel.list.value.results ?? [])
+        dataSource.apply(snapshot)
+    }
+    
+    
+    private func createLayout() -> UICollectionViewLayout {
+        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        configuration.showsSeparators = false
+        configuration.backgroundColor = .systemGreen
+        let layout = UICollectionViewCompositionalLayout.list(using:configuration)
+        return layout
+    }
+    
+  
+    private func configureDataSource() {
+        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell,PhotoResult>{
+            cell, indexPath, itemIdentifier in
+            
+            var content = UIListContentConfiguration.valueCell()
+            content.text = "\(itemIdentifier.likes)"
+            
+            DispatchQueue.global().async {
+                let url = URL(string: itemIdentifier.urls.thumb)!
+                let data = try? Data(contentsOf: url)
+                
+                DispatchQueue.main.async {
+                    content.image = UIImage(data: data!)
+                    cell.contentConfiguration = content
+                    
+                }
             }
+    
         }
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = 200
-        
-       
+        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for:indexPath, item:itemIdentifier)
+            return cell
+        })
     }
 }
-extension PhotoViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return viewModel.list.value.results?.count ?? 0
-        return viewModel.rowCount
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell")!
-        
-        let data = viewModel.cellForRowAt(at: indexPath)
-        let url = viewModel.cellForRowAtImageUrl(at: indexPath)
-        cell.imageView?.kf.setImage(with: url)
-    
-        cell.backgroundColor = .lightGray
-        
-        return cell
+
+extension PhotoViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.fetchPhoto(text: searchBar.text!)
     }
 }

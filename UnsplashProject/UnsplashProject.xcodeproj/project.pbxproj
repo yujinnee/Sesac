@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6A210E602AB2A0E4007C4DE6 /* NewSimpleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A210E5F2AB2A0E4007C4DE6 /* NewSimpleCollectionViewController.swift */; };
 		6A210E632AB2A9F0007C4DE6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6A210E622AB2A9F0007C4DE6 /* SnapKit */; };
+		6A2789F92AB7D3C800BA3011 /* NumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2789F82AB7D3C800BA3011 /* NumberViewController.swift */; };
 		6A5B3B4B2AAFFE39005DE44A /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B3B4A2AAFFE39005DE44A /* SampleViewController.swift */; };
 		6A5B3B4D2AB00168005DE44A /* SampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B3B4C2AB00168005DE44A /* SampleViewModel.swift */; };
 		6A5B3B4F2AB00E47005DE44A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B3B4E2AB00E47005DE44A /* LoginViewModel.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		6A210E5F2AB2A0E4007C4DE6 /* NewSimpleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSimpleCollectionViewController.swift; sourceTree = "<group>"; };
+		6A2789F82AB7D3C800BA3011 /* NumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewController.swift; sourceTree = "<group>"; };
 		6A5B3B4A2AAFFE39005DE44A /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
 		6A5B3B4C2AB00168005DE44A /* SampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewModel.swift; sourceTree = "<group>"; };
 		6A5B3B4E2AB00E47005DE44A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				6A8BA3D92AB1C52600FC88D7 /* String+Extension.swift */,
 				6A8BA3DF2AB1C61000FC88D7 /* Localizable.strings */,
 				6A8BA3E62AB1C6D900FC88D7 /* InfoPlist.strings */,
+				6A2789F82AB7D3C800BA3011 /* NumberViewController.swift */,
 			);
 			path = UnsplashProject;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				6A8BA3C42AB02CAA00FC88D7 /* APIKeys.swift in Sources */,
 				6A8BA3D62AB13AA700FC88D7 /* CalculateViewModel.swift in Sources */,
 				6A210E602AB2A0E4007C4DE6 /* NewSimpleCollectionViewController.swift in Sources */,
+				6A2789F92AB7D3C800BA3011 /* NumberViewController.swift in Sources */,
 				6A8BA3DA2AB1C52600FC88D7 /* String+Extension.swift in Sources */,
 				6A8BA3D42AB139E500FC88D7 /* CalculateViewController.swift in Sources */,
 				6A5B3B542AB02A6E005DE44A /* APIService.swift in Sources */,

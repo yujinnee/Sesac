@@ -7,16 +7,30 @@
 
 import UIKit
 
-struct User {
+struct User: Hashable {
+    static func == (lhs: User, rhs: User) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     let name: String
     let age: Int
+    
+    let id = UUID().uuidString
     
     var introduce: String {
         return "\(name),\(age)살"
     }
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
 }
 
 class SampleViewController: UIViewController {
+    
 
     @IBOutlet var tableView: UITableView!
     
@@ -45,15 +59,6 @@ class SampleViewController: UIViewController {
 //        number3.value = 500
 //        number3.value = 50
 //        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
 

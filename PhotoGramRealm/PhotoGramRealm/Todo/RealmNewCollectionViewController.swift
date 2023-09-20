@@ -14,16 +14,13 @@ class RealmNewCollectionViewController: BaseViewController {
     let realm = try! Realm()
     
     var collectionView = UICollectionView(frame: .zero, collectionViewLayout:  layout())
-    
     var list: Results<ToDoTable>!
-    
     let repository = DiaryTableRepository()
     
     var cellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, ToDoTable>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(repository.findFileURL())
         list = realm.objects(ToDoTable.self)
         
         view.addSubview(collectionView)
@@ -37,7 +34,7 @@ class RealmNewCollectionViewController: BaseViewController {
             var content = UIListContentConfiguration.valueCell()
             content.image = itemIdentifier.favorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
             content.text = itemIdentifier.title
-            content.secondaryText = "TEST"
+            content.secondaryText = "\(itemIdentifier.detail.count)개의 세부 할일"
             cell.contentConfiguration = content
             
         })
