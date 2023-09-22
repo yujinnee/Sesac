@@ -25,6 +25,11 @@
 		6A2461EA2AB9EA3400A2806D /* BeerNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2461E92AB9EA3400A2806D /* BeerNetworkManager.swift */; };
 		6A2461EC2AB9EDF800A2806D /* BeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2461EB2AB9EDF800A2806D /* BeerViewController.swift */; };
 		6A2461EE2AB9EF9C00A2806D /* BeerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2461ED2AB9EF9C00A2806D /* BeerModel.swift */; };
+		6A48D9332ABA77B20066CE9E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A48D9322ABA77B20066CE9E /* Router.swift */; };
+		6A7954F32ABD16D000AA4064 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7954F22ABD16D000AA4064 /* Constant.swift */; };
+		6A7954F52ABD1F2A00AA4064 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7954F42ABD1F2A00AA4064 /* ViewModel.swift */; };
+		6A7954F82ABD374100AA4064 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7954F72ABD374100AA4064 /* SearchViewController.swift */; };
+		6A7954FA2ABD378A00AA4064 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7954F92ABD378A00AA4064 /* SearchCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +50,11 @@
 		6A2461E92AB9EA3400A2806D /* BeerNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerNetworkManager.swift; sourceTree = "<group>"; };
 		6A2461EB2AB9EDF800A2806D /* BeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewController.swift; sourceTree = "<group>"; };
 		6A2461ED2AB9EF9C00A2806D /* BeerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerModel.swift; sourceTree = "<group>"; };
+		6A48D9322ABA77B20066CE9E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		6A7954F22ABD16D000AA4064 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		6A7954F42ABD1F2A00AA4064 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		6A7954F72ABD374100AA4064 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6A7954F92ABD378A00AA4064 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,17 +90,20 @@
 		6A1323AE2AB9294900E5AF5E /* Week10 */ = {
 			isa = PBXGroup;
 			children = (
+				6A7954F62ABD372600AA4064 /* Search */,
 				6A2461E62AB9DD5800A2806D /* Beer */,
 				6A1323D22AB93CE400E5AF5E /* Network */,
 				6A1323AF2AB9294900E5AF5E /* AppDelegate.swift */,
 				6A1323B12AB9294900E5AF5E /* SceneDelegate.swift */,
 				6A1323B32AB9294900E5AF5E /* ViewController.swift */,
+				6A1323CE2AB92C8B00E5AF5E /* APIKeys.swift */,
+				6A7954F22ABD16D000AA4064 /* Constant.swift */,
+				6A7954F42ABD1F2A00AA4064 /* ViewModel.swift */,
 				6A1323B52AB9294900E5AF5E /* Main.storyboard */,
 				6A1323B82AB9294B00E5AF5E /* Assets.xcassets */,
 				6A1323BA2AB9294B00E5AF5E /* LaunchScreen.storyboard */,
 				6A1323BD2AB9294B00E5AF5E /* Info.plist */,
 				6A1323CC2AB92C7400E5AF5E /* .gitignore */,
-				6A1323CE2AB92C8B00E5AF5E /* APIKeys.swift */,
 			);
 			path = Week10;
 			sourceTree = "<group>";
@@ -101,6 +114,7 @@
 				6A1323D02AB93CDA00E5AF5E /* NetworkBasic.swift */,
 				6A1323D32AB964A100E5AF5E /* SeSACAPI.swift */,
 				6A1323D52AB9757700E5AF5E /* Network.swift */,
+				6A48D9322ABA77B20066CE9E /* Router.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -114,6 +128,15 @@
 				6A2461ED2AB9EF9C00A2806D /* BeerModel.swift */,
 			);
 			path = Beer;
+			sourceTree = "<group>";
+		};
+		6A7954F62ABD372600AA4064 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				6A7954F72ABD374100AA4064 /* SearchViewController.swift */,
+				6A7954F92ABD378A00AA4064 /* SearchCollectionViewCell.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,14 +221,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A7954F82ABD374100AA4064 /* SearchViewController.swift in Sources */,
 				6A2461EC2AB9EDF800A2806D /* BeerViewController.swift in Sources */,
 				6A2461EE2AB9EF9C00A2806D /* BeerModel.swift in Sources */,
 				6A1323B42AB9294900E5AF5E /* ViewController.swift in Sources */,
 				6A1323B02AB9294900E5AF5E /* AppDelegate.swift in Sources */,
+				6A48D9332ABA77B20066CE9E /* Router.swift in Sources */,
+				6A7954FA2ABD378A00AA4064 /* SearchCollectionViewCell.swift in Sources */,
 				6A1323CF2AB92C8B00E5AF5E /* APIKeys.swift in Sources */,
+				6A7954F52ABD1F2A00AA4064 /* ViewModel.swift in Sources */,
 				6A1323B22AB9294900E5AF5E /* SceneDelegate.swift in Sources */,
 				6A2461EA2AB9EA3400A2806D /* BeerNetworkManager.swift in Sources */,
 				6A1323D42AB964A100E5AF5E /* SeSACAPI.swift in Sources */,
+				6A7954F32ABD16D000AA4064 /* Constant.swift in Sources */,
 				6A2461E82AB9DD8C00A2806D /* APIRouter.swift in Sources */,
 				6A1323D62AB9757700E5AF5E /* Network.swift in Sources */,
 				6A1323D12AB93CDA00E5AF5E /* NetworkBasic.swift in Sources */,
