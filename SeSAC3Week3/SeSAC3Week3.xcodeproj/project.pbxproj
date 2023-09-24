@@ -33,6 +33,7 @@
 		6AD079DE2A738A2200B5ED18 /* ToDoInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD079DD2A738A2200B5ED18 /* ToDoInformation.swift */; };
 		6AD079E02A738A2F00B5ED18 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD079DF2A738A2F00B5ED18 /* ToDo.swift */; };
 		6AD956DC2A79E86100C2CBAC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD956DB2A79E86100C2CBAC /* DetailViewController.swift */; };
+		6AF1F07D2AC0A82C004209B6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF1F07C2AC0A82C004209B6 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		6AD079DD2A738A2200B5ED18 /* ToDoInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoInformation.swift; sourceTree = "<group>"; };
 		6AD079DF2A738A2F00B5ED18 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		6AD956DB2A79E86100C2CBAC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		6AF1F07C2AC0A82C004209B6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				6A8FCE2B2A7659F00061BF84 /* MovieTableViewController.swift */,
 				6AD956DB2A79E86100C2CBAC /* DetailViewController.swift */,
 				6A7954FE2AC08B4D00AA4064 /* AttentionViewController.swift */,
+				6AF1F07C2AC0A82C004209B6 /* SettingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				6A8329342A720008006A2272 /* ViewController.swift in Sources */,
 				6A9E8ECE2A7232DB00A8102C /* StudyTableViewController.swift in Sources */,
 				6AD079DE2A738A2200B5ED18 /* ToDoInformation.swift in Sources */,
+				6AF1F07D2AC0A82C004209B6 /* SettingViewController.swift in Sources */,
 				6A7954FF2AC08B4D00AA4064 /* AttentionViewController.swift in Sources */,
 				6A8FCE2A2A7655C30061BF84 /* MovieStruct.swift in Sources */,
 				6A8FCE262A7654FA0061BF84 /* MovieTableViewCell.swift in Sources */,
