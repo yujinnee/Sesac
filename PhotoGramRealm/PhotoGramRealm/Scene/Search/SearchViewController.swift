@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+
 class SearchViewController: BaseViewController {
      
     let searchBar = {
@@ -16,21 +17,43 @@ class SearchViewController: BaseViewController {
         return view
     }()
     
-    lazy var collectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
-        view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: "SearchCollectionViewCell")
-        view.delegate = self
-        view.dataSource = self
-        view.collectionViewLayout = collectionViewLayout()
-        return view
-    }()
+//    lazy var collectionView = {
+//        let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
+//        view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: "SearchCollectionViewCell")
+//        view.delegate = self
+//        view.dataSource = self
+//        view.collectionViewLayout = collectionViewLayout()
+//        return view
+//    }()
+    
+    var collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout())
 
     var didSelectItemHandler: ((String) -> Void)?
     
     private var imageList: Photo = Photo(total: 0, total_pages: 0, results: [])
+    
+    var cellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell,PhotoResult>!
      
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+//        collectionView.collectionViewLayout = layout
+        
+        cellRegistration = UICollectionView.CellRegistration { cell, indexPath, itemIdentifier in
+            var content = UIListContentConfiguration.valueCell()
+        
+            
+            DispatchQueue.global().async {
+                let data = try! Data(contentsOf: URL(string:itemIdentifier.urls.thumb)!)
+                DispatchQueue.main.async {
+                    content.image = UIImage(data: data)
+                    cell.contentConfiguration = content
+                }
+            }
+
+        }
          
         APIService.shared.searchPhoto(query: "sky") { data in
             guard let data = data else { return }
@@ -58,6 +81,15 @@ class SearchViewController: BaseViewController {
             make.top.equalTo(searchBar.snp.bottom)
         }
     }
+    
+    static func layout() -> UICollectionViewLayout {
+        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        configuration.showsSeparators = false
+        configuration.backgroundColor = .brown
+        
+        let layout = UICollectionViewCompositionalLayout.list(using: configuration)
+        return layout
+    }
 
  
 }
@@ -69,26 +101,30 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
-        
-        let data = imageList.results![indexPath.item].urls.thumb
-        cell.backgroundColor = .yellow        
+        let item = imageList.results![indexPath.item]
+        let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
         return cell
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
+//
+//        let data = imageList.results![indexPath.item].urls.thumb
+//        cell.backgroundColor = .yellow
+//        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let data = imageList.results![indexPath.item].urls.full
+        
         didSelectItemHandler?(data)
         dismiss(animated: true)
     }
     
-    private func collectionViewLayout() -> UICollectionViewFlowLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 8
-        let size = UIScreen.main.bounds.width - 40 //self.frame.width
-        layout.itemSize = CGSize(width: size / 4, height: size / 4)
-        return layout
-    }
+//    private func collectionViewLayout() -> UICollectionViewFlowLayout {
+//        let layout = UICollectionViewFlowLayout()
+//        layout.minimumLineSpacing = 8
+//        layout.minimumInteritemSpacing = 8
+//        let size = UIScreen.main.bounds.width - 40 //self.frame.width
+//        layout.itemSize = CGSize(width: size / 4, height: size / 4)
+//        return layout
+//    }
 }
