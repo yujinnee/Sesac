@@ -59,22 +59,22 @@ class HomeViewController: BaseViewController {
             
             
             
-            content.image = self.loadImageFromDocument(fileName: "jy_\(itemIdentifier._id).jpg")
+            content.image = self.loadImageFromDocument(fileName: "jack_\(itemIdentifier._id).jpg")
             content.imageProperties.maximumSize.height = 80
             content.imageProperties.maximumSize.width = 80
             content.imageProperties.reservedLayoutSize.height = 80
             content.imageProperties.reservedLayoutSize.width = 80
             
             
-            content.imageProperties.cornerRadius = 10
-            content.textProperties.color = .white
+            content.imageProperties.cornerRadius = 100
+            content.textProperties.color = .systemPink
             
             cell.contentConfiguration = content
             cell.accessories = [
                 .delete(
                 displayed: .whenEditing,
                 actionHandler: {
-                    self.removeImageFromDocument(fileName: "jy_\(itemIdentifier._id).jpg")
+                    self.removeImageFromDocument(fileName: "jack_\(itemIdentifier._id).jpg")
                     self.repository.deleteItem(itemIdentifier)
                     self.collectionView.reloadData()
                 }
@@ -90,7 +90,7 @@ class HomeViewController: BaseViewController {
     
     //UIListContentCoinfiguration
     static private func layout() -> UICollectionViewLayout {
-        var configuration = UICollectionLayoutListConfiguration(appearance: .grouped)
+        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         configuration.backgroundColor = Constants.BaseColor.background
         configuration.separatorConfiguration.color = .lightGray
         let layout = UICollectionViewCompositionalLayout.list(using: configuration)
