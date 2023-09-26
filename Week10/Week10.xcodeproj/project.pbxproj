@@ -30,6 +30,7 @@
 		6A7954F52ABD1F2A00AA4064 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7954F42ABD1F2A00AA4064 /* ViewModel.swift */; };
 		6A7954F82ABD374100AA4064 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7954F72ABD374100AA4064 /* SearchViewController.swift */; };
 		6A7954FA2ABD378A00AA4064 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7954F92ABD378A00AA4064 /* SearchCollectionViewCell.swift */; };
+		6AB2B8642AC2708200830760 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2B8632AC2708200830760 /* Sample.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		6A7954F42ABD1F2A00AA4064 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		6A7954F72ABD374100AA4064 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		6A7954F92ABD378A00AA4064 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		6AB2B8632AC2708200830760 /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				6A1323BA2AB9294B00E5AF5E /* LaunchScreen.storyboard */,
 				6A1323BD2AB9294B00E5AF5E /* Info.plist */,
 				6A1323CC2AB92C7400E5AF5E /* .gitignore */,
+				6AB2B8632AC2708200830760 /* Sample.swift */,
 			);
 			path = Week10;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				6A7954FA2ABD378A00AA4064 /* SearchCollectionViewCell.swift in Sources */,
 				6A1323CF2AB92C8B00E5AF5E /* APIKeys.swift in Sources */,
 				6A7954F52ABD1F2A00AA4064 /* ViewModel.swift in Sources */,
+				6AB2B8642AC2708200830760 /* Sample.swift in Sources */,
 				6A1323B22AB9294900E5AF5E /* SceneDelegate.swift in Sources */,
 				6A2461EA2AB9EA3400A2806D /* BeerNetworkManager.swift in Sources */,
 				6A1323D42AB964A100E5AF5E /* SeSACAPI.swift in Sources */,
