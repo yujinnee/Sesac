@@ -10,5 +10,7 @@ import UIKit
 enum Color {
     static let black: UIColor = .textPoint
     static let white: UIColor = .viewPoint
-    static let jack: UIColor = .jackBorder
+    //static let title: UIColor = UIColor(named: "jackBorder")!
+    static let title: UIColor = .jackTitle
+    
 }

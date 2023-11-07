@@ -7,7 +7,6 @@
  
 import UIKit
 import SnapKit
-
 import RxSwift
 import RxCocoa
 
@@ -68,11 +67,9 @@ class BirthdayViewController: UIViewController {
     }()
   
     let nextButton = PointButton(title: "가입하기")
-    let birthday: BehaviorSubject<Date> = BehaviorSubject(value: .now)
-//    let year = BehaviorSubject(value: 0)
-//    let month = BehaviorSubject(value:0)
-//    let day = BehaviorSubject(value: 0)
+    
     let viewModel = BirthdayViewModel()
+    
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -85,15 +82,17 @@ class BirthdayViewController: UIViewController {
         nextButton.addTarget(self, action: #selector(nextButtonClicked), for: .touchUpInside)
         bind()
     }
+    
     func bind() {
+        
         birthDayPicker.rx.date
             .bind(to: viewModel.birthday)
             .disposed(by: disposeBag)
         
-       
+        
         
         viewModel.year
-            .observe(on: MainScheduler.instance)//Scheduler`
+            .observe(on: MainScheduler.instance) //Schedular
             .subscribe(with: self) { owner, value in
                 owner.yearLabel.text = "\(value)년"
             } onDisposed: { owner in
@@ -102,15 +101,21 @@ class BirthdayViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.month
-            .map { "\($0)월" }
+            .observe(on: MainScheduler.instance)
             .subscribe(with: self) { owner, value in
-                owner.monthLabel.text = value
-            }.disposed(by: disposeBag)
+                owner.monthLabel.text = "\(value)월"
+            } onDisposed: { owner in
+                print("month dispose")
+            }
+            .disposed(by: disposeBag)
         
         viewModel.day
-            .map { "\($0)일"}
+            .map { "\($0)일" }
             .bind(to: dayLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        
+        
     }
     
     @objc func nextButtonClicked() {

@@ -28,8 +28,12 @@
 		041280712AEFAD3D00972552 /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041280702AEFAD3D00972552 /* PhoneViewController.swift */; };
 		041280732AEFAD4B00972552 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041280722AEFAD4B00972552 /* NicknameViewController.swift */; };
 		041280782AF1D14000972552 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041280772AF1D14000972552 /* Resource.swift */; };
-		6A1D9C5B2AF1EDD500CF941E /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D9C5A2AF1EDD500CF941E /* Extension+String.swift */; };
-		6AAA0D932AF377320038DFBE /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA0D922AF377320038DFBE /* BirthdayViewModel.swift */; };
+		CE0B1F292AF875160043A7DC /* BasicAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B1F282AF875160043A7DC /* BasicAPIManager.swift */; };
+		CE0B1F2B2AF87DCB0043A7DC /* APISampleCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B1F2A2AF87DCB0043A7DC /* APISampleCode.swift */; };
+		CE0C42912AF47BA600B6D590 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C428F2AF47BA600B6D590 /* SearchTableViewCell.swift */; };
+		CE0C42922AF47BA600B6D590 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C42902AF47BA600B6D590 /* SearchViewController.swift */; };
+		CEA32E3D2AF37720001B5619 /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA32E3C2AF37720001B5619 /* BirthdayViewModel.swift */; };
+		CEE3D0B52AF1E97500EB5B70 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE3D0B42AF1E97500EB5B70 /* Extension+String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +76,12 @@
 		041280702AEFAD3D00972552 /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		041280722AEFAD4B00972552 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		041280772AF1D14000972552 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
-		6A1D9C5A2AF1EDD500CF941E /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
-		6AAA0D922AF377320038DFBE /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
+		CE0B1F282AF875160043A7DC /* BasicAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAPIManager.swift; sourceTree = "<group>"; };
+		CE0B1F2A2AF87DCB0043A7DC /* APISampleCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISampleCode.swift; sourceTree = "<group>"; };
+		CE0C428F2AF47BA600B6D590 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		CE0C42902AF47BA600B6D590 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CEA32E3C2AF37720001B5619 /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
+		CEE3D0B42AF1E97500EB5B70 /* Extension+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +135,8 @@
 		041280222AEF9BAB00972552 /* SeSACRxThreads */ = {
 			isa = PBXGroup;
 			children = (
+				CE0C428E2AF47B9300B6D590 /* Search */,
+				CEE3D0B42AF1E97500EB5B70 /* Extension+String.swift */,
 				041280532AEF9C1F00972552 /* SignUp */,
 				041280542AEF9C2600972552 /* SignIn */,
 				0412806D2AEFAD0F00972552 /* SignUpOptional */,
@@ -138,7 +148,6 @@
 				0412802E2AEF9BAC00972552 /* LaunchScreen.storyboard */,
 				041280312AEF9BAC00972552 /* Info.plist */,
 				041280772AF1D14000972552 /* Resource.swift */,
-				6A1D9C5A2AF1EDD500CF941E /* Extension+String.swift */,
 			);
 			path = SeSACRxThreads;
 			sourceTree = "<group>";
@@ -193,9 +202,28 @@
 				0412806E2AEFAD2D00972552 /* BirthdayViewController.swift */,
 				041280702AEFAD3D00972552 /* PhoneViewController.swift */,
 				041280722AEFAD4B00972552 /* NicknameViewController.swift */,
-				6AAA0D922AF377320038DFBE /* BirthdayViewModel.swift */,
+				CEA32E3C2AF37720001B5619 /* BirthdayViewModel.swift */,
 			);
 			path = SignUpOptional;
+			sourceTree = "<group>";
+		};
+		CE0B1F272AF874ED0043A7DC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CE0B1F2A2AF87DCB0043A7DC /* APISampleCode.swift */,
+				CE0B1F282AF875160043A7DC /* BasicAPIManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CE0C428E2AF47B9300B6D590 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CE0B1F272AF874ED0043A7DC /* Network */,
+				CE0C428F2AF47BA600B6D590 /* SearchTableViewCell.swift */,
+				CE0C42902AF47BA600B6D590 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,18 +366,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				041280782AF1D14000972552 /* Resource.swift in Sources */,
+				CE0B1F2B2AF87DCB0043A7DC /* APISampleCode.swift in Sources */,
 				0412806F2AEFAD2D00972552 /* BirthdayViewController.swift in Sources */,
 				041280652AEFA2F000972552 /* SignTextField.swift in Sources */,
+				CE0C42922AF47BA600B6D590 /* SearchViewController.swift in Sources */,
 				0412806C2AEFABFE00972552 /* PasswordViewController.swift in Sources */,
 				041280562AEFA04800972552 /* SignInViewController.swift in Sources */,
 				041280282AEF9BAB00972552 /* ViewController.swift in Sources */,
+				CE0B1F292AF875160043A7DC /* BasicAPIManager.swift in Sources */,
 				041280632AEFA0CE00972552 /* PointButton.swift in Sources */,
 				041280242AEF9BAB00972552 /* AppDelegate.swift in Sources */,
-				6A1D9C5B2AF1EDD500CF941E /* Extension+String.swift in Sources */,
-				6AAA0D932AF377320038DFBE /* BirthdayViewModel.swift in Sources */,
+				CEE3D0B52AF1E97500EB5B70 /* Extension+String.swift in Sources */,
+				CEA32E3D2AF37720001B5619 /* BirthdayViewModel.swift in Sources */,
 				041280732AEFAD4B00972552 /* NicknameViewController.swift in Sources */,
 				0412806A2AEFA91E00972552 /* SignUpViewController.swift in Sources */,
 				041280712AEFAD3D00972552 /* PhoneViewController.swift in Sources */,
+				CE0C42912AF47BA600B6D590 /* SearchTableViewCell.swift in Sources */,
 				041280262AEF9BAB00972552 /* SceneDelegate.swift in Sources */,
 				041280582AEFA05300972552 /* SignInViewModel.swift in Sources */,
 			);

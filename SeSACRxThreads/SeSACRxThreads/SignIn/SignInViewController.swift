@@ -6,11 +6,9 @@
 //
 
 import UIKit
-
-import RxCocoa
-import RxSwift
 import SnapKit
-
+import RxSwift
+import RxCocoa
 
 class SignInViewController: UIViewController {
 
@@ -20,32 +18,38 @@ class SignInViewController: UIViewController {
     let signUpButton = UIButton()
     
     let test = UISwitch()
-    let isOn = PublishSubject<Bool>()//BehaviorSubject(value: true)//Observable.of(false)//Observable은 이벤트를 생성하고 전달만 가능
-    var disposeBag = DisposeBag()
+    let isOn = PublishSubject<Bool>()  //BehaviorSubject(value: true)//Observable.of(false)
     
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //testSwitch()
 
         view.backgroundColor = Color.white
+        
+        emailTextField.text = "11111111111"
+        passwordTextField.text = "333333333"
         
         configureLayout()
         configure()
         
         signUpButton.addTarget(self, action: #selector(signUpButtonClicked), for: .touchUpInside)
-        bind()
-        aboutCombineLatest()
-    }
-    func aboutCombineLatest() {
-        let a = PublishSubject<Int>()//BehaviorSubject(value: 3)
-        let b = PublishSubject<String>()//BehaviorSubject(value: "가")
         
-        Observable.combineLatest(a,b) {first, second in
+        bind()
+        //aboutCombineLatest()
+    }
+    
+    func aboutCombineLatest() {
+        let a = BehaviorSubject(value: 3)
+        let b = BehaviorSubject(value: "가")
+        
+        Observable.zip(a, b) { first, second in
             return "결과: \(first) 그리고 \(second)"
         }
         .subscribe(with: self) { owner, data in
             print(data)
-            
         }
         .disposed(by: disposeBag)
         
@@ -53,10 +57,14 @@ class SignInViewController: UIViewController {
         a.onNext(8)
         a.onNext(5)
         
-//        b.onNext("나")
-//        b.onNext("다")
+        b.onNext("나")
+        b.onNext("다")
+        
+        
     }
+    
     func bind() {
+        
         let email = emailTextField.rx.text.orEmpty
         let password = passwordTextField.rx.text.orEmpty
         
@@ -68,69 +76,23 @@ class SignInViewController: UIViewController {
             .bind(to: signInButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        validation
-            .subscribe(with: self) { owner, value in
-                owner.signInButton.backgroundColor = value ? UIColor.blue : UIColor.red
-                owner.emailTextField.layer.borderColor = value ? UIColor.blue.cgColor: UIColor.red.cgColor
-                owner.passwordTextField.layer.borderColor = value ? UIColor.blue.cgColor : UIColor.red.cgColor
-            }
-            .disposed(by: disposeBag)
-
+        validation.subscribe(with: self) { owner, value in
+            owner.signInButton.backgroundColor = value ? UIColor.blue: UIColor.red
+            owner.emailTextField.layer.borderColor = value ? UIColor.blue.cgColor : UIColor.red.cgColor
+            owner.passwordTextField.layer.borderColor = value ? UIColor.blue.cgColor : UIColor.red.cgColor
+        }
+        .disposed(by: disposeBag)
         
         signInButton.rx.tap
             .subscribe(with: self) { owner, value in
                 print("SELECT")
+                owner.navigationController?.pushViewController(SearchViewController(), animated: true)
+                
             }
             .disposed(by: disposeBag)
         
     }
-    func incrementExample() {
-        let increment = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
-        let incrementValue = increment
-            .subscribe(with: self) { owner, value in
-                print("next - \(value)")
-            } onError: { owner, error in
-                print("error = \(error)")
-            } onCompleted: { owner in
-                print("completed")
-            } onDisposed: { owner in
-                print("disposed")
-            }
-            .disposed(by: disposeBag)
-        let incrementValue2 = increment
-            .subscribe(with: self) { owner, value in
-                print("next - \(value)")
-            } onError: { owner, error in
-                print("error = \(error)")
-            } onCompleted: { owner in
-                print("completed")
-            } onDisposed: { owner in
-                print("disposed")
-            }
-            .disposed(by: disposeBag)
-        let incrementValue3 = increment
-            .subscribe(with: self) { owner, value in
-                print("next - \(value)")
-            } onError: { owner, error in
-                print("error = \(error)")
-            } onCompleted: { owner in
-                print("completed")
-            } onDisposed: { owner in
-                print("disposed")
-            }
-            .disposed(by: disposeBag)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.disposeBag = DisposeBag()
-//            incrementValue.dispose()
-//            incrementValue2.dispose()
-//            incrementValue3.dispose()
-        }
-    }
     
-    @objc func signUpButtonClicked() {
-        navigationController?.pushViewController(SignUpViewController(), animated: true)
-    }
     func testSwitch() {
         view.addSubview(test)
         test.snp.makeConstraints { make in
@@ -138,32 +100,37 @@ class SignInViewController: UIViewController {
             make.leading.equalTo(100)
         }
         
-//        isOn
-//            .subscribe { value in
-//                self.test.setOn(true, animated: false)
-//            }
-//            .disposed(by: disposeBag)
-//       
+        
         
         isOn
             .bind(to: test.rx.isOn)
             .disposed(by: disposeBag)
         
-       
+        isOn.onNext(true)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+2) {
             self.isOn.onNext(false)
         }
-        isOn.onNext(true)
-      
+        
+//        isOn
+//            .subscribe { value in
+//                self.test.setOn(value, animated: false)
+//            }
+//            .disposed(by: disposeBag)
+        
+       
         
         //UIKit
 //        test.setOn(true, animated: false)
 //        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//            self.test.setOn(false, animated: true)
+//        DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+//            self.test.setOn(false, animated: false) // 2초 후 스위치 꺼짐
 //        }
         
+    }
+    
+    @objc func signUpButtonClicked() {
+        navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
     
     

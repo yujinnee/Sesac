@@ -6,12 +6,11 @@
 //
 
 import UIKit
-
+import SnapKit
 import RxSwift
 import RxCocoa
-import SnapKit
 
-enum JackError: Error {
+enum ErrorType: Error {
     case invalid
 }
 
@@ -21,7 +20,9 @@ class SignUpViewController: UIViewController {
     let validationButton = UIButton()
     let nextButton = PointButton(title: "다음")
     
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,135 +33,205 @@ class SignUpViewController: UIViewController {
         configure()
         
         nextButton.addTarget(self, action: #selector(nextButtonClicked), for: .touchUpInside)
-        
 //        disposeExample()
 //        incrementExample()
-        aboutPublishSubject()
-
+        
+        //aboutPublishSubject()
+        //aboutBehaviorSubject()
+        //aboutReplaySubject()
+        //aboutAsyncSubject()
     }
+    
     func aboutAsyncSubject() {
         let publish = AsyncSubject<Int>()
+        
+        publish.onNext(2)
+        publish.onNext(3)
+        publish.onNext(4)
+        publish.onNext(5)
+        publish.onNext(6)
+        
+        publish.subscribe(with: self) { owner, value in
+            print("AsyncSubject - \(value)")
+        } onError: { owner, error in
+            print("AsyncSubject - \(error)")
+        } onCompleted: { owner in
+            print("AsyncSubject completed")
+        } onDisposed: { owner in
+            print("AsyncSubject disposed")
+        }
+        .disposed(by: disposeBag)
+        
+        publish.onNext(30)
+        publish.onNext(40)
+        publish.on(.next(80))
+        
+        publish.onCompleted()
+        publish.onNext(10)
+    }
+    
+    func aboutReplaySubject() {
+        let publish = ReplaySubject<Int>.create(bufferSize: 3)
+        
+        publish.onNext(2)
+        publish.onNext(3)
+        publish.onNext(4)
+        publish.onNext(5)
+        publish.onNext(6)
+        
+        publish.subscribe(with: self) { owner, value in
+            print("ReplaySubject - \(value)")
+        } onError: { owner, error in
+            print("ReplaySubject - \(error)")
+        } onCompleted: { owner in
+            print("ReplaySubject completed")
+        } onDisposed: { owner in
+            print("ReplaySubject disposed")
+        }
+        .disposed(by: disposeBag)
+        
+        publish.onNext(30)
+        publish.onNext(40)
+        publish.on(.next(80))
+        
+        publish.onCompleted()
+        publish.onNext(10)
+    }
+    
+    func aboutBehaviorSubject() {
+        let publish = BehaviorSubject(value: 200)
+        
         publish.onNext(20)
         publish.onNext(30)
         
-        publish
-            .subscribe(with: self) { owner, value in
-                print("PublishSubject - \(value)")
-            } onError: { owner, error in
-                print("PublishSubject - \(error)")
-            } onCompleted: { owner in
-                print("PublishSubject completed")
-            } onDisposed: { owner in
-                print("PublishSubject disposed")
-            }
-            .disposed(by: disposeBag)
+        publish.subscribe(with: self) { owner, value in
+            print("BehaviorSubject - \(value)")
+        } onError: { owner, error in
+            print("BehaviorSubject - \(error)")
+        } onCompleted: { owner in
+            print("BehaviorSubject completed")
+        } onDisposed: { owner in
+            print("BehaviorSubject disposed")
+        }
+        .disposed(by: disposeBag)
         
         publish.onNext(3)
         publish.onNext(4)
-        publish.on(.next(9))
+        publish.on(.next(8))
         
         publish.onCompleted()
-        
-        publish.onNext(6)
-        publish.onNext(7)
+        publish.onNext(10)
     }
     
-  
-    
-    func aboutReplaysubject() {
-        let publish = ReplaySubject<Int>.create(bufferSize:  2)
-        publish.onNext(20)
-        publish.onNext(30)
-        
-        publish
-            .subscribe(with: self) { owner, value in
-                print("ReplaySubject - \(value)")
-            } onError: { owner, error in
-                print("ReplaySubject - \(error)")
-            } onCompleted: { owner in
-                print("ReplaySubject completed")
-            } onDisposed: { owner in
-                print("ReplaySubject disposed")
-            }
-            .disposed(by: disposeBag)
-        
-        publish.onNext(3)
-        publish.onNext(4)
-        publish.on(.next(9))
-        
-        publish.onCompleted()
-        
-        publish.onNext(6)
-        publish.onNext(7)
-    }
     func aboutPublishSubject() {
         let publish = PublishSubject<Int>()
+        
         publish.onNext(20)
         publish.onNext(30)
         
-        publish
-            .subscribe(with: self) { owner, value in
-                print("PublishSubject - \(value)")
-            } onError: { owner, error in
-                print("PublishSubject - \(error)")
-            } onCompleted: { owner in
-                print("PublishSubject completed")
-            } onDisposed: { owner in
-                print("PublishSubject disposed")
-            }
-            .disposed(by: disposeBag)
+        publish.subscribe(with: self) { owner, value in
+            print("PublishSubject - \(value)")
+        } onError: { owner, error in
+            print("PublishSubject - \(error)")
+        } onCompleted: { owner in
+            print("PublishSubject completed")
+        } onDisposed: { owner in
+            print("PublishSubject disposed")
+        }
+        .disposed(by: disposeBag)
         
         publish.onNext(3)
         publish.onNext(4)
-        publish.on(.next(9))
+        publish.on(.next(8))
         
         publish.onCompleted()
-        
-        publish.onNext(6)
-        publish.onNext(7)
-    }
-    func disposeExample() {
-        let textArray = BehaviorSubject(value: ["Hue", "Jack","Koko","Bran"])
-
-        let textArrayValue = textArray
-                                .subscribe(with: self) { owner, value in
-                                    print("next - \(value)")
-                                } onError: { owner, error in
-                                    print("error = \(error)")
-                                } onCompleted: { owner in
-                                    print("completed")
-                                } onDisposed: { owner in
-                                    print("disposed")
-                                }
-                                
-        
-        textArray.onNext(["A","B","C"])
-        
-        textArray.onNext(["D","E","F"])
-        
-//        textArray.onError(JackError.invalid)
-//        
-        textArray.onNext(["Z", "Z"])
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            textArrayValue.dispose()
-        }
+        publish.onNext(10)
 
     }
+    
+    deinit {
+        print("signup vc deinit")
+    }
+    
     func incrementExample() {
         let increment = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
+        
         increment
             .subscribe(with: self) { owner, value in
                 print("next - \(value)")
             } onError: { owner, error in
-                print("error = \(error)")
+                print("error - \(error)")
             } onCompleted: { owner in
                 print("completed")
             } onDisposed: { owner in
                 print("disposed")
             }
-
+            .disposed(by: disposeBag)
+        
+        increment
+            .subscribe(with: self) { owner, value in
+                print("next - \(value)")
+            } onError: { owner, error in
+                print("error - \(error)")
+            } onCompleted: { owner in
+                print("completed")
+            } onDisposed: { owner in
+                print("disposed")
+            }
+            .disposed(by: disposeBag)
+        
+        increment
+            .subscribe(with: self) { owner, value in
+                print("next - \(value)")
+            } onError: { owner, error in
+                print("error - \(error)")
+            } onCompleted: { owner in
+                print("completed")
+            } onDisposed: { owner in
+                print("disposed")
+            }
+            .disposed(by: disposeBag)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            
+            self.disposeBag = DisposeBag()
+            
+//            incrementValue1.dispose()
+//            incrementValue2.dispose()
+//            incrementValue3.dispose()
+        }
+        
     }
+    
+    func disposeExample() {
+        
+        let textArray = BehaviorSubject(value: ["Hue", "Jack", "Koko", "Bran"]) //Observable.from(["Hue", "Jack", "Koko", "Bran"])
+        
+        let textArrayValue = textArray
+                                .subscribe(with: self) { owner, value in
+                                    print("next - \(value)")
+                                } onError: { owner, error in
+                                    print("error - \(error)")
+                                } onCompleted: { owner in
+                                    print("completed")
+                                } onDisposed: { owner in
+                                    print("disposed")
+                                }
+        
+
+        textArray.onNext(["A", "B", "C"])
+        
+//        textArray.onError(ErrorType.invalid)
+        textArray.onNext(["D", "E", "F"])
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            textArrayValue.dispose()
+        }
+        
+    }
+    
+    
     @objc func nextButtonClicked() {
         navigationController?.pushViewController(PasswordViewController(), animated: true)
     }

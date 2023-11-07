@@ -2,7 +2,7 @@
 //  Extension+String.swift
 //  SeSACRxThreads
 //
-//  Created by 이유진 on 11/1/23.
+//  Created by jack on 2023/11/01.
 //
 
 import Foundation
@@ -12,7 +12,7 @@ extension String {
         return String(unicodeScalars.filter(CharacterSet.decimalDigits.contains))
     }
     
-    func formated(by patternString: String) -> String {
+    func formatted(by patternString: String) -> String {
         let digit: Character = "#"
  
         let pattern: [Character] = Array(patternString)
